@@ -1,1 +1,781 @@
-hello world test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track My Order | Limitless Garage Doors &amp; Gates</title>
+  <meta name="description" content="Track your garage door installation progress with Limitless Garage Doors and Gates, Toowoomba">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  .lgd-tracker *, .lgd-tracker *::before, .lgd-tracker *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .lgd-tracker {
+    font-family: 'Inter', sans-serif;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    color: hsl(215, 25%, 15%);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Search Section Container ── */
+  .lgd-tracker .search-card {
+    background: #fff;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 24px;
+    padding: 40px 32px 32px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .lgd-tracker .search-icon-wrap {
+    width: 56px; height: 56px;
+    background: hsl(210, 20%, 96%);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .lgd-tracker .search-icon-wrap svg { width: 28px; height: 28px; color: hsl(215, 60%, 22%); }
+  .lgd-tracker .search-card h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 8px;
+  }
+  .lgd-tracker .search-card .search-desc {
+    font-size: 14px;
+    color: hsl(215, 10%, 45%);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .lgd-tracker .search-form {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .lgd-tracker .search-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 6px;
+  }
+  .lgd-tracker .search-form input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 12px;
+    outline: none;
+    color: hsl(215, 25%, 15%);
+    background: #fff;
+    transition: border-color .2s;
+    margin-bottom: 12px;
+  }
+  .lgd-tracker .search-form input[type="text"]:focus {
+    border-color: hsl(215, 60%, 22%);
+    box-shadow: 0 0 0 3px hsla(215, 60%, 22%, 0.1);
+  }
+  .lgd-tracker .search-form input::placeholder { color: hsl(215, 10%, 45%); }
+  .lgd-tracker .search-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    background: hsl(215, 60%, 22%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .2s;
+    margin-bottom: 20px;
+  }
+  .lgd-tracker .search-btn:hover { background: hsl(215, 60%, 18%); }
+
+  /* ── Demo Buttons ── */
+  .lgd-tracker .demo-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(215, 10%, 45%);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .lgd-tracker .demo-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .lgd-tracker .demo-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 9999px;
+    background: #fff;
+    color: hsl(215, 25%, 15%);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .lgd-tracker .demo-btn:hover {
+    background: hsl(215, 60%, 22%);
+    color: #fff;
+    border-color: hsl(215, 60%, 22%);
+  }
+
+  /* ── Results Section ── */
+  .lgd-tracker .results-area { margin-top: 8px; }
+  .lgd-tracker .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: hsl(215, 60%, 22%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 12px;
+  }
+  .lgd-tracker .back-btn:hover { text-decoration: underline; }
+  .lgd-tracker .results-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(215, 10%, 45%);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .lgd-tracker .results-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 20px;
+  }
+  .lgd-tracker .no-results {
+    text-align: center;
+    padding: 48px 24px;
+    color: hsl(215, 10%, 45%);
+    font-size: 15px;
+  }
+
+  /* ── Job Card ── */
+  .lgd-tracker .job-card {
+    background: #fff;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .lgd-tracker .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .lgd-tracker .job-num-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(215, 10%, 45%);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .lgd-tracker .job-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: hsl(215, 25%, 15%);
+  }
+  .lgd-tracker .status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .lgd-tracker .badge-step1 { background: hsl(215, 60%, 22%); }
+  .lgd-tracker .badge-step2 { background: hsl(215, 60%, 22%); }
+  .lgd-tracker .badge-step3 { background: hsl(215, 60%, 22%); }
+  .lgd-tracker .badge-step4 { background: hsl(215, 60%, 22%); }
+  .lgd-tracker .badge-step5 { background: hsl(140, 55%, 40%); }
+  .lgd-tracker .badge-step6 { background: hsl(140, 55%, 40%); }
+  .lgd-tracker .job-address {
+    font-size: 14px;
+    color: hsl(215, 10%, 45%);
+    margin-bottom: 4px;
+  }
+  .lgd-tracker .job-customer {
+    font-size: 15px;
+    font-weight: 600;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 4px;
+  }
+  .lgd-tracker .job-meta {
+    font-size: 13px;
+    color: hsl(215, 10%, 45%);
+    margin-bottom: 16px;
+  }
+  .lgd-tracker .job-meta span { font-weight: 600; color: hsl(215, 25%, 15%); }
+
+  /* ── Current Step Section ── */
+  .lgd-tracker .step-section {
+    background: hsla(210, 20%, 96%, 0.4);
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .lgd-tracker .step-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .lgd-tracker .step-section h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: hsl(215, 25%, 15%);
+  }
+  .lgd-tracker .pct-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: hsl(215, 60%, 22%);
+    background: hsla(215, 60%, 22%, 0.1);
+    border-radius: 9999px;
+  }
+  .lgd-tracker .step-desc {
+    font-size: 13px;
+    color: hsl(215, 10%, 45%);
+    margin-bottom: 14px;
+  }
+
+  /* ── Progress Bar ── */
+  .lgd-tracker .progress-track {
+    height: 8px;
+    background: hsl(210, 20%, 96%);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .lgd-tracker .progress-fill {
+    height: 100%;
+    background: hsl(215, 60%, 22%);
+    border-radius: 9999px;
+    transition: width .4s ease;
+  }
+
+  /* ── Step Boxes ── */
+  .lgd-tracker .step-boxes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .lgd-tracker .step-box {
+    position: relative;
+    border-radius: 16px;
+    padding: 14px 6px 12px;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .lgd-tracker .step-box svg { width: 22px; height: 22px; }
+  .lgd-tracker .step-box .step-name {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  /* Completed step */
+  .lgd-tracker .step-done {
+    background: hsla(215, 60%, 22%, 0.1);
+    border: 1px solid hsla(215, 60%, 22%, 0.3);
+    color: hsl(215, 60%, 22%);
+  }
+  .lgd-tracker .step-done svg { color: hsl(215, 60%, 22%); }
+  /* Active step */
+  .lgd-tracker .step-active {
+    background: hsla(140, 55%, 40%, 0.1);
+    border: 1px solid hsla(140, 55%, 40%, 0.3);
+    color: hsl(140, 55%, 35%);
+  }
+  .lgd-tracker .step-active svg { color: hsl(140, 55%, 35%); }
+  .lgd-tracker .current-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(140, 55%, 40%);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  /* Pending step */
+  .lgd-tracker .step-pending {
+    background: hsla(210, 20%, 96%, 0.6);
+    border: 1px solid hsl(214, 20%, 88%);
+    color: hsl(215, 10%, 45%);
+  }
+  .lgd-tracker .step-pending svg { color: hsl(215, 10%, 45%); }
+
+  /* ── Info Sections ── */
+  .lgd-tracker .info-block {
+    background: hsla(210, 20%, 96%, 0.4);
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .lgd-tracker .info-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(215, 10%, 45%);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .lgd-tracker .info-value {
+    font-size: 14px;
+    color: hsl(215, 25%, 15%);
+    line-height: 1.6;
+  }
+  .lgd-tracker .info-value strong { font-weight: 600; }
+
+  /* ── Deposit Badge ── */
+  .lgd-tracker .deposit {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-top: 4px;
+  }
+  .lgd-tracker .dep-paid { background: hsla(140, 55%, 40%, 0.1); color: hsl(140, 55%, 35%); }
+  .lgd-tracker .dep-half { background: hsla(35, 90%, 50%, 0.1); color: hsl(35, 90%, 40%); }
+  .lgd-tracker .dep-req  { background: hsla(0, 72%, 51%, 0.1); color: hsl(0, 72%, 45%); }
+
+  /* ── Contact Form ── */
+  .lgd-tracker .contact-section {
+    background: #fff;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 8px;
+  }
+  .lgd-tracker .contact-section h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 6px;
+  }
+  .lgd-tracker .contact-desc {
+    font-size: 14px;
+    color: hsl(215, 10%, 45%);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .lgd-tracker .form-group { margin-bottom: 14px; }
+  .lgd-tracker .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: hsl(215, 25%, 15%);
+    margin-bottom: 4px;
+  }
+  .lgd-tracker .form-group input,
+  .lgd-tracker .form-group select,
+  .lgd-tracker .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 8px;
+    outline: none;
+    color: hsl(215, 25%, 15%);
+    background: #fff;
+    transition: border-color .2s;
+  }
+  .lgd-tracker .form-group input:focus,
+  .lgd-tracker .form-group select:focus,
+  .lgd-tracker .form-group textarea:focus {
+    border-color: hsl(215, 60%, 22%);
+    box-shadow: 0 0 0 3px hsla(215, 60%, 22%, 0.1);
+  }
+  .lgd-tracker .form-group textarea { min-height: 80px; resize: vertical; }
+  .lgd-tracker .send-btn {
+    background: hsl(215, 60%, 22%);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .2s;
+    width: 100%;
+  }
+  .lgd-tracker .send-btn:hover { background: hsl(215, 60%, 18%); }
+  .lgd-tracker .send-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .lgd-tracker .form-success {
+    background: hsla(140, 55%, 40%, 0.1);
+    color: hsl(140, 55%, 35%);
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: none;
+    margin-top: 12px;
+  }
+  .lgd-tracker .hidden { display: none !important; }
+
+  @media (max-width: 640px) {
+    .lgd-tracker .search-card { padding: 24px 16px 20px; }
+    .lgd-tracker .job-card { padding: 16px; }
+    .lgd-tracker .step-boxes { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .lgd-tracker .step-box { min-height: 65px; padding: 10px 4px 8px; }
+    .lgd-tracker .step-box .step-name { font-size: 10px; }
+    .lgd-tracker .card-header { flex-direction: column; }
+    .lgd-tracker .demo-buttons { gap: 5px; }
+    .lgd-tracker .demo-btn { font-size: 12px; padding: 5px 10px; }
+  }
+</style>
+</head>
+<body style="background:#f8f9fb; margin:0; padding:20px 0;">
+  <div class="lgd-tracker" id="lgdTracker">
+  <!-- Search Section -->
+  <div class="search-card" id="lgdSearchCard">
+    <div class="search-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+    <h2>Search by job number or customer name</h2>
+    <p class="search-desc">Enter a Simpro job number or customer name to view the latest approved tracking update.</p>
+    <div class="search-form">
+      <label>Simpro Job Number or Customer Name</label>
+      <input type="text" id="lgdSearch" placeholder="Enter your job number or customer name" autocomplete="off">
+      <button class="search-btn" id="lgdSearchBtn">Search Tracker</button>
+    </div>
+    <div class="demo-label">DEMO SEARCHES</div>
+    <div class="demo-buttons" id="lgdDemos">
+      <button class="demo-btn" data-q="124591">Demo: Job #124591</button>
+      <button class="demo-btn" data-q="124016">Demo: Job #124016</button>
+      <button class="demo-btn" data-q="DJL">Demo: Search 'DJL'</button>
+      <button class="demo-btn" data-q="Ambrose">Demo: Search 'Ambrose'</button>
+      <button class="demo-btn" data-q="Gaschk">Demo: Search 'Gaschk'</button>
+      <button class="demo-btn" data-q="123530">Demo: Job #123530</button>
+    </div>
+  </div>
+
+  <div class="results-area hidden" id="lgdResultsArea">
+    <button class="back-btn" id="lgdBack">← Back</button>
+    <div class="results-label">SEARCH RESULTS</div>
+    <div id="lgdResultsHeading"></div>
+    <div id="lgdResults"></div>
+    <div id="lgdContact"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var JOBS = [{"id":124869,"c":"ABC Group","s":"4 Gannan Street, Clifton","d":"04/06/2026","step":3,"door":"Garage Door","t":"b","eta":"15/06/2026"},{"id":124853,"c":"Solomon, Chris","s":"9 John Street Southbrook","d":"03/06/2026","step":2,"door":"Garage Door","t":"r","dep":0},{"id":124849,"c":"TBuild QLD","s":"23 Adelaide Street, Esk QLD 4312","d":"03/06/2026","step":2,"door":"Roller Door","t":"b"},{"id":124591,"c":"Price, John","s":"763 Blanchview Road, Silver Ridge","d":"18/05/2026","step":4,"door":"2x RAD Install","t":"r","eta":"15/06/2026","dep":50},{"id":124583,"c":"Wymer, Danusha","s":"Lot 57 Barracks Road Highfields","d":"18/05/2026","step":2,"door":"Garage Door","t":"r","dep":100},{"id":124483,"c":"Johns Lyng Group","s":"67 East Street, Esk QLD 4312","d":"11/05/2026","step":2,"door":"4 x Roller Doors","t":"b"},{"id":124425,"c":"The Renew Company","s":"11 Lot 37 Halcyon Drive, Mount Kynoch","d":"06/05/2026","step":2,"door":"Custom Tilt Door","t":"b"},{"id":124406,"c":"C/- Colliers International - Toowoomba","s":"36 Glenvale Road, Harristown","d":"05/05/2026","step":1,"door":"Car Port Roller Door + Motor","t":"b"},{"id":124309,"c":"Toowoomba Strata","s":"2/334 Hume Street, Centenary Heights","d":"24/04/2026","step":3,"door":"Door & Motor Replacement","t":"b","eta":"02/07/2026"},{"id":124151,"c":"DJL Building Group","s":"4 George Street, Clifton","d":"14/04/2026","step":4,"door":"Garage Door","t":"b"},{"id":124021,"c":"DJL Building Group","s":"14 Hinz Street, Clifton QLD 4350","d":"06/04/2026","step":4,"door":"Garage Door","t":"b"},{"id":124016,"c":"Ryan, Amanda","s":"2 Hendy Street Cranley","d":"02/04/2026","step":3,"door":"Garage Door","t":"r","eta":"25/06/2026","dep":50},{"id":123901,"c":"Hot Property","s":"2/6 Winning St, Glenvale","d":"24/03/2026","step":2,"door":"Garage Doors Repair/Replacement","t":"b"},{"id":123827,"c":"DJL Building Group","s":"638 Logan Road, Clifton, QLD, 4361","d":"17/03/2026","step":4,"door":"3 x Series A, 2 x Series B","t":"b"},{"id":123598,"c":"Piets, Vicki","s":"17 Saba Court Middle Ridge","d":"03/03/2026","step":4,"door":"Steel-Line PD Impact","t":"r","dep":0},{"id":123530,"c":"DJL Building Group","s":"143 O'Rourke Road, Hirstglen, QLD, 4359","d":"24/02/2026","step":5,"door":"2 x Roller Doors","t":"b","installDate":"16/06"},{"id":123471,"c":"Urbane Build","s":"2/Lot 149 Cadel Evans Drive, Kearney Springs, QLD, 4352","d":"19/02/2026","step":3,"door":"Gliderol + Merlin","t":"b","eta":"26/03/2026"},{"id":124947,"c":"Topp, Brooke","s":"312 Ramsay Street Middle Ridge","d":"10/06/2026","step":1,"door":"Bottom Panel Replacement","t":"r"},{"id":124924,"c":"C/- Blackbird & Finch","s":"2/8 Rebecca Court, Kearneys Spring","d":"09/06/2026","step":1,"door":"PD + Motor","t":"b"},{"id":124923,"c":"Marshall, Tanya","s":"41 Debra Street Centenary Heights","d":"08/06/2026","step":1,"door":"Tilt -> PD","t":"r"},{"id":124920,"c":"Parker, Kristy","s":"11 Littleton Drive, Highfields","d":"08/06/2026","step":3,"door":"2 x RD","t":"r"},{"id":124917,"c":"DJL Building Group","s":"738 Greenmount Hirstvale Rd, Hirstglen QLD 4875","d":"08/06/2026","step":2,"door":"RD","t":"b"},{"id":124897,"c":"Toowoomba Property First National","s":"36 Horrocks Crescent, Kearneys Spring","d":"05/06/2026","step":3,"door":"Door 2 : RAD Replacement","t":"b","eta":"15/06"},{"id":124866,"c":"Urbane Build","s":"25 Wirra Wirra Street, Mount Lofty","d":"04/06/2026","step":2,"door":"Door Install","t":"b"},{"id":124858,"c":"Safarova, Yasmine","s":"14/77 Lindsay Street, East Toowoomba","d":"03/06/2026","step":1,"door":"Tilt Door","t":"r"},{"id":124828,"c":"Giacomantonio, Nic","s":"2/11 Watts Street, Drayton QLD 4350","d":"02/06/2026","step":1,"door":"PD New Build","t":"r"},{"id":124827,"c":"Giacomantonio, Nic","s":"1/11 Watts Street, Drayton QLD 4350","d":"02/06/2026","step":1,"door":"Garage Door","t":"r"},{"id":124808,"c":"DJL Building Group","s":"552 Blackwell Road, Captains Mountain QLD 4350","d":"01/06/2026","step":1,"door":"1 x RD","t":"b"},{"id":124796,"c":"Andrew Coonan Builder","s":"Supply Only","d":"01/06/2026","step":2,"door":"Garage Door","t":"b"},{"id":124728,"c":"Lynch, Sandra","s":"9 Frame Street Chinchilla","d":"26/05/2026","step":1,"door":"Garage Door","t":"r"},{"id":124705,"c":"Century Locksmiths","s":"14 Wylie St, Toowoomba City","d":"25/05/2026","step":1,"door":"Door Replacement Quote","t":"b"},{"id":124681,"c":"Kyle Fien Builders","s":"39 Brook Street, North Toowoomba","d":"24/05/2026","step":3,"door":"2x Rollies -> 1 Wide Door","t":"b","eta":"2/7"},{"id":124678,"c":"Vincent, May","s":"8/77 Lindsay Street East Toowoomba","d":"22/05/2026","step":1,"door":"Garage Door","t":"r"},{"id":124657,"c":"Millicam, David","s":"9 Swallow Court Newtown","d":"21/05/2026","step":1,"door":"Roller Door","t":"r"},{"id":124600,"c":"Hybrid Building Group","s":"5 Tomkinson Street, East Toowoomba","d":"18/05/2026","step":3,"door":"RD Replacement","t":"b","eta":"15/06"},{"id":124587,"c":"Gaschk SMSF Pty Ltd","s":"55b Hoey Street, Kearneys Spring QLD 4350","d":"18/05/2026","step":4,"door":"RD + MOTOR (Southerly)","t":"b"},{"id":124586,"c":"Gaschk SMSF Pty Ltd","s":"55c Hoey Street, Kearneys Spring QLD 4350","d":"18/05/2026","step":4,"door":"Surfmist","t":"b"},{"id":124566,"c":"Higgs, Lorna","s":"20 Hampton Road Hampton","d":"15/05/2026","step":3,"door":"Caravan Shed - Panel Door","t":"r","eta":"11/6"},{"id":124549,"c":"DJL Building Group","s":"6 Ross St, Pratten QLD 4370","d":"13/05/2026","step":3,"door":"Garage Door","t":"b"},{"id":124547,"c":"Zhang, Darren","s":"4 Boysen Court Adare","d":"13/05/2026","step":1,"door":"PD + Motor","t":"r"},{"id":124545,"c":"Nthstar Constructions Pty Ltd","s":"30 Commonwealth Street, Clifton QLD 4361","d":"13/05/2026","step":3,"door":"1 x RD","t":"b"},{"id":124538,"c":"Porter, Roger & Leisa","s":"28 Berghofer Drive, Highfields","d":"13/05/2026","step":3,"door":"PD Replacement","t":"r","eta":"11/6"},{"id":124518,"c":"Ambrose Construct Group","s":"1&2/285 Alderley Street South Toowoomba","d":"12/05/2026","step":3,"door":"Garage Door","t":"b","eta":"10/06"},{"id":124515,"c":"DJL Building Group","s":"738 Greenmount Hirstvale Rd, Hirstglen QLD 4875","d":"12/05/2026","step":3,"door":"Industrial Door","t":"b","eta":"11/06"},{"id":124502,"c":"Falco, Barry","s":"10 Pioneer Way Gowrie Junction","d":"11/05/2026","step":1,"door":"Garage Door","t":"r"},{"id":124492,"c":"Staatz, Leona","s":"25 Redgum Drive, Gatton","d":"11/05/2026","step":4,"door":"PD Options","t":"r"},{"id":124468,"c":"Ambrose Construct Group","s":"10 Lookout Place Rosenthal Heights, QLD","d":"08/05/2026","step":1,"door":"PD","t":"b"},{"id":124448,"c":"C/- RealWay Property Consultants","s":"5/8 Mansford Street, North Toowoomba","d":"07/05/2026","step":3,"door":"ORDERED: PD + Motor","t":"b","eta":"4/06"},{"id":124431,"c":"C/- Colliers International - Toowoomba","s":"46 Mackenzie Street, Mount Lofty","d":"06/05/2026","step":4,"door":"Door Replacement","t":"b"},{"id":124430,"c":"C/- Century 21 The Garden City","s":"21 Strohfeldt Street, Middle Ridge","d":"06/05/2026","step":4,"door":"PD Replacement","t":"b"},{"id":124423,"c":"Mills, Emma","s":"5 Sunrise Street, Glenvale","d":"06/05/2026","step":3,"door":"Garage Door","t":"r","eta":"15/06"},{"id":124421,"c":"Sharpe Building Group","s":"Lot 3 Vista Crescent, Mount Kynoch","d":"06/05/2026","step":3,"door":"New Build: PD + Motor","t":"b","eta":"09/06"},{"id":124391,"c":"Aizer Group","s":"Lot 25 Forest Drive, Esk QLD 4312","d":"30/04/2026","step":1,"door":"5 X RD","t":"b"},{"id":124269,"c":"Ambrose Construct Group","s":"8 Kates Street, Clifton","d":"22/04/2026","step":1,"door":"Garage Door","t":"b"},{"id":124262,"c":"Battaglene, Gary","s":"37 Corcoran Drive Goondiwindi","d":"21/04/2026","step":3,"door":"PD 2->1","t":"r","eta":"11/6"},{"id":124226,"c":"ABC Group","s":"68 East Street, Clifton QLD 4361","d":"20/04/2026","step":3,"door":"3 x RD","t":"b"},{"id":124220,"c":"Nexus Project Group","s":"22 Queen Street, Clifton","d":"20/04/2026","step":3,"door":"Garage Door","t":"b"},{"id":124191,"c":"Reis, David","s":"17 Belah Street Rangeville","d":"16/04/2026","step":1,"door":"2 RD -> PD","t":"r"},{"id":124159,"c":"C/- RealWay Property Consultants","s":"1/8 Mansford Street, North Toowoomba","d":"14/04/2026","step":1,"door":"Door + Motor","t":"b"},{"id":124156,"c":"BRIQ Property","s":"4 Tiley Street, Kearney Spring","d":"14/04/2026","step":2,"door":"Garage Door","t":"b"},{"id":124134,"c":"Aizer Group","s":"39 Highland Street, Esk","d":"13/04/2026","step":1,"door":"Garage Door","t":"b"},{"id":124088,"c":"Gaschk SMSF Pty Ltd","s":"55a Hoey Street, Kearneys Spring QLD 4350","d":"09/04/2026","step":4,"door":"RD + Motor","t":"b"},{"id":124075,"c":"Ambrose Construct Group","s":"77 Geddes Street, East Toowoomba","d":"08/04/2026","step":1,"door":"Garage Door","t":"b"},{"id":124074,"c":"NJs Bob Power Canvas","s":"374-376 Anzac Avenue Drayton","d":"08/04/2026","step":1,"door":"RAD Install","t":"b"},{"id":124062,"c":"Edwards, Caroline","s":"43 Ramsay Street South Toowoomba","d":"08/04/2026","step":1,"door":"Roller Door","t":"r"},{"id":124049,"c":"Aizer Group","s":"3711 Gatton-Esk Road, Esk QLD 4312","d":"07/04/2026","step":3,"door":"RD (3000mx5100w)","t":"b","eta":"18/06/2026"},{"id":124023,"c":"Ambrose Construct Group","s":"7 Alden Street Clifton QLD 4361","d":"06/04/2026","step":1,"door":"Garage Door","t":"b"},{"id":123991,"c":"Urbane Build","s":"347 Rowbotham Street, Middle Ridge, QLD","d":"31/03/2026","step":1,"door":"3 x PD","t":"b"},{"id":123980,"c":"Allan, Susan","s":"4 Norman Street South Toowoomba","d":"31/03/2026","step":1,"door":"PD","t":"r"},{"id":123814,"c":"Nexus Project Group","s":"37 Profkes Road, Mount Tarampa, QLD","d":"17/03/2026","step":2,"door":"Garage Door","t":"b"},{"id":123799,"c":"ABC Group","s":"24 Free Street, Nobby, QLD, 4360","d":"16/03/2026","step":3,"door":"Garage Door","t":"b","eta":"11/06"},{"id":123676,"c":"Johns Lyng Group","s":"1 Corella Road, Oakey","d":"09/03/2026","step":1,"door":"Site Measure & Quote","t":"b"},{"id":123493,"c":"Ground Truth","s":"560 Toowoomba-connection Road Withcott","d":"23/02/2026","step":1,"door":"Add 2 x RADs to Shed","t":"b"},{"id":123411,"c":"DJL Building Group","s":"1347 Toowoomba-Athol Road, Westbrook","d":"16/02/2026","step":3,"door":"RAD x2 - Hay Shed","t":"b","eta":"11/06"},{"id":123266,"c":"MTC","s":"Lot 53 Brentwood Crescent, Highfields","d":"07/02/2026","step":3,"door":"2 x PD + Motor","t":"b","eta":"11/06"},{"id":123091,"c":"BW Argus Builders","s":"Supply Only - 385 Goombungee Road","d":"28/01/2026","step":4,"door":"SUPPLY ONLY 2 x RD","t":"b"},{"id":122798,"c":"Coleman, Gaylene & Allan","s":"6 Kurrajong Road Gatton","d":"09/01/2026","step":1,"door":"Steel-Line PD Replacement","t":"r"},{"id":122447,"c":"Currie, Sam","s":"31/24 Drayton Road Harristown","d":"01/12/2025","step":3,"door":"Steel-Line","t":"r","eta":"15/06"},{"id":119371,"c":"Open Road Trading Pty Ltd","s":"13 Railway Street Toowoomba City","d":"11/02/2025","step":1,"door":"3 x Ind RAD","t":"b"},{"id":124022,"c":"Hughes Elite Builders","s":"On file","d":"06/04/2026","step":6,"door":"PD + Motor","t":"b"},{"id":124938,"c":"De Beus, Carla","s":"On file","d":"09/06/2026","step":6,"door":"2x RAD + Motor","t":"r","dep":0},{"id":124773,"c":"Watson, Cooper","s":"On file","d":"31/05/2026","step":6,"door":"Opening Preparations","t":"r","dep":100},{"id":124645,"c":"DJL Building Group","s":"On file","d":"20/05/2026","step":6,"door":"Garage Door","t":"b","dep":100},{"id":124435,"c":"Watson, Cooper","s":"On file","d":"06/05/2026","step":6,"door":"Garage Door","t":"r","dep":50},{"id":124418,"c":"Reliabuild Group","s":"On file","d":"05/05/2026","step":6,"door":"Single Roller Door Replacement","t":"b","dep":100},{"id":124370,"c":"RE/MAX Success","s":"On file","d":"29/04/2026","step":6,"door":"Garage Door","t":"b","dep":100},{"id":124308,"c":"Aizer Group","s":"On file","d":"24/04/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":124253,"c":"Storey, Imogen","s":"On file","d":"21/04/2026","step":6,"door":"Garage Door","t":"r","dep":100},{"id":124227,"c":"Ashburn, Mark","s":"On file","d":"20/04/2026","step":6,"door":"Garage Door","t":"r","dep":100},{"id":124224,"c":"C/- Century 21 The Garden City","s":"On file","d":"20/04/2026","step":6,"door":"RD & Motor Replacement","t":"b","dep":0},{"id":124217,"c":"Johns Lyng Group","s":"On file","d":"20/04/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":124163,"c":"Performance Building Group","s":"On file","d":"15/04/2026","step":6,"door":"Series B RD - Chain Only","t":"b","dep":100},{"id":124090,"c":"Nexus Project Group","s":"On file","d":"09/04/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":124069,"c":"Keating, Belinda","s":"On file","d":"08/04/2026","step":6,"door":"27X2750 RD","t":"r","dep":100},{"id":124068,"c":"Nexus Project Group","s":"On file","d":"08/04/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":124066,"c":"BRIQ Property","s":"On file","d":"08/04/2026","step":6,"door":"Garage Door","t":"b","dep":50},{"id":124015,"c":"Ayres, David","s":"On file","d":"02/04/2026","step":6,"door":"Garage Door","t":"r","dep":100},{"id":123970,"c":"Stevens, Richard & Cathy","s":"On file","d":"31/03/2026","step":6,"door":"Garage Door","t":"r","dep":100},{"id":123962,"c":"RE/MAX Success","s":"On file","d":"30/03/2026","step":6,"door":"PD Replacement","t":"b","dep":50},{"id":123956,"c":"Whittett, Emma","s":"On file","d":"30/03/2026","step":6,"door":"PD","t":"r","dep":50},{"id":123934,"c":"Johns Lyng Group","s":"On file","d":"29/03/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":123926,"c":"Johns Lyng Group","s":"On file","d":"26/03/2026","step":6,"door":"Garage Door","t":"b","dep":0},{"id":123912,"c":"Cooper, Celia","s":"On file","d":"25/03/2026","step":6,"door":"RD Replacement","t":"r","dep":100},{"id":123860,"c":"Aizer Group","s":"On file","d":"19/03/2026","step":6,"door":"1 x RD Replacement","t":"b","dep":0},{"id":123843,"c":"Saunders, Sam","s":"On file","d":"18/03/2026","step":6,"door":"Gliderol PD + Motor","t":"r","dep":100},{"id":123795,"c":"Aizer Group","s":"On file","d":"16/03/2026","step":6,"door":"RD + Existing motor","t":"b","dep":0},{"id":123761,"c":"Johns Lyng Group","s":"On file","d":"13/03/2026","step":6,"door":"Steel-line","t":"b","dep":0},{"id":123747,"c":"Enduring Care","s":"On file","d":"12/03/2026","step":6,"door":"Garage Door Repair","t":"b","dep":100},{"id":123679,"c":"Watson, Cooper","s":"On file","d":"09/03/2026","step":6,"door":"Steel-Line","t":"r","dep":100},{"id":123649,"c":"Nexus Project Group","s":"On file","d":"06/03/2026","step":6,"door":"RD","t":"b","dep":0},{"id":123629,"c":"Duce, Kristie","s":"On file","d":"04/03/2026","step":6,"door":"RD","t":"r","dep":0},{"id":123611,"c":"Harris, Samantha","s":"On file","d":"03/03/2026","step":6,"door":"Steel-Line RD","t":"r","dep":100},{"id":123596,"c":"Anderson, Paul","s":"On file","d":"03/03/2026","step":6,"door":"Shed 2RD->1PD","t":"r","dep":100},{"id":123573,"c":"Russell, Gordon","s":"On file","d":"27/02/2026","step":6,"door":"Gliderol 2RD -> PD","t":"r","dep":100},{"id":123567,"c":"Lee, Paul","s":"On file","d":"27/02/2026","step":6,"door":"Garage Door","t":"r","dep":50},{"id":123519,"c":"Ambrose Construct Group","s":"On file","d":"24/02/2026","step":6,"door":"Steel-Line","t":"b","dep":100},{"id":123469,"c":"Urbane Build","s":"On file","d":"19/02/2026","step":6,"door":"2 x CSI Classic","t":"b","dep":100},{"id":123381,"c":"Ambrose Construct Group","s":"On file","d":"13/02/2026","step":6,"door":"Motor","t":"b","dep":0},{"id":123373,"c":"DJL Building Group","s":"On file","d":"13/02/2026","step":6,"door":"4 x RD + 1 x Motor","t":"b","dep":0},{"id":123335,"c":"DJL Building Group","s":"On file","d":"11/02/2026","step":6,"door":"1 x RD Replacement","t":"b","dep":0},{"id":123242,"c":"Self Storage Company","s":"On file","d":"05/02/2026","step":6,"door":"Steel-Line Series AA","t":"b","dep":100},{"id":123205,"c":"Bos & Jak Construction Pty Ltd","s":"On file","d":"04/02/2026","step":6,"door":"Gliderol PD + Motor","t":"b","dep":100},{"id":123084,"c":"Anderson, Cayne","s":"On file","d":"28/01/2026","step":6,"door":"B&D RD","t":"r","dep":50},{"id":122796,"c":"Davies, Helen & Graham","s":"On file","d":"09/01/2026","step":6,"door":"Steel-Line Tilt -> PD","t":"r","dep":100}];
+
+  var STEP_NAMES = ['Quote Accepted','Order Placed','In Production','Delivered to Us','Installation Scheduled','Installation Complete'];
+  var BADGE_NAMES = ['QUOTE ACCEPTED','ORDER PLACED','IN PRODUCTION','DELIVERED TO US','INSTALLATION SCHEDULED','COMPLETE'];
+
+  // SVG icons for each step
+  var STEP_ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3h-8l-2 4h12z"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>'
+  ];
+  var CHECK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+
+  function getStepMessage(job) {
+    var s = job.step;
+    if (s === 1) return "Quote Accepted — We're preparing your order";
+    if (s === 2) return "Order Placed — Your door has been ordered from the manufacturer";
+    if (s === 3) return job.eta ? "In Production — Your door is being manufactured" : "In Production — Your door is being manufactured";
+    if (s === 4) return "Delivered to Us — Your door has arrived at our warehouse";
+    if (s === 5) return "Installation Scheduled — Your installation date has been booked";
+    if (s === 6) return "Installation Complete — Your door has been installed";
+    return "";
+  }
+
+  function getFriendlyMessage(job) {
+    var s = job.step;
+    if (s === 1) return "Your quote has been accepted and we're preparing your order. We'll be in touch shortly with next steps.";
+    if (s === 2) return "Your door has been ordered from the manufacturer. We'll update you once it's in production.";
+    if (s === 3) {
+      if (job.eta) return "Your door is currently being manufactured. The supplier has indicated your door will be delivered to us by " + job.eta + ".";
+      return "Your door is currently being manufactured. We'll update you when it's ready.";
+    }
+    if (s === 4) return "Great news — your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.";
+    if (s === 5) {
+      if (job.installDate) return "Your installation has been scheduled for " + job.installDate + ". Our team will be in touch to confirm the exact time.";
+      return "Your installation has been scheduled. Our team will be in touch with the exact date and time.";
+    }
+    if (s === 6) return "Your new door has been installed! Thank you for choosing Limitless Garage Doors & Gates.";
+    return "";
+  }
+
+  function getDepositHTML(job) {
+    if (job.t === 'b') return '';
+    if (job.dep === undefined || job.dep === null) return '';
+    if (job.dep === 100) return '<span class="deposit dep-paid">✓ Deposit Paid</span>';
+    if (job.dep === 50)  return '<span class="deposit dep-half">● 50% Deposit Paid</span>';
+    if (job.dep === 0)   return '<span class="deposit dep-req">● Deposit Required</span>';
+    return '';
+  }
+
+  function buildStepBoxes(currentStep) {
+    var html = '<div class="step-boxes">';
+    for (var i = 1; i <= 6; i++) {
+      var cls, icon;
+      if (i < currentStep) {
+        cls = 'step-done';
+        icon = CHECK_ICON;
+      } else if (i === currentStep) {
+        cls = 'step-active';
+        icon = STEP_ICONS[i - 1];
+      } else {
+        cls = 'step-pending';
+        icon = STEP_ICONS[i - 1];
+      }
+      html += '<div class="step-box ' + cls + '">';
+      if (i === currentStep) html += '<span class="current-badge">CURRENT</span>';
+      html += icon;
+      html += '<div class="step-name">' + STEP_NAMES[i - 1] + '</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function getPct(step) {
+    var pcts = {1: 17, 2: 33, 3: 50, 4: 67, 5: 83, 6: 100};
+    return pcts[step] || 0;
+  }
+
+  function buildCard(job) {
+    var addr = job.s === 'On file' ? 'Address on file' : job.s;
+    var pct = getPct(job.step);
+    var badgeClass = 'badge-step' + job.step;
+    var badgeText = BADGE_NAMES[job.step - 1];
+
+    var html = '<div class="job-card">';
+
+    // Header
+    html += '<div class="card-header"><div>';
+    html += '<div class="job-num-label">JOB NUMBER</div>';
+    html += '<div class="job-num">#' + job.id + '</div>';
+    html += '</div>';
+    html += '<span class="status-badge ' + badgeClass + '">' + badgeText + '</span>';
+    html += '</div>';
+
+    // Address, Customer, Meta
+    html += '<div class="job-address">' + addr + '</div>';
+    html += '<div class="job-customer">' + job.c + '</div>';
+    html += '<div class="job-meta"><span>Created:</span> ' + job.d + ' | <span>Due:</span> TBC</div>';
+
+    // Current Step Section
+    html += '<div class="step-section">';
+    html += '<div class="step-section-header">';
+    html += '<h3>Current Step</h3>';
+    html += '<span class="pct-badge">' + pct + '%</span>';
+    html += '</div>';
+    html += '<div class="step-desc">' + getStepMessage(job) + '</div>';
+    html += '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>';
+    html += buildStepBoxes(job.step);
+    html += '</div>';
+
+    // Door Info
+    html += '<div class="info-block"><div class="info-label">DOOR INFO</div>';
+    html += '<div class="info-value"><strong>Door:</strong> ' + job.door + '</div>';
+    var dep = getDepositHTML(job);
+    if (dep) html += '<div style="margin-top:8px">' + dep + '</div>';
+    html += '</div>';
+
+    // Installer
+    html += '<div class="info-block"><div class="info-label">INSTALLER</div>';
+    html += '<div class="info-value">TBC</div>';
+    html += '</div>';
+
+    // Friendly Update
+    html += '<div class="info-block"><div class="info-label">FRIENDLY UPDATE</div>';
+    html += '<div class="info-value">' + getFriendlyMessage(job) + '</div>';
+    html += '</div>';
+
+    html += '</div>';
+    return html;
+  }
+
+  function buildContactForm(jobs) {
+    var jobOpts = '';
+    if (jobs.length === 1) {
+      jobOpts = '<input type="text" id="lgdFormJob" value="' + jobs[0].id + '" readonly>';
+    } else {
+      jobOpts = '<select id="lgdFormJob">';
+      jobs.forEach(function(j) { jobOpts += '<option value="' + j.id + '">#' + j.id + ' — ' + j.c + '</option>'; });
+      jobOpts += '</select>';
+    }
+    return '<div class="contact-section">' +
+      '<h3>Have a question about your order?</h3>' +
+      '<p class="contact-desc">Ask us anything about your job, or nominate a preferred time for installation. We\'ll get back to you as soon as possible.</p>' +
+      '<form id="lgdContactForm">' +
+        '<div class="form-group"><label>Your Name *</label><input type="text" id="lgdFormName" required></div>' +
+        '<div class="form-group"><label>Job Number</label>' + jobOpts + '</div>' +
+        '<div class="form-group"><label>What can we help with? *</label>' +
+          '<select id="lgdFormType" required>' +
+            '<option value="">Select...</option>' +
+            '<option value="question">I have a question about my order</option>' +
+            '<option value="schedule">I\'d like to nominate a time for installation</option>' +
+            '<option value="other">Other</option>' +
+          '</select></div>' +
+        '<div class="form-group hidden" id="lgdDateGroup"><label>Preferred Installation Date &amp; Time</label><input type="datetime-local" id="lgdFormDate"></div>' +
+        '<div class="form-group"><label>Your Message *</label><textarea id="lgdFormMsg" placeholder="Type your question or preferred installation details here..." required></textarea></div>' +
+        '<div class="form-group"><label>Your Email *</label><input type="email" id="lgdFormEmail" required></div>' +
+        '<div class="form-group"><label>Your Phone (optional)</label><input type="tel" id="lgdFormPhone"></div>' +
+        '<button type="submit" class="send-btn">Send Request</button>' +
+      '</form>' +
+      '<div class="form-success" id="lgdFormSuccess">Thanks! Your request has been sent to the Limitless team. We\'ll be in touch shortly.</div>' +
+    '</div>';
+  }
+
+  function doSearch(query) {
+    query = query.trim();
+    if (!query) return;
+
+    var results;
+    if (/^\d+$/.test(query)) {
+      results = JOBS.filter(function(j) { return j.id.toString() === query; });
+    } else {
+      var q = query.toLowerCase();
+      results = JOBS.filter(function(j) { return j.c.toLowerCase().indexOf(q) !== -1; });
+    }
+
+    // Show results area, hide search card
+    document.getElementById('lgdSearchCard').classList.add('hidden');
+    var resultsArea = document.getElementById('lgdResultsArea');
+    resultsArea.classList.remove('hidden');
+
+    var headingEl = document.getElementById('lgdResultsHeading');
+    var resultsEl = document.getElementById('lgdResults');
+    var contactEl = document.getElementById('lgdContact');
+
+    if (results.length === 0) {
+      headingEl.innerHTML = '';
+      resultsEl.innerHTML = '<div class="no-results">No jobs found — please check your job number or name and try again.</div>';
+      contactEl.innerHTML = '';
+      return;
+    }
+
+    if (results.length === 1) {
+      headingEl.innerHTML = '<div class="results-heading">Job #' + results[0].id + '</div>';
+    } else {
+      headingEl.innerHTML = '<div class="results-heading">' + results.length + " jobs found for '" + query + "'</div>";
+    }
+
+    resultsEl.innerHTML = results.map(buildCard).join('');
+    contactEl.innerHTML = buildContactForm(results);
+
+    // Wire up form
+    var typeSelect = document.getElementById('lgdFormType');
+    var dateGroup = document.getElementById('lgdDateGroup');
+    if (typeSelect) {
+      typeSelect.addEventListener('change', function() {
+        if (this.value === 'schedule') dateGroup.classList.remove('hidden');
+        else dateGroup.classList.add('hidden');
+      });
+    }
+
+    var form = document.getElementById('lgdContactForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('.send-btn');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        var jobId = document.getElementById('lgdFormJob').value;
+        var matchedJob = JOBS.find(function(j) { return j.id.toString() === jobId; });
+        var body = 'Name: ' + document.getElementById('lgdFormName').value +
+          '\nJob Number: ' + jobId +
+          '\nCustomer: ' + (matchedJob ? matchedJob.c : '') +
+          '\nSite: ' + (matchedJob ? matchedJob.s : '') +
+          '\nEnquiry Type: ' + document.getElementById('lgdFormType').value;
+        var prefDate = document.getElementById('lgdFormDate');
+        if (prefDate && prefDate.value) body += '\nPreferred Date/Time: ' + prefDate.value;
+        body += '\nMessage: ' + document.getElementById('lgdFormMsg').value +
+          '\nEmail: ' + document.getElementById('lgdFormEmail').value +
+          '\nPhone: ' + (document.getElementById('lgdFormPhone').value || 'Not provided');
+        window.location.href = 'mailto:install@limitlessgaragedoorsandgates.com.au?subject=' +
+          encodeURIComponent('Job Tracker Enquiry - Job #' + jobId) + '&body=' + encodeURIComponent(body);
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Request';
+          document.getElementById('lgdFormSuccess').style.display = 'block';
+          form.reset();
+        }, 1000);
+      });
+    }
+  }
+
+  function goBack() {
+    document.getElementById('lgdSearchCard').classList.remove('hidden');
+    document.getElementById('lgdResultsArea').classList.add('hidden');
+    document.getElementById('lgdResults').innerHTML = '';
+    document.getElementById('lgdContact').innerHTML = '';
+    document.getElementById('lgdSearch').value = '';
+  }
+
+  // Event listeners
+  document.getElementById('lgdSearchBtn').addEventListener('click', function() {
+    doSearch(document.getElementById('lgdSearch').value);
+  });
+  document.getElementById('lgdSearch').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); doSearch(this.value); }
+  });
+  document.getElementById('lgdBack').addEventListener('click', goBack);
+  document.getElementById('lgdDemos').addEventListener('click', function(e) {
+    if (e.target.classList.contains('demo-btn')) {
+      var q = e.target.getAttribute('data-q');
+      document.getElementById('lgdSearch').value = q;
+      doSearch(q);
+    }
+  });
+})();
+</script>
+</body>
+</html>
