@@ -602,10 +602,17 @@
     }
     if (s === 4) return "Great news — your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.";
     if (s === 5) {
-      if (job.installDate) return "Your installation has been scheduled for " + job.installDate + ". Our team will be in touch to confirm the exact time.";
-      return "Your installation has been scheduled. Our team will be in touch with the exact date and time.";
+      var instMsg = "Your installation has been scheduled";
+      if (job.installDate) instMsg += " for " + job.installDate;
+      if (job.installer) instMsg += " with " + job.installer;
+      instMsg += ". Our team will be in touch to confirm the exact time.";
+      return instMsg;
     }
-    if (s === 6) return "Your new door has been installed! Thank you for choosing Limitless Garage Doors & Gates.";
+    if (s === 6) {
+      if (job.paidDate) return "Your new door has been installed and your account is all settled. Thank you for choosing Limitless Garage Doors & Gates!";
+      if (job.invoiceDate) return "Your new door has been installed! Your invoice has been sent \u2014 please check your email for details.";
+      return "Your new door has been installed! Thank you for choosing Limitless Garage Doors & Gates.";
+    }
     return "";
   }
 
@@ -666,7 +673,10 @@
     // Address, Customer, Meta
     html += '<div class="job-address">' + addr + '</div>';
     html += '<div class="job-customer">' + job.c + '</div>';
-    html += '<div class="job-meta"><span>Created:</span> ' + job.d + ' | <span>Due:</span> TBC</div>';
+    var metaParts = '<span>Created:</span> ' + job.d;
+    if (job.eta) metaParts += ' | <span>ETA:</span> ' + job.eta;
+    if (job.installDate) metaParts += ' | <span>Install:</span> ' + job.installDate;
+    html += '<div class="job-meta">' + metaParts + '</div>';
 
     // Current Step Section
     html += '<div class="step-section">';
@@ -688,11 +698,22 @@
 
     // Installer
     html += '<div class="info-block"><div class="info-label">INSTALLER</div>';
-    html += '<div class="info-value">TBC</div>';
+    html += '<div class="info-value">' + (job.installer || 'TBC') + '</div>';
     html += '</div>';
 
-    // Friendly Update
-    html += '<div class="info-block"><div class="info-label">FRIENDLY UPDATE</div>';
+    // Invoice & Payment (step 6 completed jobs)
+    if (job.step === 6 && (job.invoiceDate || job.paidDate)) {
+      html += '<div class="info-block"><div class="info-label">BILLING</div>';
+      html += '<div class="info-value">';
+      if (job.invoiceDate) html += '<strong>Invoiced:</strong> ' + job.invoiceDate;
+      if (job.invoiceDate && job.paidDate) html += ' &nbsp;|&nbsp; ';
+      if (job.paidDate) html += '<strong>Paid:</strong> ' + job.paidDate;
+      html += '</div>';
+      html += '</div>';
+    }
+
+    // What Happens Next
+    html += '<div class="info-block"><div class="info-label">WHAT HAPPENS NEXT</div>';
     html += '<div class="info-value">' + getFriendlyMessage(job) + '</div>';
     html += '</div>';
 
