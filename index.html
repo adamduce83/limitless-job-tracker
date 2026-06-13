@@ -425,6 +425,51 @@
   }
   .lgd-tracker .hidden { display: none !important; }
 
+  /* ── Demo Example Section ── */
+  .lgd-tracker .demo-section {
+    margin-top: 4px;
+  }
+  .lgd-tracker .demo-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: hsl(215, 10%, 55%);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding: 0 4px;
+  }
+  .lgd-tracker .demo-label::before,
+  .lgd-tracker .demo-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: hsl(214, 20%, 88%);
+  }
+  .lgd-tracker .demo-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid hsl(214, 20%, 88%);
+    border-radius: 16px;
+    padding: 24px;
+    opacity: 0.85;
+  }
+  .lgd-tracker .demo-card::after {
+    content: 'EXAMPLE';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: hsl(215, 10%, 55%);
+    background: hsl(210, 20%, 96%);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
   @media (max-width: 640px) {
     .lgd-tracker .search-card { padding: 24px 16px 20px; }
     .lgd-tracker .job-card { padding: 16px; }
@@ -451,7 +496,65 @@
     </div>
   </div>
 
-  <div class="results-area hidden" id="lgdResultsArea">
+  <!-- Demo Example -->
+  <div class="demo-section" id="lgdDemo">
+    <div class="demo-label">Here's what your results will look like</div>
+    <div class="demo-card">
+      <div class="card-header">
+        <div>
+          <div class="job-num-label">JOB NUMBER</div>
+          <div class="job-num">12345</div>
+        </div>
+        <span class="status-badge badge-step4">DELIVERED TO US</span>
+      </div>
+      <div class="job-customer">John S.</div>
+      <div class="job-address">123 Example Street, Toowoomba</div>
+      <div class="job-meta">Panel Door + Motor</div>
+
+      <div class="step-section">
+        <div class="step-section-header">
+          <h3>Delivered to Us</h3>
+          <span class="pct-badge">67%</span>
+        </div>
+        <div class="step-desc">Great news — your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.</div>
+        <div class="progress-track"><div class="progress-fill" style="width:67%"></div></div>
+        <div class="step-boxes">
+          <div class="step-box step-done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="step-name">Quote Accepted</div>
+          </div>
+          <div class="step-box step-done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="step-name">Order Placed</div>
+          </div>
+          <div class="step-box step-done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="step-name">In Production</div>
+          </div>
+          <div class="step-box step-active">
+            <span class="current-badge">CURRENT</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <div class="step-name">Delivered to Us</div>
+          </div>
+          <div class="step-box step-pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div class="step-name">Installation Scheduled</div>
+          </div>
+          <div class="step-box step-pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div class="step-name">Installation Complete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">WHAT HAPPENS NEXT</div>
+        <div class="info-value">Our team will contact you shortly to arrange a suitable installation date. We'll confirm the time window the day before your appointment.</div>
+      </div>
+    </div>
+  </div>
+
+    <div class="results-area hidden" id="lgdResultsArea">
     <button class="back-btn" id="lgdBack">← Back</button>
     <div class="results-label">SEARCH RESULTS</div>
     <div id="lgdResultsHeading"></div>
@@ -643,6 +746,7 @@
 
     // Show results area, hide search card
     document.getElementById('lgdSearchCard').classList.add('hidden');
+          document.getElementById('lgdDemo').classList.add('hidden');
     var resultsArea = document.getElementById('lgdResultsArea');
     resultsArea.classList.remove('hidden');
 
@@ -709,6 +813,7 @@
 
   function goBack() {
     document.getElementById('lgdSearchCard').classList.remove('hidden');
+          document.getElementById('lgdDemo').classList.remove('hidden');
     document.getElementById('lgdResultsArea').classList.add('hidden');
     document.getElementById('lgdResults').innerHTML = '';
     document.getElementById('lgdContact').innerHTML = '';
