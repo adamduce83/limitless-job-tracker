@@ -16,7 +16,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// ── Config ──────────────────────────────────────────────────────────
+// ── Config ──────────────────────────────────────────────────────────────────
 const API_KEY = process.env.SIMPRO_API_KEY;
 const BASE    = (process.env.SIMPRO_BASE_URL || 'https://dar.simprosuite.com')
                   .replace(/\/+$/, '');
@@ -53,9 +53,10 @@ const EXCLUDE_STATUSES = [
 // Installers allowed in customer-facing output (safety rule)
 const ALLOWED_INSTALLERS = ['Peewee', 'Brent', 'Nick'];
 
-// Only process jobs created in the last N months (keeps sync fast)
-const LOOKBACK_MONTHS = 6;
-
+// Only process the most recent N jobs by ID (keeps sync under 10 min)
+// Simpro job IDs are sequential, so higher ID = newer job.
+// 1000 jobs covers roughly 4-6 months of activity.
+const MAX_RECENT_JOBS = 1000;
 // ── HTTP helper ─────────────────────────────────────────────────────
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
@@ -104,7 +105,6 @@ function addDays(isoDate, n) {
   dt.setDate(dt.getDate() + n);
   return dt.toISOString().split('T')[0];
 }
-
 // ── Core logic ──────────────────────────────────────────────────────
 
 async function fetchAllJobs() {
@@ -167,7 +167,6 @@ async function getSiteAddress(siteId) {
     return 'On file';
   }
 }
-
 function resolveStep(detail) {
   const statusName = detail.Status?.Name || '';
   const stageName  = detail.Stage || '';
@@ -250,7 +249,6 @@ function resolveInstallDate(schedules, dueDate) {
   }
   return null;
 }
-
 // ── Main ────────────────────────────────────────────────────────────
 
 async function main() {
@@ -267,20 +265,12 @@ async function main() {
   // 1. Fetch all job IDs
   let jobList = await fetchAllJobs();
 
-  // 1b. Filter to only recent jobs (keeps processing fast)
-  const cutoffDate = new Date();
-  cutoffDate.setMonth(cutoffDate.getMonth() - LOOKBACK_MONTHS);
-  const cutoffISO = cutoffDate.toISOString().split('T')[0]; // "YYYY-MM-DD"
-  console.log(`  Filtering to jobs after ${cutoffISO} (last ${LOOKBACK_MONTHS} months)...`);
-
+  // 1b. Limit to most recent jobs by ID (keeps processing fast)
+  // Job stubs don't include DateIssued, so we use ID as a proxy for recency.
   const beforeCount = jobList.length;
-  jobList = jobList.filter(j => {
-    // If the stub has DateIssued, use it for filtering
-    if (j.DateIssued) return j.DateIssued >= cutoffISO;
-    // If no date available, include the job (err on the side of inclusion)
-    return true;
-  });
-  console.log(`  Filtered: ${beforeCount} → ${jobList.length} jobs to process`);
+  jobList.sort((a, b) => b.ID - a.ID);           // newest first
+  jobList = jobList.slice(0, MAX_RECENT_JOBS);    // keep only recent
+  console.log(`  Limited to ${jobList.length} most recent jobs (from ${beforeCount} total)`);
 
   // 2. Process each job
   const trackerJobs = [];
