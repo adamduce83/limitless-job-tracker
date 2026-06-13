@@ -1,4 +1,4 @@
-name: Sync Simpro â Job Tracker
+name: Sync Simpro to Job Tracker
 
 on:
   # Nightly at 11 PM AEST (1 PM UTC)
