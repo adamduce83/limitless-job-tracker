@@ -1,0 +1,43 @@
+name: Sync Simpro â Job Tracker
+
+on:
+  # Nightly at 11 PM AEST (1 PM UTC)
+  schedule:
+    - cron: '0 13 * * *'
+
+  # Manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run sync script
+        env:
+          SIMPRO_API_KEY: ${{ secrets.SIMPRO_API_KEY }}
+          SIMPRO_BASE_URL: https://dar.simprosuite.com
+        run: node sync.js
+
+      - name: Commit & push changes
+        run: |
+          git config user.name "Limitless Sync Bot"
+          git config user.email "hello@limitlessgaragedoorsandgates.com.au"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: nightly sync from Simpro $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
