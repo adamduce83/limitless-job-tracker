@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Limitless Garage Doors & Gates â Simpro â Job Tracker Sync
+ * Limitless Garage Doors & Gates — Simpro → Job Tracker Sync
  *
  * Pulls job data from Simpro REST API, transforms it into the tracker
  * JSON format, and updates index.html with the latest data.
@@ -8,15 +8,15 @@
  * Runs nightly via GitHub Actions.
  *
  * Environment variables:
- *   SIMPRO_API_KEY  â Bearer token for Simpro API
- *   SIMPRO_BASE_URL â e.g. https://dar.simprosuite.com  (no trailing slash)
+ *   SIMPRO_API_KEY  — Bearer token for Simpro API
+ *   SIMPRO_BASE_URL — e.g. https://dar.simprosuite.com  (no trailing slash)
  */
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// ââ Config ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Config ──────────────────────────────────────────────────────────
 const API_KEY = process.env.SIMPRO_API_KEY;
 const BASE    = (process.env.SIMPRO_BASE_URL || 'https://dar.simprosuite.com')
                   .replace(/\/+$/, '');
@@ -25,7 +25,7 @@ const API     = `${BASE}/api/v1.0/companies/0`;
 // How many jobs to fetch per page (Simpro max is 250)
 const PAGE_SIZE = 250;
 
-// Simpro Status.Name  â  tracker step (1-6)
+// Simpro Status.Name  →  tracker step (1-6)
 // Update this map when new statuses are added in Simpro.
 const STATUS_TO_STEP = {
   'PENDING: Not Booked':               1,   // Quote Accepted
@@ -53,7 +53,10 @@ const EXCLUDE_STATUSES = [
 // Installers allowed in customer-facing output (safety rule)
 const ALLOWED_INSTALLERS = ['Peewee', 'Brent', 'Nick'];
 
-// ââ HTTP helper âââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Only process jobs created in the last N months (keeps sync fast)
+const LOOKBACK_MONTHS = 6;
+
+// ── HTTP helper ─────────────────────────────────────────────────────
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
     const url = urlPath.startsWith('http') ? urlPath : `${API}${urlPath}`;
@@ -78,9 +81,9 @@ function apiGet(urlPath) {
 // Rate-limit helper: wait ms
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// ââ Date helpers ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Date helpers ────────────────────────────────────────────────────
 function isoToAu(isoDate) {
-  // "2026-06-15" â "15/06/2026"
+  // "2026-06-15" → "15/06/2026"
   if (!isoDate) return null;
   const [y, m, d] = isoDate.split('-');
   if (!y || !m || !d) return isoDate;
@@ -88,7 +91,7 @@ function isoToAu(isoDate) {
 }
 
 function isoToShort(isoDate) {
-  // "2026-06-15" â "15/06"
+  // "2026-06-15" → "15/06"
   if (!isoDate) return null;
   const [, m, d] = isoDate.split('-');
   if (!m || !d) return isoDate;
@@ -102,7 +105,7 @@ function addDays(isoDate, n) {
   return dt.toISOString().split('T')[0];
 }
 
-// ââ Core logic ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Core logic ──────────────────────────────────────────────────────
 
 async function fetchAllJobs() {
   let allJobs = [];
@@ -186,14 +189,14 @@ function resolveStep(detail) {
   }
 
   // Default
-  console.warn(`  â  Unknown status "${statusName}" / stage "${stageName}" for job ${detail.ID} â defaulting to step 1`);
+  console.warn(`  ⚠ Unknown status "${statusName}" / stage "${stageName}" for job ${detail.ID} — defaulting to step 1`);
   return 1;
 }
 
 function resolveCustomerName(customer) {
   if (!customer) return 'Customer';
   if (customer.CompanyName) return customer.CompanyName;
-  // For individuals: "Last, First" format â never expose last name alone
+  // For individuals: "Last, First" format — never expose last name alone
   const first = customer.GivenName || '';
   const last  = customer.FamilyName || '';
   if (last && first) return `${last}, ${first}`;
@@ -248,7 +251,7 @@ function resolveInstallDate(schedules, dueDate) {
   return null;
 }
 
-// ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Main ────────────────────────────────────────────────────────────
 
 async function main() {
   if (!API_KEY) {
@@ -256,13 +259,28 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('ð Limitless Job Tracker Sync');
+  console.log('🔄 Limitless Job Tracker Sync');
   console.log(`   API: ${BASE}`);
   console.log(`   Time: ${new Date().toISOString()}`);
   console.log('');
 
   // 1. Fetch all job IDs
-  const jobList = await fetchAllJobs();
+  let jobList = await fetchAllJobs();
+
+  // 1b. Filter to only recent jobs (keeps processing fast)
+  const cutoffDate = new Date();
+  cutoffDate.setMonth(cutoffDate.getMonth() - LOOKBACK_MONTHS);
+  const cutoffISO = cutoffDate.toISOString().split('T')[0]; // "YYYY-MM-DD"
+  console.log(`  Filtering to jobs after ${cutoffISO} (last ${LOOKBACK_MONTHS} months)...`);
+
+  const beforeCount = jobList.length;
+  jobList = jobList.filter(j => {
+    // If the stub has DateIssued, use it for filtering
+    if (j.DateIssued) return j.DateIssued >= cutoffISO;
+    // If no date available, include the job (err on the side of inclusion)
+    return true;
+  });
+  console.log(`  Filtered: ${beforeCount} → ${jobList.length} jobs to process`);
 
   // 2. Process each job
   const trackerJobs = [];
@@ -341,7 +359,7 @@ async function main() {
       if (invoiceDate) job.invoiceDate = invoiceDate;
       if (paidDate)    job.paidDate = paidDate;
 
-      // Deposit % â only for residential ("r") jobs
+      // Deposit % — only for residential ("r") jobs
       // Simpro doesn't have a direct "deposit paid" field,
       // so we default based on step:
       //   step 6 complete = use invoice data
@@ -362,11 +380,11 @@ async function main() {
       // Rate-limit: small delay between jobs
       await sleep(50);
     } catch (err) {
-      console.error(`  â Error processing job ${stub.ID}: ${err.message}`);
+      console.error(`  ✗ Error processing job ${stub.ID}: ${err.message}`);
     }
   }
 
-  console.log(`\n  â Processed ${trackerJobs.length} jobs for tracker`);
+  console.log(`\n  ✓ Processed ${trackerJobs.length} jobs for tracker`);
 
   // 3. Sort: active jobs (steps 1-5) first by date desc, then step 6 jobs
   trackerJobs.sort((a, b) => {
@@ -386,7 +404,7 @@ async function main() {
   let html = fs.readFileSync(htmlPath, 'utf8');
   const jobsJson = JSON.stringify(trackerJobs);
 
-  // Replace the JOBS array â matches:  var JOBS = [...];
+  // Replace the JOBS array — matches:  var JOBS = [...];
   const regex = /var JOBS\s*=\s*\[[\s\S]*?\];/;
   if (!regex.test(html)) {
     console.error('ERROR: Could not find "var JOBS = [...];" in index.html');
@@ -396,8 +414,8 @@ async function main() {
   html = html.replace(regex, `var JOBS = ${jobsJson};`);
 
   fs.writeFileSync(htmlPath, html, 'utf8');
-  console.log('  â index.html updated');
-  console.log(`  â ${trackerJobs.length} jobs written`);
+  console.log('  ✓ index.html updated');
+  console.log(`  ✓ ${trackerJobs.length} jobs written`);
   console.log('');
 }
 
