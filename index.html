@@ -13,7 +13,7 @@
     font-family: 'Inter', sans-serif;
     max-width: 780px;
     margin: 0 auto;
-    padding: 0 16px 40px;
+    padding: 0 16px 16px;
     color: hsl(215, 25%, 15%);
     -webkit-font-smoothing: antialiased;
   }
@@ -23,20 +23,20 @@
     background: #fff;
     border: 1px solid hsl(214, 20%, 88%);
     border-radius: 24px;
-    padding: 40px 32px 32px;
+    padding: 28px 24px 24px;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
   .lgd-tracker .search-icon-wrap {
-    width: 56px; height: 56px;
+    width: 44px; height: 44px;
     background: hsl(210, 20%, 96%);
     border-radius: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
-  .lgd-tracker .search-icon-wrap svg { width: 28px; height: 28px; color: hsl(215, 60%, 22%); }
+  .lgd-tracker .search-icon-wrap svg { width: 22px; height: 22px; color: hsl(215, 60%, 22%); }
   .lgd-tracker .search-card h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 24px;
@@ -47,7 +47,7 @@
   .lgd-tracker .search-card .search-desc {
     font-size: 14px;
     color: hsl(215, 10%, 45%);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     line-height: 1.5;
   }
   .lgd-tracker .search-form {
@@ -92,42 +92,8 @@
     border-radius: 12px;
     cursor: pointer;
     transition: background .2s;
-    margin-bottom: 20px;
-  }
+    }
   .lgd-tracker .search-btn:hover { background: hsl(215, 60%, 18%); }
-
-  /* ── Demo Buttons ── */
-  .lgd-tracker .demo-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: hsl(215, 10%, 45%);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .lgd-tracker .demo-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-  .lgd-tracker .demo-btn {
-    padding: 6px 14px;
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    border: 1px solid hsl(214, 20%, 88%);
-    border-radius: 9999px;
-    background: #fff;
-    color: hsl(215, 25%, 15%);
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .lgd-tracker .demo-btn:hover {
-    background: hsl(215, 60%, 22%);
-    color: #fff;
-    border-color: hsl(215, 60%, 22%);
-  }
 
   /* ── Results Section ── */
   .lgd-tracker .results-area { margin-top: 8px; }
@@ -466,8 +432,6 @@
     .lgd-tracker .step-box { min-height: 65px; padding: 10px 4px 8px; }
     .lgd-tracker .step-box .step-name { font-size: 10px; }
     .lgd-tracker .card-header { flex-direction: column; }
-    .lgd-tracker .demo-buttons { gap: 5px; }
-    .lgd-tracker .demo-btn { font-size: 12px; padding: 5px 10px; }
   }
 </style>
 </head>
@@ -484,15 +448,6 @@
       <label>Simpro Job Number or Customer Name</label>
       <input type="text" id="lgdSearch" placeholder="Enter your job number or customer name" autocomplete="off">
       <button class="search-btn" id="lgdSearchBtn">Search Tracker</button>
-    </div>
-    <div class="demo-label">DEMO SEARCHES</div>
-    <div class="demo-buttons" id="lgdDemos">
-      <button class="demo-btn" data-q="124591">Demo: Job #124591</button>
-      <button class="demo-btn" data-q="124016">Demo: Job #124016</button>
-      <button class="demo-btn" data-q="DJL">Demo: Search 'DJL'</button>
-      <button class="demo-btn" data-q="Ambrose">Demo: Search 'Ambrose'</button>
-      <button class="demo-btn" data-q="Gaschk">Demo: Search 'Gaschk'</button>
-      <button class="demo-btn" data-q="123530">Demo: Job #123530</button>
     </div>
   </div>
 
@@ -768,13 +723,6 @@
     if (e.key === 'Enter') { e.preventDefault(); doSearch(this.value); }
   });
   document.getElementById('lgdBack').addEventListener('click', goBack);
-  document.getElementById('lgdDemos').addEventListener('click', function(e) {
-    if (e.target.classList.contains('demo-btn')) {
-      var q = e.target.getAttribute('data-q');
-      document.getElementById('lgdSearch').value = q;
-      doSearch(q);
-    }
-  });
 })();
 </script>
 </body>
