@@ -43,20 +43,21 @@ const STATUS_TO_STEP = {
   'Complete':                           6,
 };
 
-// Statuses that should be EXCLUDED from the tracker
-const EXCLUDE_STATUSES = [
-  'Cancelled/Decline',
-  'Cancelled',
-  'Archived',
-];
+// ── Filters ─────────────────────────────────────────────────────────
+// ONLY include jobs in these stages (everything else is skipped)
+const ALLOWED_STAGES = ['Pending', 'Progress', 'Complete', 'Invoiced'];
 
-// Installers allowed in customer-facing output (safety rule)
-const ALLOWED_INSTALLERS = ['Peewee', 'Brent', 'Nick'];
+// ONLY include jobs that have a section/cost centre matching this name
+const REQUIRED_COST_CENTRE = 'Doors';
 
-// Only process the most recent N jobs by ID (keeps sync under 10 min)
+// Never show the business owner as an installer (safety rule)
+const EXCLUDED_STAFF = ['Adam'];
+
+// Only process the most recent N jobs by ID (keeps sync under 15 min)
 // Simpro job IDs are sequential, so higher ID = newer job.
 // 1000 jobs covers roughly 4-6 months of activity.
 const MAX_RECENT_JOBS = 1000;
+
 // ── HTTP helper ─────────────────────────────────────────────────────
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
@@ -105,7 +106,8 @@ function addDays(isoDate, n) {
   dt.setDate(dt.getDate() + n);
   return dt.toISOString().split('T')[0];
 }
-// ── Core logic ──────────────────────────────────────────────────────
+
+// ── API fetchers ────────────────────────────────────────────────────
 
 async function fetchAllJobs() {
   let allJobs = [];
@@ -126,6 +128,15 @@ async function fetchAllJobs() {
 
 async function getJobDetail(jobId) {
   return apiGet(`/jobs/${jobId}`);
+}
+
+async function getJobSections(jobId) {
+  try {
+    const sections = await apiGet(`/jobs/${jobId}/sections/`);
+    return Array.isArray(sections) ? sections : [];
+  } catch {
+    return [];
+  }
 }
 
 async function getJobSchedules(jobId) {
@@ -167,6 +178,9 @@ async function getSiteAddress(siteId) {
     return 'On file';
   }
 }
+
+// ── Resolvers ───────────────────────────────────────────────────────
+
 function resolveStep(detail) {
   const statusName = detail.Status?.Name || '';
   const stageName  = detail.Stage || '';
@@ -208,47 +222,53 @@ function resolveCustomerType(customer) {
   return customer.Type === 'Company' ? 'b' : 'r';
 }
 
-function resolveInstaller(schedules, dueDate) {
-  // Installer = staff member on schedule entries AFTER the due date
-  // (entries before due date are site visits / quotes)
-  if (!schedules || schedules.length === 0) return null;
+function resolveInstallerAndDate(schedules, dueDate) {
+  // Returns { installer, installDate } from the SAME schedule entry
+  // to guarantee they always match.
+  //
+  // Logic:
+  //   1. Look at schedules on or after the due date (these are installation,
+  //      not site-visit entries).  Pick the earliest one with a real staff
+  //      member who isn't the business owner.
+  //   2. If nothing matches, fall back to ALL schedules sorted newest-first.
+  //   3. Never return "Adam" — he is the owner, not an installer.
+  if (!schedules || schedules.length === 0) {
+    return { installer: null, installDate: null };
+  }
 
   const cutoff = dueDate || '9999-99-99';
-  const installSchedules = schedules.filter(s => s.Date >= cutoff);
 
-  // If no post-due-date schedules, check all schedules
-  const pool = installSchedules.length > 0 ? installSchedules : schedules;
+  // Post-due-date schedules, sorted earliest first
+  const installSchedules = schedules
+    .filter(s => s.Date && s.Date >= cutoff)
+    .sort((a, b) => a.Date.localeCompare(b.Date));
+
+  // Fallback: all schedules, sorted newest first
+  const allSchedules = [...schedules]
+    .filter(s => s.Date)
+    .sort((a, b) => b.Date.localeCompare(a.Date));
+
+  const pool = installSchedules.length > 0 ? installSchedules : allSchedules;
 
   for (const sched of pool) {
     if (sched.Staff && typeof sched.Staff === 'object') {
-      // Staff can be a single object or inside the schedule
       const name = sched.Staff.Name;
       if (name) {
-        // Extract first name / nickname
         const firstName = name.split(' ')[0];
-        // Only show allowed installers (safety rule: never show "Adam")
-        if (ALLOWED_INSTALLERS.some(a => name.toLowerCase().includes(a.toLowerCase()))) {
-          return firstName;
+        // Never show the business owner
+        if (EXCLUDED_STAFF.some(ex => name.toLowerCase().includes(ex.toLowerCase()))) {
+          continue;
         }
+        return {
+          installer: firstName,
+          installDate: sched.Date ? isoToShort(sched.Date) : null,
+        };
       }
     }
   }
-  return null;
+  return { installer: null, installDate: null };
 }
 
-function resolveInstallDate(schedules, dueDate) {
-  if (!schedules || schedules.length === 0) return null;
-
-  const cutoff = dueDate || '9999-99-99';
-  const installSchedules = schedules
-    .filter(s => s.Date >= cutoff)
-    .sort((a, b) => a.Date.localeCompare(b.Date));
-
-  if (installSchedules.length > 0) {
-    return isoToShort(installSchedules[0].Date);
-  }
-  return null;
-}
 // ── Main ────────────────────────────────────────────────────────────
 
 async function main() {
@@ -260,6 +280,7 @@ async function main() {
   console.log('🔄 Limitless Job Tracker Sync');
   console.log(`   API: ${BASE}`);
   console.log(`   Time: ${new Date().toISOString()}`);
+  console.log(`   Filters: stages=[${ALLOWED_STAGES.join(',')}]  costCentre=${REQUIRED_COST_CENTRE}`);
   console.log('');
 
   // 1. Fetch all job IDs
@@ -275,6 +296,8 @@ async function main() {
   // 2. Process each job
   const trackerJobs = [];
   let processed = 0;
+  let skippedStage = 0;
+  let skippedCostCentre = 0;
 
   for (const stub of jobList) {
     processed++;
@@ -284,17 +307,28 @@ async function main() {
 
     try {
       const detail = await getJobDetail(stub.ID);
-      const statusName = detail.Status?.Name || '';
       const stageName  = detail.Stage || '';
 
-      // Skip archived/cancelled jobs
-      if (stageName === 'Archived' || EXCLUDE_STATUSES.some(s => statusName.includes(s))) {
+      // ── Stage filter: ONLY allowed stages ──
+      if (!ALLOWED_STAGES.includes(stageName)) {
+        skippedStage++;
+        continue;
+      }
+
+      // ── Cost centre filter: must have a "Doors" section ──
+      const sections = await getJobSections(stub.ID);
+      const hasDoors = sections.some(sec =>
+        (sec.Name || '').toLowerCase().includes(REQUIRED_COST_CENTRE.toLowerCase())
+      );
+      if (!hasDoors) {
+        skippedCostCentre++;
+        await sleep(50);
         continue;
       }
 
       const step = resolveStep(detail);
 
-      // Get schedules and invoices
+      // Get schedules and invoices (only for jobs that passed both filters)
       const [schedules, invoiceStubs] = await Promise.all([
         getJobSchedules(stub.ID),
         getJobInvoices(stub.ID),
@@ -340,10 +374,9 @@ async function main() {
         job.eta = isoToAu(eta);
       }
 
-      const installer = resolveInstaller(schedules, dueDate);
-      if (installer) job.installer = installer;
-
-      const installDate = resolveInstallDate(schedules, dueDate);
+      // Installer + install date from the SAME schedule entry
+      const { installer, installDate } = resolveInstallerAndDate(schedules, dueDate);
+      if (installer)   job.installer   = installer;
       if (installDate) job.installDate = installDate;
 
       if (invoiceDate) job.invoiceDate = invoiceDate;
@@ -374,7 +407,10 @@ async function main() {
     }
   }
 
-  console.log(`\n  ✓ Processed ${trackerJobs.length} jobs for tracker`);
+  console.log('');
+  console.log(`  Skipped ${skippedStage} jobs (stage not in: ${ALLOWED_STAGES.join(', ')})`);
+  console.log(`  Skipped ${skippedCostCentre} jobs (no "${REQUIRED_COST_CENTRE}" cost centre)`);
+  console.log(`  ✓ Processed ${trackerJobs.length} jobs for tracker`);
 
   // 3. Sort: active jobs (steps 1-5) first by date desc, then step 6 jobs
   trackerJobs.sort((a, b) => {
