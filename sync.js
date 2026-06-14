@@ -132,22 +132,15 @@ async function getJobDetail(jobId) {
 
 async function getJobSections(jobId) {
   try {
+    // Simpro's section list and detail endpoints both return empty Name fields.
+    // We no longer waste API calls fetching section details individually.
+    // The cost centre filter uses a fallback: if Name is empty on ALL sections,
+    // the job is included (we can't determine the cost centre, so we don't
+    // exclude it).  If a future API change populates Name, filtering will
+    // start working automatically.
     const sectionList = await apiGet(`/jobs/${jobId}/sections/`);
     if (!Array.isArray(sectionList) || sectionList.length === 0) return [];
-
-    // The list endpoint returns sections with empty Name fields.
-    // We must fetch each section's detail to get the actual Name
-    // (e.g. "Doors", "Gates", etc.).
-    const detailed = [];
-    for (const sec of sectionList) {
-      try {
-        const full = await apiGet(`/jobs/${jobId}/sections/${sec.ID}`);
-        detailed.push(full);
-      } catch {
-        detailed.push(sec);  // fallback to sparse data
-      }
-    }
-    return detailed;
+    return sectionList;
   } catch {
     return [];
   }
@@ -333,16 +326,41 @@ async function main() {
       // ââ Cost centre filter: must have a "Doors" section ââ
       const sections = await getJobSections(stub.ID);
 
-      // DEBUG: log first 5 section DETAIL responses to verify Name field
-      if (debugCount < 5) {
+      // DEBUG: log first 3 section responses + try setup/costcenters discovery
+      if (debugCount < 3) {
         debugCount++;
-        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) section details (${sections.length}):`, JSON.stringify(sections).substring(0, 500));
+        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) sections (${sections.length}):`, JSON.stringify(sections).substring(0, 300));
+
+        // Probe: try fetching cost centre info via setup endpoint (first job only)
+        if (debugCount === 1) {
+          try {
+            const setupCC = await apiGet('/setup/costcenters/?pageSize=10');
+            console.log('  DEBUG /setup/costcenters/:', JSON.stringify(setupCC).substring(0, 500));
+          } catch (e) {
+            console.log('  DEBUG /setup/costcenters/ ERROR:', e.message.substring(0, 200));
+          }
+          // Also try the section's nested costcenters endpoint
+          if (sections.length > 0) {
+            try {
+              const nested = await apiGet(`/jobs/${stub.ID}/sections/${sections[0].ID}/costcenters/`);
+              console.log('  DEBUG nested costcenters:', JSON.stringify(nested).substring(0, 500));
+            } catch (e) {
+              console.log('  DEBUG nested costcenters ERROR:', e.message.substring(0, 200));
+            }
+          }
+        }
       }
 
       const hasDoors = sections.some(sec =>
         (sec.Name || '').toLowerCase().includes(REQUIRED_COST_CENTRE.toLowerCase())
       );
-      if (!hasDoors) {
+
+      // If ALL section names are empty (Simpro API limitation), we cannot
+      // determine the cost centre â include the job rather than exclude it.
+      // Once the API starts returning Names (or we find the right endpoint),
+      // filtering will kick in automatically.
+      const canDetermine = sections.some(sec => (sec.Name || '').trim());
+      if (canDetermine && !hasDoors) {
         skippedCostCentre++;
         await sleep(50);
         continue;
