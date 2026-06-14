@@ -290,6 +290,115 @@ async function main() {
   console.log(`   Filters: stages=[${ALLOWED_STAGES.join(',')}]  costCentre=${REQUIRED_COST_CENTRE}`);
   console.log('');
 
+  // ââ COST CENTRE DISCOVERY PROBES ââââââââââââââââââââââââââââââââââ
+  // The API returns empty section Names. These probes try to find the
+  // right endpoint or field to identify cost centres.
+  console.log('=== COST CENTRE DISCOVERY PROBES ===');
+
+  // PROBE 1: Compare full job detail for known Doors vs non-Doors job
+  const KNOWN_DOORS_JOB = 124021;   // confirmed in Simpro Progress/Doors
+  const KNOWN_GATE_JOB  = 124990;   // "Sliding Gate Safety Service" - NOT Doors
+  try {
+    const doorsDetail = await apiGet(`/jobs/${KNOWN_DOORS_JOB}`);
+    const gateDetail  = await apiGet(`/jobs/${KNOWN_GATE_JOB}`);
+    // Log ALL top-level keys
+    console.log('PROBE1a DOORS job keys:', Object.keys(doorsDetail).join(', '));
+    console.log('PROBE1b GATE  job keys:', Object.keys(gateDetail).join(', '));
+    // Log key fields (excluding Description which is huge)
+    const pick = (obj) => {
+      const copy = {};
+      for (const k of Object.keys(obj)) {
+        if (k === 'Description') { copy[k] = '(omitted)'; continue; }
+        copy[k] = obj[k];
+      }
+      return copy;
+    };
+    console.log('PROBE1c DOORS detail:', JSON.stringify(pick(doorsDetail)).substring(0, 1500));
+    console.log('PROBE1d GATE  detail:', JSON.stringify(pick(gateDetail)).substring(0, 1500));
+    // Specifically compare Name field
+    console.log(`PROBE1e DOORS Name="${doorsDetail.Name}" vs GATE Name="${gateDetail.Name}"`);
+  } catch (e) {
+    console.log('PROBE1 ERROR:', e.message.substring(0, 300));
+  }
+
+  // PROBE 2: Individual section DETAIL (not list) - may have more fields
+  try {
+    const doorsSections = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/`);
+    const gateSections  = await apiGet(`/jobs/${KNOWN_GATE_JOB}/sections/`);
+    console.log('PROBE2a DOORS sections list:', JSON.stringify(doorsSections));
+    console.log('PROBE2b GATE  sections list:', JSON.stringify(gateSections));
+    // Fetch individual section detail
+    if (doorsSections.length > 0) {
+      const dsd = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/${doorsSections[0].ID}`);
+      console.log('PROBE2c DOORS section detail:', JSON.stringify(dsd));
+    }
+    if (gateSections.length > 0) {
+      const gsd = await apiGet(`/jobs/${KNOWN_GATE_JOB}/sections/${gateSections[0].ID}`);
+      console.log('PROBE2d GATE  section detail:', JSON.stringify(gsd));
+    }
+  } catch (e) {
+    console.log('PROBE2 ERROR:', e.message.substring(0, 300));
+  }
+
+  // PROBE 3: Try alternative cost centre API paths
+  const ccPaths = [
+    '/setup/costcentres/',          // British spelling
+    '/setup/costcenters/',          // US spelling (tried before)
+    '/setup/system/costcentres/',
+    '/setup/system/costcenters/',
+    '/costcenters/',
+    '/costcentres/',
+  ];
+  for (const p of ccPaths) {
+    try {
+      const result = await apiGet(`${p}?pageSize=5`);
+      console.log(`PROBE3 ${p} OK:`, JSON.stringify(result).substring(0, 500));
+    } catch (e) {
+      console.log(`PROBE3 ${p} ERROR:`, e.message.substring(0, 100));
+    }
+  }
+
+  // PROBE 4: Check if sections have nested cost centre info
+  try {
+    const doorsSections = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/`);
+    if (doorsSections.length > 0) {
+      const secId = doorsSections[0].ID;
+      // Try nested endpoints on the section
+      const nestedPaths = [
+        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/costcenters/`,
+        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/costcentres/`,
+        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/?columns=Name,CostCenter,Type`,
+      ];
+      for (const np of nestedPaths) {
+        try {
+          const r = await apiGet(np);
+          console.log(`PROBE4 ${np} OK:`, JSON.stringify(r).substring(0, 500));
+        } catch (e) {
+          console.log(`PROBE4 ${np} ERROR:`, e.message.substring(0, 100));
+        }
+      }
+    }
+  } catch (e) {
+    console.log('PROBE4 ERROR:', e.message.substring(0, 200));
+  }
+
+  // PROBE 5: Check if job list supports cost centre filtering
+  try {
+    const filtered = await apiGet('/jobs/?pageSize=5&Stage=Progress&CostCenter=Doors');
+    console.log('PROBE5a filtered count:', filtered.length, 'ids:', filtered.map(j=>j.ID));
+  } catch (e) {
+    console.log('PROBE5a ERROR:', e.message.substring(0, 200));
+  }
+  try {
+    const filtered2 = await apiGet('/jobs/?pageSize=5&Stage=Progress&Section.Name=Doors');
+    console.log('PROBE5b filtered count:', filtered2.length, 'ids:', filtered2.map(j=>j.ID));
+  } catch (e) {
+    console.log('PROBE5b ERROR:', e.message.substring(0, 200));
+  }
+
+  console.log('=== END PROBES ===');
+  console.log('');
+
   // 1. Fetch all job IDs
   let jobList = await fetchAllJobs();
 
@@ -305,7 +414,6 @@ async function main() {
   let processed = 0;
   let skippedStage = 0;
   let skippedCostCentre = 0;
-  let debugCount = 0;  // count of stage-passing jobs we've debugged
 
   for (const stub of jobList) {
     processed++;
@@ -325,31 +433,6 @@ async function main() {
 
       // ââ Cost centre filter: must have a "Doors" section ââ
       const sections = await getJobSections(stub.ID);
-
-      // DEBUG: log first 3 section responses + try setup/costcenters discovery
-      if (debugCount < 3) {
-        debugCount++;
-        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) sections (${sections.length}):`, JSON.stringify(sections).substring(0, 300));
-
-        // Probe: try fetching cost centre info via setup endpoint (first job only)
-        if (debugCount === 1) {
-          try {
-            const setupCC = await apiGet('/setup/costcenters/?pageSize=10');
-            console.log('  DEBUG /setup/costcenters/:', JSON.stringify(setupCC).substring(0, 500));
-          } catch (e) {
-            console.log('  DEBUG /setup/costcenters/ ERROR:', e.message.substring(0, 200));
-          }
-          // Also try the section's nested costcenters endpoint
-          if (sections.length > 0) {
-            try {
-              const nested = await apiGet(`/jobs/${stub.ID}/sections/${sections[0].ID}/costcenters/`);
-              console.log('  DEBUG nested costcenters:', JSON.stringify(nested).substring(0, 500));
-            } catch (e) {
-              console.log('  DEBUG nested costcenters ERROR:', e.message.substring(0, 200));
-            }
-          }
-        }
-      }
 
       const hasDoors = sections.some(sec =>
         (sec.Name || '').toLowerCase().includes(REQUIRED_COST_CENTRE.toLowerCase())
