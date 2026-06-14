@@ -298,6 +298,7 @@ async function main() {
   let processed = 0;
   let skippedStage = 0;
   let skippedCostCentre = 0;
+  let debugCount = 0;  // count of stage-passing jobs we've debugged
 
   for (const stub of jobList) {
     processed++;
@@ -317,6 +318,20 @@ async function main() {
 
       // ── Cost centre filter: must have a "Doors" section ──
       const sections = await getJobSections(stub.ID);
+
+      // DEBUG: log first 5 section responses so we can see the data shape
+      if (debugCount < 5) {
+        debugCount++;
+        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) sections (${sections.length}):`, JSON.stringify(sections).substring(0, 800));
+        // Also try the costcenters endpoint as an alternative
+        try {
+          const altCC = await apiGet(`/jobs/${stub.ID}/costcenters/`);
+          console.log(`  DEBUG job ${stub.ID} costcenters alt:`, JSON.stringify(altCC).substring(0, 800));
+        } catch (e) {
+          console.log(`  DEBUG job ${stub.ID} costcenters alt ERROR:`, e.message.substring(0, 200));
+        }
+      }
+
       const hasDoors = sections.some(sec =>
         (sec.Name || '').toLowerCase().includes(REQUIRED_COST_CENTRE.toLowerCase())
       );
