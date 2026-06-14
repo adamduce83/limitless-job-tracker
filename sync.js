@@ -317,6 +317,18 @@ async function main() {
     console.log('PROBE1d GATE  detail:', JSON.stringify(pick(gateDetail)).substring(0, 1500));
     // Specifically compare Name field
     console.log(`PROBE1e DOORS Name="${doorsDetail.Name}" vs GATE Name="${gateDetail.Name}"`);
+        // PROBE 1f: Check CustomFields, STC, and CompletedDate specifically
+        console.log('PROBE1f DOORS CustomFields:', JSON.stringify(doorsDetail.CustomFields));
+        console.log('PROBE1f GATE  CustomFields:', JSON.stringify(gateDetail.CustomFields));
+        console.log('PROBE1f DOORS STC:', JSON.stringify(doorsDetail.STC));
+        console.log('PROBE1f GATE  STC:', JSON.stringify(gateDetail.STC));
+        console.log('PROBE1f DOORS Type:', doorsDetail.Type, 'GATE Type:', gateDetail.Type);
+        // Check if there's a CostCenter or Category field we missed
+        const doorsKeys = Object.keys(doorsDetail);
+        const interestingFields = doorsKeys.filter(k =>
+                /cost|centre|center|category|division|dept|section|group|class/i.test(k)
+                                                       );
+        console.log('PROBE1f Fields matching cost/centre/category:', interestingFields.join(', ') || 'NONE');
   } catch (e) {
     console.log('PROBE1 ERROR:', e.message.substring(0, 300));
   }
