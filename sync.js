@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Limitless Garage Doors & Gates — Simpro → Job Tracker Sync
+ * Limitless Garage Doors & Gates â Simpro â Job Tracker Sync
  *
  * Pulls job data from Simpro REST API, transforms it into the tracker
  * JSON format, and updates index.html with the latest data.
@@ -8,15 +8,15 @@
  * Runs nightly via GitHub Actions.
  *
  * Environment variables:
- *   SIMPRO_API_KEY  — Bearer token for Simpro API
- *   SIMPRO_BASE_URL — e.g. https://dar.simprosuite.com  (no trailing slash)
+ *   SIMPRO_API_KEY  â Bearer token for Simpro API
+ *   SIMPRO_BASE_URL â e.g. https://dar.simprosuite.com  (no trailing slash)
  */
 
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// ── Config ──────────────────────────────────────────────────────────────────
+// ââ Config ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const API_KEY = process.env.SIMPRO_API_KEY;
 const BASE    = (process.env.SIMPRO_BASE_URL || 'https://dar.simprosuite.com')
                   .replace(/\/+$/, '');
@@ -25,7 +25,7 @@ const API     = `${BASE}/api/v1.0/companies/0`;
 // How many jobs to fetch per page (Simpro max is 250)
 const PAGE_SIZE = 250;
 
-// Simpro Status.Name  →  tracker step (1-6)
+// Simpro Status.Name  â  tracker step (1-6)
 // Update this map when new statuses are added in Simpro.
 const STATUS_TO_STEP = {
   'PENDING: Not Booked':               1,   // Quote Accepted
@@ -43,7 +43,7 @@ const STATUS_TO_STEP = {
   'Complete':                           6,
 };
 
-// ── Filters ─────────────────────────────────────────────────────────
+// ââ Filters âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 // ONLY include jobs in these stages (everything else is skipped)
 const ALLOWED_STAGES = ['Pending', 'Progress', 'Complete', 'Invoiced'];
 
@@ -58,7 +58,7 @@ const EXCLUDED_STAFF = ['Adam'];
 // 1000 jobs covers roughly 4-6 months of activity.
 const MAX_RECENT_JOBS = 1000;
 
-// ── HTTP helper ─────────────────────────────────────────────────────
+// ââ HTTP helper âââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
     const url = urlPath.startsWith('http') ? urlPath : `${API}${urlPath}`;
@@ -83,9 +83,9 @@ function apiGet(urlPath) {
 // Rate-limit helper: wait ms
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// ── Date helpers ────────────────────────────────────────────────────
+// ââ Date helpers ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function isoToAu(isoDate) {
-  // "2026-06-15" → "15/06/2026"
+  // "2026-06-15" â "15/06/2026"
   if (!isoDate) return null;
   const [y, m, d] = isoDate.split('-');
   if (!y || !m || !d) return isoDate;
@@ -93,7 +93,7 @@ function isoToAu(isoDate) {
 }
 
 function isoToShort(isoDate) {
-  // "2026-06-15" → "15/06"
+  // "2026-06-15" â "15/06"
   if (!isoDate) return null;
   const [, m, d] = isoDate.split('-');
   if (!m || !d) return isoDate;
@@ -107,7 +107,7 @@ function addDays(isoDate, n) {
   return dt.toISOString().split('T')[0];
 }
 
-// ── API fetchers ────────────────────────────────────────────────────
+// ââ API fetchers ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async function fetchAllJobs() {
   let allJobs = [];
@@ -132,8 +132,22 @@ async function getJobDetail(jobId) {
 
 async function getJobSections(jobId) {
   try {
-    const sections = await apiGet(`/jobs/${jobId}/sections/`);
-    return Array.isArray(sections) ? sections : [];
+    const sectionList = await apiGet(`/jobs/${jobId}/sections/`);
+    if (!Array.isArray(sectionList) || sectionList.length === 0) return [];
+
+    // The list endpoint returns sections with empty Name fields.
+    // We must fetch each section's detail to get the actual Name
+    // (e.g. "Doors", "Gates", etc.).
+    const detailed = [];
+    for (const sec of sectionList) {
+      try {
+        const full = await apiGet(`/jobs/${jobId}/sections/${sec.ID}`);
+        detailed.push(full);
+      } catch {
+        detailed.push(sec);  // fallback to sparse data
+      }
+    }
+    return detailed;
   } catch {
     return [];
   }
@@ -179,7 +193,7 @@ async function getSiteAddress(siteId) {
   }
 }
 
-// ── Resolvers ───────────────────────────────────────────────────────
+// ââ Resolvers âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function resolveStep(detail) {
   const statusName = detail.Status?.Name || '';
@@ -202,14 +216,14 @@ function resolveStep(detail) {
   }
 
   // Default
-  console.warn(`  ⚠ Unknown status "${statusName}" / stage "${stageName}" for job ${detail.ID} — defaulting to step 1`);
+  console.warn(`  â  Unknown status "${statusName}" / stage "${stageName}" for job ${detail.ID} â defaulting to step 1`);
   return 1;
 }
 
 function resolveCustomerName(customer) {
   if (!customer) return 'Customer';
   if (customer.CompanyName) return customer.CompanyName;
-  // For individuals: "Last, First" format — never expose last name alone
+  // For individuals: "Last, First" format â never expose last name alone
   const first = customer.GivenName || '';
   const last  = customer.FamilyName || '';
   if (last && first) return `${last}, ${first}`;
@@ -231,7 +245,7 @@ function resolveInstallerAndDate(schedules, dueDate) {
   //      not site-visit entries).  Pick the earliest one with a real staff
   //      member who isn't the business owner.
   //   2. If nothing matches, fall back to ALL schedules sorted newest-first.
-  //   3. Never return "Adam" — he is the owner, not an installer.
+  //   3. Never return "Adam" â he is the owner, not an installer.
   if (!schedules || schedules.length === 0) {
     return { installer: null, installDate: null };
   }
@@ -269,7 +283,7 @@ function resolveInstallerAndDate(schedules, dueDate) {
   return { installer: null, installDate: null };
 }
 
-// ── Main ────────────────────────────────────────────────────────────
+// ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 async function main() {
   if (!API_KEY) {
@@ -277,7 +291,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('🔄 Limitless Job Tracker Sync');
+  console.log('ð Limitless Job Tracker Sync');
   console.log(`   API: ${BASE}`);
   console.log(`   Time: ${new Date().toISOString()}`);
   console.log(`   Filters: stages=[${ALLOWED_STAGES.join(',')}]  costCentre=${REQUIRED_COST_CENTRE}`);
@@ -310,26 +324,19 @@ async function main() {
       const detail = await getJobDetail(stub.ID);
       const stageName  = detail.Stage || '';
 
-      // ── Stage filter: ONLY allowed stages ──
+      // ââ Stage filter: ONLY allowed stages ââ
       if (!ALLOWED_STAGES.includes(stageName)) {
         skippedStage++;
         continue;
       }
 
-      // ── Cost centre filter: must have a "Doors" section ──
+      // ââ Cost centre filter: must have a "Doors" section ââ
       const sections = await getJobSections(stub.ID);
 
-      // DEBUG: log first 5 section responses so we can see the data shape
+      // DEBUG: log first 5 section DETAIL responses to verify Name field
       if (debugCount < 5) {
         debugCount++;
-        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) sections (${sections.length}):`, JSON.stringify(sections).substring(0, 800));
-        // Also try the costcenters endpoint as an alternative
-        try {
-          const altCC = await apiGet(`/jobs/${stub.ID}/costcenters/`);
-          console.log(`  DEBUG job ${stub.ID} costcenters alt:`, JSON.stringify(altCC).substring(0, 800));
-        } catch (e) {
-          console.log(`  DEBUG job ${stub.ID} costcenters alt ERROR:`, e.message.substring(0, 200));
-        }
+        console.log(`  DEBUG job ${stub.ID} (stage=${stageName}) section details (${sections.length}):`, JSON.stringify(sections).substring(0, 500));
       }
 
       const hasDoors = sections.some(sec =>
@@ -397,7 +404,7 @@ async function main() {
       if (invoiceDate) job.invoiceDate = invoiceDate;
       if (paidDate)    job.paidDate = paidDate;
 
-      // Deposit % — only for residential ("r") jobs
+      // Deposit % â only for residential ("r") jobs
       // Simpro doesn't have a direct "deposit paid" field,
       // so we default based on step:
       //   step 6 complete = use invoice data
@@ -418,14 +425,14 @@ async function main() {
       // Rate-limit: small delay between jobs
       await sleep(50);
     } catch (err) {
-      console.error(`  ✗ Error processing job ${stub.ID}: ${err.message}`);
+      console.error(`  â Error processing job ${stub.ID}: ${err.message}`);
     }
   }
 
   console.log('');
   console.log(`  Skipped ${skippedStage} jobs (stage not in: ${ALLOWED_STAGES.join(', ')})`);
   console.log(`  Skipped ${skippedCostCentre} jobs (no "${REQUIRED_COST_CENTRE}" cost centre)`);
-  console.log(`  ✓ Processed ${trackerJobs.length} jobs for tracker`);
+  console.log(`  â Processed ${trackerJobs.length} jobs for tracker`);
 
   // 3. Sort: active jobs (steps 1-5) first by date desc, then step 6 jobs
   trackerJobs.sort((a, b) => {
@@ -445,7 +452,7 @@ async function main() {
   let html = fs.readFileSync(htmlPath, 'utf8');
   const jobsJson = JSON.stringify(trackerJobs);
 
-  // Replace the JOBS array — matches:  var JOBS = [...];
+  // Replace the JOBS array â matches:  var JOBS = [...];
   const regex = /var JOBS\s*=\s*\[[\s\S]*?\];/;
   if (!regex.test(html)) {
     console.error('ERROR: Could not find "var JOBS = [...];" in index.html');
@@ -455,8 +462,8 @@ async function main() {
   html = html.replace(regex, `var JOBS = ${jobsJson};`);
 
   fs.writeFileSync(htmlPath, html, 'utf8');
-  console.log('  ✓ index.html updated');
-  console.log(`  ✓ ${trackerJobs.length} jobs written`);
+  console.log('  â index.html updated');
+  console.log(`  â ${trackerJobs.length} jobs written`);
   console.log('');
 }
 
