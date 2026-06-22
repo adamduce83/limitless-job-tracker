@@ -47,9 +47,6 @@ const STATUS_TO_STEP = {
 // ONLY include jobs in these stages (everything else is skipped)
 const ALLOWED_STAGES = ['Pending', 'Progress', 'Complete', 'Invoiced'];
 
-// ONLY include jobs that have a section/cost centre matching this name
-const REQUIRED_COST_CENTRE = 'Doors';
-
 // Never show the business owner as an installer (safety rule)
 const EXCLUDED_STAFF = ['Adam'];
 
@@ -57,6 +54,12 @@ const EXCLUDED_STAFF = ['Adam'];
 // Simpro job IDs are sequential, so higher ID = newer job.
 // 1000 jobs covers roughly 4-6 months of activity.
 const MAX_RECENT_JOBS = 1000;
+
+// Doors cost-centre whitelist (Simpro REST API does not expose cost centres)
+// Extracted from Simpro web UI Advanced Search. Update periodically.
+const DOORS_JOB_IDS = new Set(
+  JSON.parse(fs.readFileSync(path.join(__dirname, 'doors-jobs.json'), 'utf8'))
+);
 
 // ââ HTTP helper âââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function apiGet(urlPath) {
@@ -128,22 +131,6 @@ async function fetchAllJobs() {
 
 async function getJobDetail(jobId) {
   return apiGet(`/jobs/${jobId}`);
-}
-
-async function getJobSections(jobId) {
-  try {
-    // Simpro's section list and detail endpoints both return empty Name fields.
-    // We no longer waste API calls fetching section details individually.
-    // The cost centre filter uses a fallback: if Name is empty on ALL sections,
-    // the job is included (we can't determine the cost centre, so we don't
-    // exclude it).  If a future API change populates Name, filtering will
-    // start working automatically.
-    const sectionList = await apiGet(`/jobs/${jobId}/sections/`);
-    if (!Array.isArray(sectionList) || sectionList.length === 0) return [];
-    return sectionList;
-  } catch {
-    return [];
-  }
 }
 
 async function getJobSchedules(jobId) {
@@ -287,128 +274,7 @@ async function main() {
   console.log('ð Limitless Job Tracker Sync');
   console.log(`   API: ${BASE}`);
   console.log(`   Time: ${new Date().toISOString()}`);
-  console.log(`   Filters: stages=[${ALLOWED_STAGES.join(',')}]  costCentre=${REQUIRED_COST_CENTRE}`);
-  console.log('');
-
-  // ââ COST CENTRE DISCOVERY PROBES ââââââââââââââââââââââââââââââââââ
-  // The API returns empty section Names. These probes try to find the
-  // right endpoint or field to identify cost centres.
-  console.log('=== COST CENTRE DISCOVERY PROBES ===');
-
-  // PROBE 1: Compare full job detail for known Doors vs non-Doors job
-  const KNOWN_DOORS_JOB = 124021;   // confirmed in Simpro Progress/Doors
-  const KNOWN_GATE_JOB  = 124990;   // "Sliding Gate Safety Service" - NOT Doors
-  try {
-    const doorsDetail = await apiGet(`/jobs/${KNOWN_DOORS_JOB}`);
-    const gateDetail  = await apiGet(`/jobs/${KNOWN_GATE_JOB}`);
-    // Log ALL top-level keys
-    console.log('PROBE1a DOORS job keys:', Object.keys(doorsDetail).join(', '));
-    console.log('PROBE1b GATE  job keys:', Object.keys(gateDetail).join(', '));
-    // Log key fields (excluding Description which is huge)
-    const pick = (obj) => {
-      const copy = {};
-      for (const k of Object.keys(obj)) {
-        if (k === 'Description') { copy[k] = '(omitted)'; continue; }
-        copy[k] = obj[k];
-      }
-      return copy;
-    };
-    console.log('PROBE1c DOORS detail:', JSON.stringify(pick(doorsDetail)).substring(0, 1500));
-    console.log('PROBE1d GATE  detail:', JSON.stringify(pick(gateDetail)).substring(0, 1500));
-    // Specifically compare Name field
-    console.log(`PROBE1e DOORS Name="${doorsDetail.Name}" vs GATE Name="${gateDetail.Name}"`);
-        // PROBE 1f: Check CustomFields, STC, and CompletedDate specifically
-        console.log('PROBE1f DOORS CustomFields:', JSON.stringify(doorsDetail.CustomFields));
-        console.log('PROBE1f GATE  CustomFields:', JSON.stringify(gateDetail.CustomFields));
-        console.log('PROBE1f DOORS STC:', JSON.stringify(doorsDetail.STC));
-        console.log('PROBE1f GATE  STC:', JSON.stringify(gateDetail.STC));
-        console.log('PROBE1f DOORS Type:', doorsDetail.Type, 'GATE Type:', gateDetail.Type);
-        // Check if there's a CostCenter or Category field we missed
-        const doorsKeys = Object.keys(doorsDetail);
-        const interestingFields = doorsKeys.filter(k =>
-                /cost|centre|center|category|division|dept|section|group|class/i.test(k)
-                                                       );
-        console.log('PROBE1f Fields matching cost/centre/category:', interestingFields.join(', ') || 'NONE');
-  } catch (e) {
-    console.log('PROBE1 ERROR:', e.message.substring(0, 300));
-  }
-
-  // PROBE 2: Individual section DETAIL (not list) - may have more fields
-  try {
-    const doorsSections = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/`);
-    const gateSections  = await apiGet(`/jobs/${KNOWN_GATE_JOB}/sections/`);
-    console.log('PROBE2a DOORS sections list:', JSON.stringify(doorsSections));
-    console.log('PROBE2b GATE  sections list:', JSON.stringify(gateSections));
-    // Fetch individual section detail
-    if (doorsSections.length > 0) {
-      const dsd = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/${doorsSections[0].ID}`);
-      console.log('PROBE2c DOORS section detail:', JSON.stringify(dsd));
-    }
-    if (gateSections.length > 0) {
-      const gsd = await apiGet(`/jobs/${KNOWN_GATE_JOB}/sections/${gateSections[0].ID}`);
-      console.log('PROBE2d GATE  section detail:', JSON.stringify(gsd));
-    }
-  } catch (e) {
-    console.log('PROBE2 ERROR:', e.message.substring(0, 300));
-  }
-
-  // PROBE 3: Try alternative cost centre API paths
-  const ccPaths = [
-    '/setup/costcentres/',          // British spelling
-    '/setup/costcenters/',          // US spelling (tried before)
-    '/setup/system/costcentres/',
-    '/setup/system/costcenters/',
-    '/costcenters/',
-    '/costcentres/',
-  ];
-  for (const p of ccPaths) {
-    try {
-      const result = await apiGet(`${p}?pageSize=5`);
-      console.log(`PROBE3 ${p} OK:`, JSON.stringify(result).substring(0, 500));
-    } catch (e) {
-      console.log(`PROBE3 ${p} ERROR:`, e.message.substring(0, 100));
-    }
-  }
-
-  // PROBE 4: Check if sections have nested cost centre info
-  try {
-    const doorsSections = await apiGet(`/jobs/${KNOWN_DOORS_JOB}/sections/`);
-    if (doorsSections.length > 0) {
-      const secId = doorsSections[0].ID;
-      // Try nested endpoints on the section
-      const nestedPaths = [
-        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/costcenters/`,
-        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/costcentres/`,
-        `/jobs/${KNOWN_DOORS_JOB}/sections/${secId}/?columns=Name,CostCenter,Type`,
-      ];
-      for (const np of nestedPaths) {
-        try {
-          const r = await apiGet(np);
-          console.log(`PROBE4 ${np} OK:`, JSON.stringify(r).substring(0, 500));
-        } catch (e) {
-          console.log(`PROBE4 ${np} ERROR:`, e.message.substring(0, 100));
-        }
-      }
-    }
-  } catch (e) {
-    console.log('PROBE4 ERROR:', e.message.substring(0, 200));
-  }
-
-  // PROBE 5: Check if job list supports cost centre filtering
-  try {
-    const filtered = await apiGet('/jobs/?pageSize=5&Stage=Progress&CostCenter=Doors');
-    console.log('PROBE5a filtered count:', filtered.length, 'ids:', filtered.map(j=>j.ID));
-  } catch (e) {
-    console.log('PROBE5a ERROR:', e.message.substring(0, 200));
-  }
-  try {
-    const filtered2 = await apiGet('/jobs/?pageSize=5&Stage=Progress&Section.Name=Doors');
-    console.log('PROBE5b filtered count:', filtered2.length, 'ids:', filtered2.map(j=>j.ID));
-  } catch (e) {
-    console.log('PROBE5b ERROR:', e.message.substring(0, 200));
-  }
-
-  console.log('=== END PROBES ===');
+  console.log(`   Filters: stages=[${ALLOWED_STAGES.join(',')}]  costCentre=whitelist(${DOORS_JOB_IDS.size} Doors IDs)`);
   console.log('');
 
   // 1. Fetch all job IDs
@@ -443,21 +309,9 @@ async function main() {
         continue;
       }
 
-      // ââ Cost centre filter: must have a "Doors" section ââ
-      const sections = await getJobSections(stub.ID);
-
-      const hasDoors = sections.some(sec =>
-        (sec.Name || '').toLowerCase().includes(REQUIRED_COST_CENTRE.toLowerCase())
-      );
-
-      // If ALL section names are empty (Simpro API limitation), we cannot
-      // determine the cost centre â include the job rather than exclude it.
-      // Once the API starts returning Names (or we find the right endpoint),
-      // filtering will kick in automatically.
-      const canDetermine = sections.some(sec => (sec.Name || '').trim());
-      if (canDetermine && !hasDoors) {
+      // Cost centre filter: must be in the Doors whitelist
+      if (!DOORS_JOB_IDS.has(stub.ID)) {
         skippedCostCentre++;
-        await sleep(50);
         continue;
       }
 
@@ -498,7 +352,7 @@ async function main() {
         s:    siteAddress,
         d:    isoToAu(detail.DateIssued),
         step: step,
-        door: detail.Description || detail.Name || 'Garage Door',
+        door: detail.Name || 'Garage Door',
         t:    resolveCustomerType(detail.Customer),
       };
 
@@ -544,7 +398,7 @@ async function main() {
 
   console.log('');
   console.log(`  Skipped ${skippedStage} jobs (stage not in: ${ALLOWED_STAGES.join(', ')})`);
-  console.log(`  Skipped ${skippedCostCentre} jobs (no "${REQUIRED_COST_CENTRE}" cost centre)`);
+  console.log(`  Skipped ${skippedCostCentre} jobs (not in Doors whitelist)`);
   console.log(`  â Processed ${trackerJobs.length} jobs for tracker`);
 
   // 3. Sort: active jobs (steps 1-5) first by date desc, then step 6 jobs
