@@ -48,8 +48,8 @@ const STATUS_TO_STEP = {
 // ONLY include jobs in these stages (everything else is skipped)
 const ALLOWED_STAGES = ['Pending', 'Progress', 'Complete', 'Invoiced'];
 
-// Never show the business owner as an installer (safety rule)
-const EXCLUDED_STAFF = ['Adam'];
+// Only show approved installers on the tracker (safety rule)
+const ALLOWED_INSTALLERS = ['Eddie', 'Brent', 'Brian', 'Peewee', 'Paul', 'Trent'];
 
 // Doors cost-centre whitelist (Simpro REST API does not expose cost centres).
 // Extracted from Simpro web UI Advanced Search. Update periodically.
@@ -229,8 +229,8 @@ function resolveInstallerAndDate(schedules, dueDate) {
       const name = sched.Staff.Name;
       if (name) {
         const firstName = name.split(' ')[0];
-        // Never show the business owner
-        if (EXCLUDED_STAFF.some(ex => name.toLowerCase().includes(ex.toLowerCase()))) {
+        // Only show approved installers
+        if (!ALLOWED_INSTALLERS.some(inst => firstName.toLowerCase() === inst.toLowerCase())) {
           continue;
         }
         return {
