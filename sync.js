@@ -317,7 +317,7 @@ async function main() {
         continue;
       }
 
-      const step = resolveStep(detail);
+      let step = resolveStep(detail);
 
       // Get schedules and invoices
       const [schedules, invoiceStubs] = await Promise.all([
