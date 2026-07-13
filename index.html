@@ -674,7 +674,7 @@
     html += '<div class="job-address">' + addr + '</div>';
     html += '<div class="job-customer">' + job.c + '</div>';
     var metaParts = '<span>Created:</span> ' + job.d;
-    if (job.eta) metaParts += ' | <span>ETA:</span> ' + job.eta;
+    if (job.eta) metaParts += ' | <span>ETA from manufacturer:</span> ' + job.eta;
     if (job.installDate) metaParts += ' | <span>Install:</span> ' + job.installDate;
     html += '<div class="job-meta">' + metaParts + '</div>';
 
