@@ -331,7 +331,6 @@ async function main() {
       // Installer + install date from the SAME schedule entry
       const { installer, installDate } = resolveInstallerAndDate(schedules, dueDate);
       if (installer)   job.installer   = installer;
-      if (installDate) job.installDate = installDate;
 
       if (invoiceDate) job.invoiceDate = invoiceDate;
       if (paidDate)    job.paidDate = paidDate;
