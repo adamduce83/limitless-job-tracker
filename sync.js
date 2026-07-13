@@ -319,6 +319,11 @@ async function main() {
 
       let step = resolveStep(detail);
 
+    // If OrderNo is "ARRIVED", door has been delivered to warehouse
+    if (detail.OrderNo && detail.OrderNo.toUpperCase().includes('ARRIVED') && step < 4) {
+      step = 4; // Delivered to Us
+    }
+
       // Get schedules and invoices
       const [schedules, invoiceStubs] = await Promise.all([
         getJobSchedules(jobId),
