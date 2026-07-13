@@ -89,7 +89,8 @@ function isoToAu(isoDate) {
   if (!isoDate) return null;
   const [y, m, d] = isoDate.split('-');
   if (!y || !m || !d) return isoDate;
-  return `${d}
+  return `${d}/${m}/${y}`;
+}
 
 // Extract door spec from Simpro job description HTML
 function parseDoorInfo(descHtml) {
@@ -109,7 +110,6 @@ function parseDoorInfo(descHtml) {
   const idx = text.indexOf('Supply & Install');
   if (idx < 0) return '';
   return text.substring(idx).trim();
-}/${m}/${y}`;
 }
 
 function isoToShort(isoDate) {
