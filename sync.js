@@ -159,10 +159,13 @@ function resolveStep(detail) {
   const statusName = detail.Status?.Name || '';
   const stageName  = detail.Stage || '';
 
+  // Determine base step from status or stage
+  let step;
+
   // Check the status-to-step map
   if (STATUS_TO_STEP[statusName] !== undefined) {
-    return STATUS_TO_STEP[statusName];
-  }
+    step = STATUS_TO_STEP[statusName];
+  } else {
 
   // Fallback: use stage name
   const stageMap = {
@@ -172,12 +175,25 @@ function resolveStep(detail) {
     'Complete': 6,
   };
   if (stageMap[stageName] !== undefined) {
-    return stageMap[stageName];
-  }
+    step = stageMap[stageName];
+  } else {
 
   // Default
   console.warn(`  ! Unknown status "${statusName}" / stage "${stageName}" for job ${detail.ID} - defaulting to step 1`);
-  return 1;
+  step = 1;
+  }
+  }
+
+  // Due-date gate: if supplier delivery date hasn't passed,
+  // the door hasn't arrived yet - cap at step 3 (In Production)
+  if (step === 5 && detail.DueDate) {
+    const today = new Date().toISOString().split('T')[0];
+    if (detail.DueDate > today) {
+      step = 3;
+    }
+  }
+
+  return step;
 }
 
 function resolveCustomerName(customer) {
@@ -324,8 +340,7 @@ async function main() {
       // Optional fields
       const dueDate = detail.DueDate;
       if (dueDate) {
-        const eta = addDays(dueDate, 2);
-        job.eta = isoToAu(eta);
+        job.eta = isoToAu(dueDate);
       }
 
       // Installer + install date from the SAME schedule entry
@@ -377,6 +392,7 @@ async function main() {
 
   // Update index.html
   const htmlPath = path.join(__dirname, 'index.html');
+Due-date gate
   if (!fs.existsSync(htmlPath)) {
     console.error('ERROR: index.html not found at', htmlPath);
     process.exit(1);
