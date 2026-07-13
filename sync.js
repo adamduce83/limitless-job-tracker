@@ -338,6 +338,9 @@ async function main() {
         }
       }
 
+    // If job has been invoiced, force step 6 (Installation Complete)
+    if (invoiceDate) step = 6;
+
       // Get site address
       const siteId = detail.Site?.ID;
       let siteAddress = 'On file';
