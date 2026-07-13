@@ -12,7 +12,7 @@
  * Runs nightly via GitHub Actions.
  *
  * Environment variables:
- *   SIMPRO_API_KEY  - Bearer token for Simpro API
+ *   SIMPRO_API_KEY  - Bearer token for Simpro AP
  *   SIMPRO_BASE_URL - e.g. https://dar.simprosuite.com  (no trailing slash)
  */
 
@@ -165,7 +165,7 @@ async function getSiteAddress(siteId) {
     if (site && site.Address) {
       const a = site.Address;
       const parts = [a.Address, a.City, a.State, a.PostalCode].filter(Boolean);
-      return parts.join(', ') || 'On file';
+      return parts.join(', ') || site.Name || 'On file';
     }
     return site?.Name || 'On file';
   } catch {
