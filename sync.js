@@ -89,7 +89,27 @@ function isoToAu(isoDate) {
   if (!isoDate) return null;
   const [y, m, d] = isoDate.split('-');
   if (!y || !m || !d) return isoDate;
-  return `${d}/${m}/${y}`;
+  return `${d}
+
+// Extract door spec from Simpro job description HTML
+function parseDoorInfo(descHtml) {
+  if (!descHtml) return '';
+  const text = descHtml
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/p>/gi, '\n')
+    .replace(/<\/div>/gi, '\n')
+    .replace(/<\/li>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+  const idx = text.indexOf('Supply & Install');
+  if (idx < 0) return '';
+  return text.substring(idx).trim();
+}/${m}/${y}`;
 }
 
 function isoToShort(isoDate) {
@@ -184,12 +204,13 @@ function resolveStep(detail) {
   }
   }
 
-  // Due-date gate: if supplier delivery date hasn't passed,
-  // the door hasn't arrived yet - cap at step 3 (In Production)
-  if (step === 5 && detail.DueDate) {
+  // Due-date gate: use manufacturer ETA to determine delivery status
+  if (detail.DueDate && step >= 3 && step <= 5) {
     const today = new Date().toISOString().split('T')[0];
     if (detail.DueDate > today) {
-      step = 3;
+      step = 3; // In Production - door not delivered yet
+    } else {
+      step = 4; // Delivered to Us - past the ETA from manufacturer
     }
   }
 
@@ -333,7 +354,7 @@ async function main() {
         s:    siteAddress,
         d:    isoToAu(detail.DateIssued),
         step: step,
-        door: detail.Name || 'Garage Door',
+        door: parseDoorInfo(detail.Description),
         t:    resolveCustomerType(detail.Customer),
       };
 
@@ -343,9 +364,7 @@ async function main() {
         job.eta = isoToAu(dueDate);
       }
 
-      // Installer + install date from the SAME schedule entry
-      const { installer, installDate } = resolveInstallerAndDate(schedules, dueDate);
-      if (installer)   job.installer   = installer;
+      job.installer = 'Peewee, Eddie, Brian';
 
       if (invoiceDate) job.invoiceDate = invoiceDate;
       if (paidDate)    job.paidDate = paidDate;
@@ -392,7 +411,6 @@ async function main() {
 
   // Update index.html
   const htmlPath = path.join(__dirname, 'index.html');
-Due-date gate
   if (!fs.existsSync(htmlPath)) {
     console.error('ERROR: index.html not found at', htmlPath);
     process.exit(1);
