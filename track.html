@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track My Order | Limitless Garage Doors &amp; Gates</title>
+<meta name="description" content="Track your garage door or gate order with Limitless Garage Doors and Gates">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#1a1a2e;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:20px 16px}
+.header{display:flex;align-items:center;gap:12px;padding:12px 0 16px;border-bottom:2px solid #e0e0e0;margin-bottom:24px}
+.header-logo{height:44px;width:44px;border-radius:8px}
+.header-text h1{font-size:15px;font-weight:700;color:#1a1a2e}
+.header-text p{font-size:11px;color:#888;letter-spacing:0.5px;text-transform:uppercase}
+.page-title{font-size:26px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.page-subtitle{font-size:13px;color:#777;margin-bottom:20px}
+.card{background:#fff;border:1px solid #e0e0e0;border-left:4px solid #ccc;border-radius:8px;padding:20px 24px;margin-bottom:14px}
+.card.accent{border-left-color:#2d6a4f}
+.job-header{display:flex;justify-content:space-between;align-items:flex-start}
+.job-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#999;font-weight:600}
+.job-num{font-size:26px;font-weight:800;margin:2px 0 8px}
+.job-addr{font-size:13px;color:#666;margin-bottom:2px}
+.job-cust{font-size:14px;font-weight:600}
+.job-date{font-size:12px;color:#999;margin-top:4px}
+.badge{background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;height:fit-content}
+.cs-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cs-title{font-size:15px;font-weight:700}
+.cs-pct{font-size:20px;font-weight:800;color:#2d6a4f}
+.cs-desc{font-size:13px;color:#666;margin-bottom:10px}
+.bar-track{background:#e8e8e8;border-radius:4px;height:8px;margin-bottom:18px;overflow:hidden}
+.bar-fill{background:linear-gradient(90deg,#2d6a4f,#40916c);height:100%;border-radius:4px;transition:width .6s ease}
+.stepper{display:flex;gap:4px}
+.step{flex:1;text-align:center;padding:10px 2px 8px;border-radius:8px;position:relative;min-width:0}
+.step.done{background:#f0f7f4}
+.step.now{background:#e8f5e9;border:2px solid #2d6a4f}
+.step.soon{background:#fafafa;opacity:.55}
+.step-ico{font-size:22px;display:block;margin-bottom:3px}
+.step-nm{font-size:10px;font-weight:600;color:#444;line-height:1.2;display:block}
+.step.soon .step-nm{color:#aaa}
+.cur-tag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#2d6a4f;color:#fff;font-size:8px;font-weight:700;padding:1px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.sec-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#999;font-weight:600;margin-bottom:10px}
+.door-info p{font-size:13px;margin-bottom:3px;color:#444}
+.door-info .lbl{font-weight:700;color:#1a1a2e}
+.inst-name{font-size:14px;font-weight:600}
+.next-txt{font-size:13px;color:#555;line-height:1.7}
+.cta{background:linear-gradient(135deg,#e8c547,#d4a937);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.cta-left{display:flex;align-items:center;gap:14px}
+.cta-ico{font-size:28px}
+.cta h3{font-size:16px;font-weight:700;color:#1a1a2e}
+.cta p{font-size:12px;color:#333}
+.cta-btn{background:#fff;color:#1a1a2e;padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+.cta-btn:hover{box-shadow:0 4px 8px rgba(0,0,0,.15)}
+.footer{text-align:center;padding:20px 0;color:#bbb;font-size:11px}
+.footer span{display:block}
+.loading{text-align:center;padding:80px 20px}
+.spinner{border:3px solid #e8e8e8;border-top:3px solid #2d6a4f;border-radius:50%;width:36px;height:36px;animation:spin .8s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{color:#888;font-size:14px}
+.notfound{text-align:center;padding:60px 20px}
+.notfound h2{font-size:22px;margin-bottom:8px}
+.notfound p{color:#777;font-size:14px;max-width:400px;margin:0 auto}
+@media(max-width:640px){
+  .stepper{flex-wrap:nowrap}
+  .step{padding:8px 1px 6px}
+  .step-ico{font-size:16px}
+  .step-nm{font-size:8px}
+  .job-header{flex-direction:column;gap:10px}
+  .cta{flex-direction:column;gap:14px;text-align:center}
+  .page-title{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="container" id="app">
+  <div class="loading"><div class="spinner"></div><p>Loading your order&hellip;</p></div>
+</div>
+<script>
+(function(){
+  const DOORS_JSON = 'https://adamduce83.github.io/limitless-job-tracker/doors-data.json';
+  const GATES_JSON = 'https://adamduce83.github.io/limitless-fab60/fab60-data.json';
+
+  const DOOR_STEPS = [
+    {name:'Quote Accepted',  icon:'â', desc:"We're preparing your order"},
+    {name:'Order Placed',    icon:'ð¦', desc:'Your door has been ordered from the manufacturer'},
+    {name:'In Production',   icon:'âï¸', desc:'Your door is being manufactured'},
+    {name:'Delivered to Us', icon:'ð¢', desc:'Your door has arrived at our warehouse'},
+    {name:'Installation Scheduled', icon:'ð', desc:'Your installation date is booked'},
+    {name:'Installation Complete',  icon:'â', desc:'Your door has been installed'}
+  ];
+  const GATE_STEPS = [
+    {name:'Order Confirmed',       icon:'â',  desc:'Your gate order has been confirmed'},
+    {name:'Manufacturing Started', icon:'âï¸', desc:'Your gate is being fabricated'},
+    {name:'Mid-Production Check',  icon:'ð', desc:'Quality checkpoint during manufacturing'},
+    {name:'Final Quality Check',   icon:'â', desc:'Final inspection before delivery'},
+    {name:'Ready for Installation',icon:'ðï¸', desc:'Your gate is ready to be installed'}
+  ];
+
+  const DOOR_NEXT = [
+    "Your quote has been accepted and we're preparing your order. We'll be in touch shortly with next steps.",
+    "Your door has been ordered from the manufacturer. Manufacturing typically takes 2â4 weeks depending on the product.",
+    "Your door is currently being manufactured. We'll let you know when it arrives at our warehouse.",
+    "Great news â your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.",
+    "Your installation has been scheduled. Our team will arrive on the scheduled date to complete the installation.",
+    "Your installation is complete! If you have any questions about your new door, don't hesitate to reach out."
+  ];
+  const GATE_NEXT = [
+    "Your gate order has been confirmed and production planning has begun. We'll keep you updated as manufacturing progresses.",
+    "Your gate is now in production. Our fabrication team is working on your custom gate.",
+    "We've reached the mid-production checkpoint. Your gate is progressing well through manufacturing.",
+    "Your gate has passed its final quality inspection and is being prepared for delivery.",
+    "Your gate is ready for installation! Our team will be in touch to arrange the installation date."
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const jobId = params.get('job');
+  if (!jobId) { renderNotFound(); return; }
+
+  Promise.all([
+    fetch(DOORS_JSON).then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch(GATES_JSON).then(r=>r.ok?r.json():null).catch(()=>null)
+  ]).then(([doorsData, gatesData]) => {
+    let job = null, type = null;
+    if (doorsData && doorsData.jobs) {
+      job = doorsData.jobs.find(j => String(j.id) === String(jobId));
+      if (job) type = 'door';
+    }
+    if (!job && gatesData && gatesData.jobs) {
+      job = gatesData.jobs.find(j => String(j.jobNumber) === String(jobId));
+      if (job) type = 'gate';
+    }
+    if (!job) { renderNotFound(); return; }
+
+    // Notify parent iframe
+    try { window.parent.postMessage({event:'job-found', type:type, jobId:jobId}, '*'); } catch(e){}
+
+    if (type === 'door') renderDoor(job);
+    else renderGate(job);
+  }).catch(() => renderNotFound());
+
+  function cleanName(raw) {
+    if (!raw) return '';
+    return raw.replace(/,\s*$/, '').trim();
+  }
+
+  function displayName(raw, jobType) {
+    const cleaned = cleanName(raw);
+    if (!cleaned) return '';
+    // "Last, First" format for doors
+    if (jobType === 'door' && cleaned.includes(',')) {
+      const parts = cleaned.split(',').map(s=>s.trim());
+      const last = parts[0] || '';
+      const first = parts[1] || '';
+      if (first && last) return first + ' ' + last.charAt(0) + '.';
+      return last;
+    }
+    return cleaned;
+  }
+
+  function greetName(raw, jobType) {
+    const cleaned = cleanName(raw);
+    if (!cleaned) return '';
+    if (jobType === 'door' && cleaned.includes(',')) {
+      const parts = cleaned.split(',').map(s=>s.trim());
+      return parts[1] || parts[0]; // first name if available, else last
+    }
+    return cleaned.split(' ')[0];
+  }
+
+  function stepLabel(step, steps) {
+    return (step >= 1 && step <= steps.length) ? steps[step-1].name : 'In Progress';
+  }
+
+  function pct(current, total) {
+    if (current >= total) return 100;
+    return Math.round(((current - 1 + 0.5) / total) * 100);
+  }
+
+  function parseDoorInfo(raw) {
+    if (!raw) return '';
+    const lines = raw.split(/\\n|\n/).filter(l=>l.trim());
+    let html = '';
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+      const colonIdx = trimmed.indexOf(':');
+      if (colonIdx > 0 && colonIdx < 30) {
+        const key = trimmed.slice(0, colonIdx).trim();
+        const val = trimmed.slice(colonIdx+1).trim();
+        if (val) html += '<p><span class="lbl">' + esc(key) + ':</span> ' + esc(val) + '</p>';
+      } else {
+        html += '<p>' + esc(trimmed) + '</p>';
+      }
+    }
+    return html;
+  }
+
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function renderStepper(current, steps) {
+    let html = '<div class="stepper">';
+    for (let i = 0; i < steps.length; i++) {
+      const n = i + 1;
+      let cls = 'step ';
+      if (n < current) cls += 'done';
+      else if (n === current) cls += 'now';
+      else cls += 'soon';
+      html += '<div class="' + cls + '">';
+      if (n === current) html += '<span class="cur-tag">Current</span>';
+      html += '<span class="step-ico">' + (n < current ? 'â' : steps[i].icon) + '</span>';
+      html += '<span class="step-nm">' + esc(steps[i].name) + '</span>';
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function gateCustomerStep(job) {
+    // Map internal data to customer-facing step (1-5)
+    if (!job.milestones) return 1;
+    const m = job.milestones;
+    if (m.DUE && m.DUE.actual) return 5;
+    if (m.CC3 && m.CC3.actual) return 4;
+    if (m.CC2 && m.CC2.actual) return 3;
+    if (m.CC1 && m.CC1.actual) return 2;
+    // Also check stage number as fallback
+    if (job.stage >= 11) return 5;
+    if (job.stage >= 9) return 4;
+    if (job.stage >= 4) return 3;
+    if (job.stage >= 2) return 2;
+    return 1;
+  }
+
+  function renderDoor(job) {
+    const step = job.step || 1;
+    const steps = DOOR_STEPS;
+    const total = steps.length;
+    const percentage = pct(step, total);
+    const name = displayName(job.c, 'door');
+    const greeting = greetName(job.c, 'door');
+    const addr = job.s || '';
+    const date = job.d || '';
+    const eta = job.eta || '';
+
+    let etaLine = '';
+    if (step === 5 && eta) {
+      etaLine = '<p style="margin-top:6px;font-weight:600;color:#2d6a4f">ð Scheduled: ' + esc(eta) + '</p>';
+    }
+
+    document.getElementById('app').innerHTML = `
+      <div class="header">
+        <div class="header-text">
+          <h1>Limitless Garage Doors &amp; Gates</h1>
+          <p>Order Tracking</p>
+        </div>
+      </div>
+      <h2 class="page-title">Track Your Door Installation</h2>
+      <p class="page-subtitle">Follow your garage door order from quote acceptance through to final installation.</p>
+
+      <div class="card">
+        <div class="job-header">
+          <div>
+            <div class="job-lbl">Job Number</div>
+            <div class="job-num">#${esc(String(job.id))}</div>
+            ${addr ? '<div class="job-addr">' + esc(addr) + '</div>' : ''}
+            ${name ? '<div class="job-cust">' + esc(name) + '</div>' : ''}
+            ${date ? '<div class="job-date">Created: ' + esc(date) + '</div>' : ''}
+          </div>
+          <span class="badge">${esc(stepLabel(step, steps))}</span>
+        </div>
+      </div>
+
+      <div class="card accent">
+        <div class="cs-row">
+          <span class="cs-title">Current Step</span>
+          <span class="cs-pct">${percentage}%</span>
+        </div>
+        <div class="cs-desc">${esc(steps[step-1].name)} â ${esc(steps[step-1].desc)}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${percentage}%"></div></div>
+        ${renderStepper(step, steps)}
+      </div>
+
+      <div class="card">
+        <div class="sec-lbl">Door Info</div>
+        <div class="door-info">${parseDoorInfo(job.door)}</div>
+      </div>
+
+      ${job.installer ? `
+      <div class="card">
+        <div class="sec-lbl">Installer</div>
+        <div class="inst-name">${esc(job.installer)}</div>
+      </div>` : ''}
+
+      <div class="card">
+        <div class="sec-lbl">What Happens Next</div>
+        <div class="next-txt">${DOOR_NEXT[step-1] || ''}${etaLine}</div>
+      </div>
+
+      <div class="cta">
+        <div class="cta-left">
+          <span class="cta-ico">ð¬</span>
+          <div>
+            <h3>Got a question about your order?</h3>
+            <p>Send us a message â no need to call!</p>
+          </div>
+        </div>
+        <a href="sms:0488851878" class="cta-btn">ð¬ Text Us</a>
+      </div>
+
+      <div class="footer">
+        <span>Limitless Garage Doors &amp; Gates</span>
+        <span>ABN 84 683 259 264</span>
+        <span>&copy; ${new Date().getFullYear()} All rights reserved.</span>
+      </div>
+    `;
+  }
+
+  function renderGate(job) {
+    const step = gateCustomerStep(job);
+    const steps = GATE_STEPS;
+    const total = steps.length;
+    const percentage = pct(step, total);
+    const name = cleanName(job.customerFirstName);
+    const desc = job.description || '';
+    const suburb = job.suburb || '';
+    const date = job.convertedDate ? formatDate(job.convertedDate) : '';
+    const dueDate = (job.milestones && job.milestones.DUE) ? formatDate(job.milestones.DUE.target) : '';
+
+    document.getElementById('app').innerHTML = `
+      <div class="header">
+        <div class="header-text">
+          <h1>Limitless Garage Doors &amp; Gates</h1>
+          <p>Order Tracking</p>
+        </div>
+      </div>
+      <h2 class="page-title">Track Your Gate Fabrication</h2>
+      <p class="page-subtitle">Follow your custom gate from order confirmation through to installation.</p>
+
+      <div class="card">
+        <div class="job-header">
+          <div>
+            <div class="job-lbl">Job Number</div>
+            <div class="job-num">#${esc(String(job.jobNumber))}</div>
+            ${suburb ? '<div class="job-addr">' + esc(suburb) + '</div>' : ''}
+            ${name ? '<div class="job-cust">' + esc(name) + '</div>' : ''}
+            ${date ? '<div class="job-date">Created: ' + esc(date) + '</div>' : ''}
+          </div>
+          <span class="badge">${esc(stepLabel(step, steps))}</span>
+        </div>
+      </div>
+
+      <div class="card accent">
+        <div class="cs-row">
+          <span class="cs-title">Current Step</span>
+          <span class="cs-pct">${percentage}%</span>
+        </div>
+        <div class="cs-desc">${esc(steps[step-1].name)} â ${esc(steps[step-1].desc)}</div>
+        ${dueDate ? '<p style="font-size:13px;color:#666;margin-bottom:10px">Expected completion: ' + esc(dueDate) + '</p>' : ''}
+        <div class="bar-track"><div class="bar-fill" style="width:${percentage}%"></div></div>
+        ${renderStepper(step, steps)}
+      </div>
+
+      ${desc ? `
+      <div class="card">
+        <div class="sec-lbl">Your Gate</div>
+        <p style="font-size:14px;color:#444">${esc(desc)}</p>
+      </div>` : ''}
+
+      <div class="card">
+        <div class="sec-lbl">What Happens Next</div>
+        <div class="next-txt">${GATE_NEXT[step-1] || ''}</div>
+      </div>
+
+      <div class="cta">
+        <div class="cta-left">
+          <span class="cta-ico">ð¬</span>
+          <div>
+            <h3>Got a question about your order?</h3>
+            <p>Send us a message â no need to call!</p>
+          </div>
+        </div>
+        <a href="sms:0488851878" class="cta-btn">ð¬ Text Us</a>
+      </div>
+
+      <div class="footer">
+        <span>Limitless Garage Doors &amp; Gates</span>
+        <span>ABN 84 683 259 264</span>
+        <span>&copy; ${new Date().getFullYear()} All rights reserved.</span>
+      </div>
+    `;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    // Handle YYYY-MM-DD â DD/MM/YYYY
+    if (dateStr.includes('-')) {
+      const [y,m,d] = dateStr.split('-');
+      return d + '/' + m + '/' + y;
+    }
+    return dateStr;
+  }
+
+  function renderNotFound() {
+    document.getElementById('app').innerHTML = `
+      <div class="header">
+        <div class="header-text">
+          <h1>Limitless Garage Doors &amp; Gates</h1>
+          <p>Order Tracking</p>
+        </div>
+      </div>
+      <div class="notfound">
+        <h2>Job Not Found</h2>
+        <p>We couldn't find an order with that job number. Please double-check the number in your SMS or email and try again.</p>
+        <p style="margin-top:16px">
+          <a href="sms:0488851878" style="color:#2d6a4f;font-weight:600;text-decoration:none">ð¬ Text us for help</a>
+        </p>
+      </div>
+      <div class="footer">
+        <span>Limitless Garage Doors &amp; Gates</span>
+        <span>ABN 84 683 259 264</span>
+        <span>&copy; ${new Date().getFullYear()} All rights reserved.</span>
+      </div>
+    `;
+    try { window.parent.postMessage({event:'job-not-found', jobId:jobId}, '*'); } catch(e){}
+  }
+})();
+</script>
+</body>
+</html>
