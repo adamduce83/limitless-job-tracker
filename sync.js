@@ -438,6 +438,15 @@ async function main() {
 
   fs.writeFileSync(htmlPath, html, 'utf8');
   console.log('  index.html updated');
+
+  // Also write doors-data.json for the unified /track/ page
+  const dataPath = path.join(__dirname, 'doors-data.json');
+  fs.writeFileSync(dataPath, JSON.stringify({
+    lastUpdated: new Date().toISOString(),
+    totalJobs: trackerJobs.length,
+    jobs: trackerJobs
+  }, null, 2), 'utf8');
+  console.log('  doors-data.json updated');
   console.log(`  ${trackerJobs.length} jobs written`);
   console.log('');
 }
