@@ -81,26 +81,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   const GATES_JSON = 'https://adamduce83.github.io/limitless-fab60/fab60-data.json';
 
   const DOOR_STEPS = [
-    {name:'Quote Accepted',  icon:'â', desc:"We're preparing your order"},
-    {name:'Order Placed',    icon:'ð¦', desc:'Your door has been ordered from the manufacturer'},
-    {name:'In Production',   icon:'âï¸', desc:'Your door is being manufactured'},
-    {name:'Delivered to Us', icon:'ð¢', desc:'Your door has arrived at our warehouse'},
-    {name:'Installation Scheduled', icon:'ð', desc:'Your installation date is booked'},
-    {name:'Installation Complete',  icon:'â', desc:'Your door has been installed'}
+    {name:'Quote Accepted',  icon:'&#x2713;', desc:"We're preparing your order"},
+    {name:'Order Placed',    icon:'&#x1F4E6;', desc:'Your door has been ordered from the manufacturer'},
+    {name:'In Production',   icon:'&#x2699;&#xFE0F;', desc:'Your door is being manufactured'},
+    {name:'Delivered to Us', icon:'&#x1F3E2;', desc:'Your door has arrived at our warehouse'},
+    {name:'Installation Scheduled', icon:'&#x1F4C5;', desc:'Your installation date is booked'},
+    {name:'Installation Complete',  icon:'&#x2705;', desc:'Your door has been installed'}
   ];
   const GATE_STEPS = [
-    {name:'Order Confirmed',       icon:'â',  desc:'Your gate order has been confirmed'},
-    {name:'Manufacturing Started', icon:'âï¸', desc:'Your gate is being fabricated'},
-    {name:'Mid-Production Check',  icon:'ð', desc:'Quality checkpoint during manufacturing'},
-    {name:'Final Quality Check',   icon:'â', desc:'Final inspection before delivery'},
-    {name:'Ready for Installation',icon:'ðï¸', desc:'Your gate is ready to be installed'}
+    {name:'Order Confirmed',       icon:'&#x2713;',  desc:'Your gate order has been confirmed'},
+    {name:'Manufacturing Started', icon:'&#x2699;&#xFE0F;', desc:'Your gate is being fabricated'},
+    {name:'Mid-Production Check',  icon:'&#x1F50D;', desc:'Quality checkpoint during manufacturing'},
+    {name:'Final Quality Check',   icon:'&#x2705;', desc:'Final inspection before delivery'},
+    {name:'Ready for Installation',icon:'&#x1F3D7;&#xFE0F;', desc:'Your gate is ready to be installed'}
   ];
 
   const DOOR_NEXT = [
     "Your quote has been accepted and we're preparing your order. We'll be in touch shortly with next steps.",
-    "Your door has been ordered from the manufacturer. Manufacturing typically takes 2â4 weeks depending on the product.",
+    "Your door has been ordered from the manufacturer. Manufacturing typically takes 2&ndash;4 weeks depending on the product.",
     "Your door is currently being manufactured. We'll let you know when it arrives at our warehouse.",
-    "Great news â your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.",
+    "Great news &mdash; your door has arrived at our warehouse! We're preparing for installation and will be in touch shortly to schedule your installation date.",
     "Your installation has been scheduled. Our team will arrive on the scheduled date to complete the installation.",
     "Your installation is complete! If you have any questions about your new door, don't hesitate to reach out."
   ];
@@ -211,7 +211,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       else cls += 'soon';
       html += '<div class="' + cls + '">';
       if (n === current) html += '<span class="cur-tag">Current</span>';
-      html += '<span class="step-ico">' + (n < current ? 'â' : steps[i].icon) + '</span>';
+      html += '<span class="step-ico">' + (n < current ? '&#x2713;' : steps[i].icon) + '</span>';
       html += '<span class="step-nm">' + esc(steps[i].name) + '</span>';
       html += '</div>';
     }
@@ -248,7 +248,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     let etaLine = '';
     if (step === 5 && eta) {
-      etaLine = '<p style="margin-top:6px;font-weight:600;color:#2d6a4f">ð Scheduled: ' + esc(eta) + '</p>';
+      etaLine = '<p style="margin-top:6px;font-weight:600;color:#2d6a4f">&#x1F4C5; Scheduled: ' + esc(eta) + '</p>';
     }
 
     document.getElementById('app').innerHTML = `
@@ -279,7 +279,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <span class="cs-title">Current Step</span>
           <span class="cs-pct">${percentage}%</span>
         </div>
-        <div class="cs-desc">${esc(steps[step-1].name)} â ${esc(steps[step-1].desc)}</div>
+        <div class="cs-desc">${esc(steps[step-1].name)} &mdash; ${esc(steps[step-1].desc)}</div>
         <div class="bar-track"><div class="bar-fill" style="width:${percentage}%"></div></div>
         ${renderStepper(step, steps)}
       </div>
@@ -302,13 +302,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
       <div class="cta">
         <div class="cta-left">
-          <span class="cta-ico">ð¬</span>
+          <span class="cta-ico">&#x1F4AC;</span>
           <div>
             <h3>Got a question about your order?</h3>
-            <p>Send us a message â no need to call!</p>
+            <p>Send us a message &mdash; no need to call!</p>
           </div>
         </div>
-        <a href="sms:0488851878" class="cta-btn">ð¬ Text Us</a>
+        <a href="sms:0488851878" class="cta-btn">&#x1F4AC; Text Us</a>
       </div>
 
       <div class="footer">
@@ -358,7 +358,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <span class="cs-title">Current Step</span>
           <span class="cs-pct">${percentage}%</span>
         </div>
-        <div class="cs-desc">${esc(steps[step-1].name)} â ${esc(steps[step-1].desc)}</div>
+        <div class="cs-desc">${esc(steps[step-1].name)} &mdash; ${esc(steps[step-1].desc)}</div>
         ${dueDate ? '<p style="font-size:13px;color:#666;margin-bottom:10px">Expected completion: ' + esc(dueDate) + '</p>' : ''}
         <div class="bar-track"><div class="bar-fill" style="width:${percentage}%"></div></div>
         ${renderStepper(step, steps)}
@@ -377,13 +377,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
       <div class="cta">
         <div class="cta-left">
-          <span class="cta-ico">ð¬</span>
+          <span class="cta-ico">&#x1F4AC;</span>
           <div>
             <h3>Got a question about your order?</h3>
-            <p>Send us a message â no need to call!</p>
+            <p>Send us a message &mdash; no need to call!</p>
           </div>
         </div>
-        <a href="sms:0488851878" class="cta-btn">ð¬ Text Us</a>
+        <a href="sms:0488851878" class="cta-btn">&#x1F4AC; Text Us</a>
       </div>
 
       <div class="footer">
@@ -396,7 +396,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   function formatDate(dateStr) {
     if (!dateStr) return '';
-    // Handle YYYY-MM-DD â DD/MM/YYYY
+    // Handle YYYY-MM-DD to DD/MM/YYYY
     if (dateStr.includes('-')) {
       const [y,m,d] = dateStr.split('-');
       return d + '/' + m + '/' + y;
@@ -416,7 +416,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <h2>Job Not Found</h2>
         <p>We couldn't find an order with that job number. Please double-check the number in your SMS or email and try again.</p>
         <p style="margin-top:16px">
-          <a href="sms:0488851878" style="color:#2d6a4f;font-weight:600;text-decoration:none">ð¬ Text us for help</a>
+          <a href="sms:0488851878" style="color:#2d6a4f;font-weight:600;text-decoration:none">&#x1F4AC; Text us for help</a>
         </p>
       </div>
       <div class="footer">
