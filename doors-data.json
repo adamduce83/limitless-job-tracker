@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-20T11:07:56.753Z",
-  "totalJobs": 131,
+  "lastUpdated": "2026-07-21T05:21:53.800Z",
+  "totalJobs": 132,
   "jobs": [
     {
       "id": 125449,
@@ -68,7 +68,7 @@
       "c": "Campbell Construction Co PTY LTD",
       "s": "2 Banyula Drive, Torrington, QLD, 4350",
       "d": "06/07/2026",
-      "step": 4,
+      "step": 5,
       "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2490(w)\nMotor: No\n \nSubject to site measure & inspection date: 06/07/2026\nRemove & dispose of existing door",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
@@ -178,9 +178,10 @@
       "c": "Urbane Build",
       "s": "25 Wirra Wirra Street, Mount Lofty, QLD, 4350",
       "d": "04/06/2026",
-      "step": 1,
+      "step": 4,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI Classic \nStyle: Nullabor\nColour: Dover White\nSize: 2400(h) x 4880(w)\n\nSupply & Install\nPremium Panel Door Motor\nBrand: B&D \nModel: CSI Classic Pro Series\n2x remotes & 1x wall button\n3 Yrs warranty\nPowerpoint: By Others / Existing\n \nPrice is for standard install \nNoggin Detail Attached",
       "t": "b",
+      "eta": "20/07/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -214,33 +215,11 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 124583,
-      "c": "Wymer, Danusha",
-      "s": "Lot 57 Barracks Road, Highfields, QLD, 4352",
-      "d": "18/05/2026",
-      "step": 1,
-      "door": "",
-      "t": "r",
-      "eta": "21/07/2026",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 124518,
-      "c": "Ambrose Construct Group",
-      "s": "1&2/285 Alderley Street South Toowoomba QLD 4350",
-      "d": "12/05/2026",
-      "step": 4,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: Centurion\nStyle: Mediterranean\nColour: Classic Cream\nSize: 2110(h) x 4910(w)\nMotor: Yes\n \nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others",
-      "t": "b",
-      "eta": "10/06/2026",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 124468,
       "c": "Ambrose Construct Group",
       "s": "10 Lookout Place, Rosenthal Heights",
       "d": "08/05/2026",
-      "step": 3,
+      "step": 4,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D\nStyle: Seville \nColour: Pale Eucalypt\nSize: 2110(h) x 4850(w)\nMotor: Use existing\n \nRemove & dispose of existing panel/s",
       "t": "b",
       "eta": "21/07/2026",
@@ -264,6 +243,7 @@
       "step": 4,
       "door": "Supply & Install \nGenuine Therma-Door \nDoor Size: 3300h x 6070w",
       "t": "b",
+      "eta": "10/07/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -315,17 +295,6 @@
       "step": 1,
       "door": "Supply & Install\n3 x Steel Sectional Door\nBrand: Gliderol\nStyle: Hampton\nWindows: Traditional \nColour: Monument\n2 x Size: 3000 (h) x 2700 (w) - windows \n1 x Size: 2700 (h) x 2700 (w) - no windows\nMotor: Yes\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n3 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\nBeams and MyQ - Added after initial QT)",
       "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 123827,
-      "c": " DJL Building Group",
-      "s": "Clifton, QLD, 4361",
-      "d": "17/03/2026",
-      "step": 4,
-      "door": "",
-      "t": "b",
-      "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -427,6 +396,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door - Curtain Kit\nBrand: Gliderol\nStyle: Seville\nColour: Monor Red\nSize: 2085(h) x 5155(w)\nMotor: Yes\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 14/05/2026\nRemove & dispose of existing panels\nMotor Jarred on Impact - non repairable, replacement required\nIncludes make safe repairs",
       "t": "r",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "08/07/2026",
       "paidDate": "06/07/2026",
@@ -451,6 +421,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: Gliderol\nStyle: Hampton \nColour: Night Sky\nSize: 2105(h) x 5240(w)\nMotor: Yes\n\nSite measure & inspection date: 06/07/2026\nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "r",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "06/07/2026",
       "paidDate": "06/07/2026",
@@ -494,6 +465,19 @@
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "05/07/2026",
       "paidDate": "08/07/2026"
+    },
+    {
+      "id": 125326,
+      "c": "Martin, Stevie",
+      "s": "On file",
+      "d": "05/07/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door - 2 Bottom Panels\nBrand: Steel-Line\nStyle: Slimline\nColour: Surfmist\nSize: 2100(h) x 2740(w)\nMotor: Use existing\n\nSite measure & inspection date: 01/06/2026\n \nRemove & dispose of existing panels\n\nCheaper to install entire curtain - $1697",
+      "t": "r",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "05/07/2026",
+      "paidDate": "22/06/2026",
+      "dep": 100
     },
     {
       "id": 125302,
@@ -596,7 +580,6 @@
       "step": 6,
       "door": "Supply & Install\n2 x Colorbond \"B\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"B\"\nColour: Dune\nDoor 1 Size: 2700(h) x 3430(w) LH Chain\nDoor 2 Size: 3300(h) x 3750(w) Loose Chain\nChain Driven\nMotor: 1 new motor, 1 re-use existing\n \nSupply & Install\n1 x Premium Industrial Roller Door Motor\nBrand: Grifco\nModel: LR Drive\n2x remotes & 1x wall button\n3Yrs warranty\nPowerpoint: By Others\n \nLifting Gear By DDGDG\nMan Cage \nFork Lift \nScissor\nSite measure & inspection date: 24/06/2026\nRemove & dispose of existing doors",
       "t": "b",
-      "eta": "20/07/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "29/06/2026",
       "paidDate": "01/07/2026"
@@ -623,6 +606,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door - 1 Bottom Panel + 1 x Mid Panel \nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize: Panel size 600(h) x 4880(w)\nOverall Door height 2400h\nMotor: Use existing\n\nSite measure & inspection date: 04/06/2026\n \nRemove & dispose of existing panels\n \nIf there has been impact to this door it might be worth looking at insurance options \nIt can be more economical once its more than one panel to replace the whole curtain",
       "t": "b",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "29/06/2026"
     },
@@ -685,6 +669,7 @@
       "step": 6,
       "door": "Supply & Install\n2 x Colorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nSize: 2100h x 2740w\nColour: Night Sky\nMotor:  No\n \nRemove & dispose of existing doors",
       "t": "r",
+      "eta": "27/07/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "24/06/2026",
       "paidDate": "24/06/2026",
@@ -722,6 +707,7 @@
       "step": 6,
       "door": "Supply & Install\nColorbond \"B\" Series Roller Door\nBrand: Gliderol\nModel: Series \"B\"\nColour: Paperbark\nSize: 3600(h) x 3000(w)\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Griffco\n\nRemove & dispose of existing door",
       "t": "b",
+      "eta": "30/07/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "22/06/2026",
       "paidDate": "25/06/2026"
@@ -773,6 +759,7 @@
       "step": 6,
       "door": "Supply & Install\nColorbond \"B\" Series Roller Door\nBrand: Gliderol\nModel: Series \"B\"\nColour: Gully (Closest Match - existing not available anymore)\nSize: 3640(h) x 5080(w)\nMotor: Optional - details below\nChain Drive: Left side (ISLO)\n \nIncludes Lifting equipment to site by DDGDG\n \nSupply & Install $1450 Additional\nPremium Roller Door Motor\nBrand: Grifco\nModel: LD Drive\n2 x remotes & 1x wall button\n3 Yrs warranty\nPowerpoint: By Others\n\nSite measure & inspection date: 12/06/2026\nRemove & dispose of existing door",
       "t": "b",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "17/06/2026",
       "paidDate": "25/06/2026"
@@ -849,6 +836,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: Gliderol\nStyle: Madison\nColour: Surfmist\nSize: 1930(h) x 2320(w)\nMotor: Yes\nLow Head Room Tracks\n\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: By Others\n \nSite measure & inspection date: 03/06/2026",
       "t": "b",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "15/06/2026",
       "paidDate": "15/06/2026"
@@ -887,6 +875,7 @@
       "step": 6,
       "door": "Supply & Install\n2 x Steel Sectional Doors\nBrand: Gliderol\nStyle: Madison\nColour: Woodland Grey\nDoor 1 Size: 2250(h) x 3540(w)\nDoor 2 Size: 2050(h) x 1760(w)\nMotor: Yes - with MyQ Package\nSupply & Install\n2 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: Existing\n2 x Includes Beams Installed \n1 x MyQ App Control\n\nNote the smallest Panel Door width available is 1751mm - so opening size would need to be 1680mm\nNoggin Details attached for builder preparing the openings",
       "t": "r",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "24/06/2026",
       "paidDate": "15/06/2026",
@@ -963,6 +952,7 @@
       "step": 6,
       "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Hampton\nColour: Classic Cream\nSize: 1900(h) x 2600(w)\nLow Head Room Tracks: Yes\n\nSupply & Install\n2 x Panel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: By Others\n \nWorks To Prepare Opening\nBuild down head 200mm to allow for panel door - finished height will be 1900h approx\nComplex Install",
       "t": "r",
+      "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "08/06/2026",
       "paidDate": "11/06/2026",
@@ -1160,6 +1150,18 @@
       "paidDate": "21/04/2026"
     },
     {
+      "id": 124583,
+      "c": "Wymer, Danusha",
+      "s": "On file",
+      "d": "18/05/2026",
+      "step": 6,
+      "door": "",
+      "t": "r",
+      "eta": "21/07/2026",
+      "installer": "Peewee, Eddie, Brian",
+      "dep": 0
+    },
+    {
       "id": 124549,
       "c": " DJL Building Group",
       "s": "On file",
@@ -1183,6 +1185,17 @@
       "invoiceDate": "20/05/2026",
       "paidDate": "08/06/2026",
       "dep": 100
+    },
+    {
+      "id": 124518,
+      "c": "Ambrose Construct Group",
+      "s": "On file",
+      "d": "12/05/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: Centurion\nStyle: Mediterranean\nColour: Classic Cream\nSize: 2110(h) x 4910(w)\nMotor: Yes\n \nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others",
+      "t": "b",
+      "eta": "10/06/2026",
+      "installer": "Peewee, Eddie, Brian"
     },
     {
       "id": 124505,
@@ -1281,7 +1294,7 @@
       "step": 6,
       "door": "Supply & Install\nColorbond Panel Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Deep Ocean\nSize: 2160(h) x 5510(w)\nMotor: yes\nSteel Wrapped\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nWorks to Prepare Opening - as necessary\nRemove Existing Doors \nModify head\nRemove Centre Pillar\nProp, Prepare Install engineered head beam\nReframe sides, jack and prop studs\nFabricate Steel Brackets and attach to existing structure\nRemove & Replace eaves sheets as needed\nInstall timber noggins to support new track & motor setup\nInstall timber Jambs & Head\n\nSite measure & inspection date: Complete\nRemove & dispose of existing doors",
       "t": "r",
-      "eta": "11/06/2026",
+      "eta": "13/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "21/04/2026",
       "paidDate": "20/04/2026",
@@ -1460,6 +1473,17 @@
       "paidDate": "24/03/2026"
     },
     {
+      "id": 123827,
+      "c": " DJL Building Group",
+      "s": "On file",
+      "d": "17/03/2026",
+      "step": 6,
+      "door": "Supply & Install\n2 x Zinc \"B\" Series Roller Door\nBrand: Gliderol\nModel: Series \"B\"\nColour: Zinc\nSize: 4800(h) x 5100(w)\nLH Chain Drive\nWind Locking: Yes\n \nSupply & Install\n3 x Colorbond \"A\" Series Roller Door\nBrand: Gliderol\nModel: Series \"A\"\nColour: Cottage Green \nSize: 2500(h) x 2700(w)\nMotor: No",
+      "t": "b",
+      "eta": "16/07/2026",
+      "installer": "Peewee, Eddie, Brian"
+    },
+    {
       "id": 123761,
       "c": "Johns Lyng Group",
       "s": "On file",
@@ -1541,6 +1565,7 @@
       "step": 6,
       "door": "",
       "t": "b",
+      "eta": "02/04/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "12/05/2026",
       "paidDate": "02/06/2026"
