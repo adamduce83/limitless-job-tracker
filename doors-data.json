@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-24T07:29:35.190Z",
+  "lastUpdated": "2026-07-28T05:15:10.399Z",
   "totalJobs": 128,
   "jobs": [
     {
@@ -27,7 +27,7 @@
       "c": "Swish Design Construct",
       "s": "Lot 6 MONTHAVEN ST, Mt Rascal",
       "d": "08/07/2026",
-      "step": 3,
+      "step": 4,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI \nStyle: Nullabor\nColour: Dover White\nSize: 2250(h) x 4990(w)\nMotor: Yes\nSite measure & inspection date: \n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "b",
       "eta": "28/07/2026",
@@ -154,17 +154,6 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 124866,
-      "c": "Urbane Build",
-      "s": "25 Wirra Wirra Street, Mount Lofty, QLD, 4350",
-      "d": "04/06/2026",
-      "step": 4,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI Classic \nStyle: Nullabor\nColour: Dover White\nSize: 2400(h) x 4880(w)\n\nSupply & Install\nPremium Panel Door Motor\nBrand: B&D \nModel: CSI Classic Pro Series\n2x remotes & 1x wall button\n3 Yrs warranty\nPowerpoint: By Others / Existing\n \nPrice is for standard install \nNoggin Detail Attached",
-      "t": "b",
-      "eta": "20/07/2026",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 124808,
       "c": " DJL Building Group",
       "s": "552 Blackwell Road, Captains Mountain, QLD, 4357",
@@ -262,7 +251,7 @@
       "s": "347 Rowbotham Street, Middle Ridge, QLD, 4350",
       "d": "31/03/2026",
       "step": 2,
-      "door": "Supply & Install\n3 x Steel Sectional Door\nBrand: Gliderol\nStyle: Hampton\nWindows: Traditional \nColour: Monument\n2 x Size: 3000 (h) x 2700 (w) - windows \n1 x Size: 2700 (h) x 2700 (w) - no windows\nMotor: Yes\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n3 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\nBeams and MyQ - Added after initial QT)",
+      "door": "Supply & Install\n3 x Steel Sectional Door\nBrand: Gliderol\nStyle: Hampton\nWindows: Traditional Hampton\nColour: Monument\n\nDoor 1: 2720(h) x 2780(w) - No Windows\nDoor 2: 3020(h) x 2780(w) - Windows \nDoor 2: 3020(h) x 2780(w) - Windows\nMotor: Yes\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n3 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\nBeams and MyQ - Added after initial QT)",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
     },
@@ -434,8 +423,7 @@
       "t": "b",
       "eta": "23/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "05/07/2026",
-      "paidDate": "08/07/2026"
+      "invoiceDate": "28/07/2026"
     },
     {
       "id": 125326,
@@ -718,7 +706,8 @@
       "t": "b",
       "eta": "03/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "16/07/2026"
+      "invoiceDate": "16/07/2026",
+      "paidDate": "27/07/2026"
     },
     {
       "id": 125034,
@@ -924,7 +913,8 @@
       "door": "Supply & Install\n2 x Colorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Deep Ocean \nSize: 2100(h) x 2650(w)\nMotor: No\n \nRemove & dispose of existing doors",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "16/07/2026"
+      "invoiceDate": "16/07/2026",
+      "paidDate": "27/07/2026"
     },
     {
       "id": 124897,
@@ -949,7 +939,20 @@
       "t": "b",
       "eta": "15/06/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "25/06/2026"
+      "invoiceDate": "25/06/2026",
+      "paidDate": "27/07/2026"
+    },
+    {
+      "id": 124866,
+      "c": "Urbane Build",
+      "s": "On file",
+      "d": "04/06/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI Classic \nStyle: Nullabor\nColour: Dover White\nSize: 2400(h) x 4880(w)\n\nSupply & Install\nPremium Panel Door Motor\nBrand: B&D \nModel: CSI Classic Pro Series\n2x remotes & 1x wall button\n3 Yrs warranty\nPowerpoint: By Others / Existing\n \nPrice is for standard install \nNoggin Detail Attached",
+      "t": "b",
+      "eta": "20/07/2026",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "27/07/2026"
     },
     {
       "id": 124858,
@@ -1097,7 +1100,8 @@
       "door": "Supply & Install\n2 x Colorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Zinc\nSize: 2400(h) x 2750(w)\nMotor: No\n \nRemove & dispose of existing doors",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "14/07/2026"
+      "invoiceDate": "14/07/2026",
+      "paidDate": "27/07/2026"
     },
     {
       "id": 124547,
@@ -1187,8 +1191,7 @@
       "t": "b",
       "eta": "21/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "22/05/2026",
-      "paidDate": "12/05/2026"
+      "invoiceDate": "27/07/2026"
     },
     {
       "id": 124425,
@@ -1343,6 +1346,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: Steel-Line\nStyle: Heritage\nColour: Dover White\nSize: 2270(h) x 3190(w) is correct size\nInstall notes: 150 c-purlins on both side of opening\nMotor: Yes - Merlin Essential \nIncludes Build out to accommodate PD tracks",
       "t": "r",
+      "eta": "02/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "31/03/2026",
       "paidDate": "02/04/2026",
