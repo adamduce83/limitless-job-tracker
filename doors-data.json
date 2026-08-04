@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-31T07:49:14.950Z",
-  "totalJobs": 122,
+  "lastUpdated": "2026-08-04T05:14:21.512Z",
+  "totalJobs": 120,
   "jobs": [
     {
       "id": 125449,
@@ -30,17 +30,7 @@
       "step": 1,
       "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI\nStyle: Seville\nColour: Timbagrain - Classic Cedar\nSize: 2105(h) x 4880(w)\nMotor: Yes\nBuilder: Campbell Construction\n2 Rosella\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: Existing",
       "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 125399,
-      "c": "Swish Design Construct",
-      "s": "Lot 6 MONTHAVEN ST, Mt Rascal",
-      "d": "08/07/2026",
-      "step": 4,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI \nStyle: Nullabor\nColour: Dover White\nSize: 2250(h) x 4990(w)\nMotor: Yes\nSite measure & inspection date: \n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
-      "t": "b",
-      "eta": "28/07/2026",
+      "eta": "11/08/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -101,6 +91,7 @@
       "step": 1,
       "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2745(w)\nMotor: Manual\n\nSite measure & inspection date: 01/07/2026\nRemove & dispose of existing door",
       "t": "b",
+      "eta": "10/08/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -134,16 +125,6 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 124808,
-      "c": " DJL Building Group",
-      "s": "552 Blackwell Road, Captains Mountain, QLD, 4357",
-      "d": "01/06/2026",
-      "step": 1,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: \nModel: Series \"A\"\nColour: \nSize: (h) x (w)\nMotor: Use existing\n \nRemove & dispose of existing door",
-      "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 124796,
       "c": "Andrew Coonan Builder",
       "s": "Supply Only, Toowoomba, QLD, 4350",
@@ -161,17 +142,6 @@
       "step": 1,
       "door": "Supply & Install\nCustom Fabricated Tilt Door\nCladding - Best Match neighbouring doors\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: B&D J Fittings\nColour: Classic Cream\nSize: 2195(h) x 3050(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
       "t": "r",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 124468,
-      "c": "Ambrose Construct Group",
-      "s": "10 Lookout Place, Rosenthal Heights",
-      "d": "08/05/2026",
-      "step": 4,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D\nStyle: Seville \nColour: Pale Eucalypt\nSize: 2110(h) x 4850(w)\nMotor: Use existing\n \nRemove & dispose of existing panel/s",
-      "t": "b",
-      "eta": "21/07/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -289,11 +259,23 @@
       "s": "On file",
       "d": "09/07/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 18/05/2026\nRemove & dispose of existing door",
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install -Invoiced directly to owner\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 18/05/2026\nRemove & dispose of existing door",
       "t": "b",
       "eta": "27/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "09/07/2026"
+      "invoiceDate": "04/08/2026"
+    },
+    {
+      "id": 125399,
+      "c": "Swish Design Construct",
+      "s": "On file",
+      "d": "08/07/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI \nStyle: Nullabor\nColour: Dover White\nSize: 2250(h) x 4990(w)\nMotor: Yes\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: By Others\n \nRemotes held at Limitless Office",
+      "t": "b",
+      "eta": "28/07/2026",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "03/08/2026"
     },
     {
       "id": 125395,
@@ -369,9 +351,8 @@
       "t": "r",
       "eta": "20/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "06/07/2026",
-      "paidDate": "09/07/2026",
-      "dep": 100
+      "invoiceDate": "03/08/2026",
+      "dep": 50
     },
     {
       "id": 125327,
@@ -416,12 +397,12 @@
       "s": "On file",
       "d": "02/07/2026",
       "step": 6,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: Gliderol\nStyle: Oxford\nColour: Classic Cream \nSize: 2100(h) x 5930(w)\nMotor: Yes\n\nSite measure & inspection date: 27/05/2026\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite\n3 x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
+      "door": "",
       "t": "r",
       "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "03/07/2026",
-      "paidDate": "03/07/2026",
+      "invoiceDate": "01/08/2026",
+      "paidDate": "31/07/2026",
       "dep": 100
     },
     {
@@ -614,9 +595,8 @@
       "door": "Supply & Install\nKool Door Insulation\n \nIncludes all required adjustments to door following additional weight",
       "t": "r",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "21/06/2026",
-      "paidDate": "18/06/2026",
-      "dep": 100
+      "invoiceDate": "03/08/2026",
+      "dep": 50
     },
     {
       "id": 125054,
@@ -727,8 +707,7 @@
       "t": "b",
       "eta": "28/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "11/06/2026",
-      "paidDate": "18/06/2026"
+      "invoiceDate": "04/08/2026"
     },
     {
       "id": 124986,
@@ -792,6 +771,7 @@
       "step": 6,
       "door": "Supply & Install\nSteel Sectional Door - Bottom Panel\nBrand: Steel-Line\nStyle: Photo attached ? 3 planks per section\nColour: Dune\nSize: 535 x 4880(w) - total door height 2115h\nMotor: Optional \n\nSite measure & inspection date: 29/05/2026\n \nRemove & dispose of existing panel\n\nSupply & Install - Additional $780\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\nUpgrades Available - please see attached",
       "t": "r",
+      "eta": "10/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "10/06/2026",
       "paidDate": "09/06/2026",
@@ -1024,18 +1004,6 @@
       "paidDate": "21/04/2026"
     },
     {
-      "id": 124583,
-      "c": "Wymer, Danusha",
-      "s": "On file",
-      "d": "18/05/2026",
-      "step": 6,
-      "door": "",
-      "t": "r",
-      "eta": "21/07/2026",
-      "installer": "Peewee, Eddie, Brian",
-      "dep": 0
-    },
-    {
       "id": 124549,
       "c": " DJL Building Group",
       "s": "On file",
@@ -1099,6 +1067,17 @@
       "invoiceDate": "23/07/2026",
       "paidDate": "23/07/2026",
       "dep": 100
+    },
+    {
+      "id": 124468,
+      "c": "Ambrose Construct Group",
+      "s": "On file",
+      "d": "08/05/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D\nStyle: Seville \nColour: Pale Eucalypt\nSize: 2110(h) x 4850(w)\nMotor: Use existing\n \nRemove & dispose of existing panel/s",
+      "t": "b",
+      "eta": "21/07/2026",
+      "installer": "Peewee, Eddie, Brian"
     },
     {
       "id": 124448,
