@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-07T06:08:48.449Z",
-  "totalJobs": 119,
+  "lastUpdated": "2026-08-11T03:42:39.701Z",
+  "totalJobs": 118,
   "jobs": [
     {
       "id": 125449,
@@ -78,7 +78,7 @@
       "c": "Ambrose Construct Group",
       "s": "6 Diana Parade, Clifton, QLD, 4361",
       "d": "25/06/2026",
-      "step": 1,
+      "step": 4,
       "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2745(w)\nMotor: Manual\n\nSite measure & inspection date: 01/07/2026\nRemove & dispose of existing door",
       "t": "b",
       "eta": "10/08/2026",
@@ -89,7 +89,7 @@
       "c": "McGovern, Brett",
       "s": "87 Bowen Street, Goondiwindi, QLD, 4390",
       "d": "24/06/2026",
-      "step": 1,
+      "step": 5,
       "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: \nModel: Series \"A\"\nColour: \nSize: (h) x (w)\nMotor: Yes/ No/ Use existing\n \nRemove & dispose of existing door\n\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "r",
       "installer": "Peewee, Eddie, Brian"
@@ -224,7 +224,7 @@
       "s": "On file",
       "d": "13/07/2026",
       "step": 6,
-      "door": "Supply & Install\nBarge Capping to Gable \n500mm Approx 6m wide \nIncludes Scissor lift to site + travel to measure and install at second trip.",
+      "door": "Supply & Install\nBarge Capping to Gable \n500mm Approx 6m wide \nIncludes Scissor lift to site + travel to measure and install at second trip",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "24/07/2026"
@@ -235,13 +235,12 @@
       "s": "On file",
       "d": "13/07/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line \nModel: Series \"A\"\nColour: Woodland Grey\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others \n(Can arrange Sparky on your behalf - invoiced separately)\n \nSite measure & inspection date: 17/04/2026\nRemove & dispose of existing door\nMotor options attached ('PLUS' included in quote)",
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line \nModel: Series \"A\"\nColour: Woodland Grey\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others \n \nSite measure & inspection date: 17/04/2026",
       "t": "r",
       "eta": "30/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "15/07/2026",
-      "paidDate": "13/07/2026",
-      "dep": 100
+      "invoiceDate": "10/08/2026",
+      "dep": 50
     },
     {
       "id": 125415,
@@ -310,7 +309,7 @@
       "s": "On file",
       "d": "06/07/2026",
       "step": 6,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: Gliderol\nStyle: Hampton \nColour: Night Sky\nSize: 2105(h) x 5240(w)\nMotor: Yes\n\nSite measure & inspection date: 06/07/2026\nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
+      "door": "Supply & Install\nSteel Sectional Door - Low Headroom\nBrand: Gliderol\nStyle: Hampton \nColour: Night Sky\nSize: 2120(h) x 5240(w)\nMotor: Yes\n\nSite measure & inspection date: 06/07/2026\nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "r",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
@@ -520,8 +519,7 @@
       "t": "b",
       "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "24/06/2026",
-      "paidDate": "26/06/2026"
+      "invoiceDate": "10/08/2026"
     },
     {
       "id": 125161,
@@ -603,9 +601,10 @@
       "s": "On file",
       "d": "17/06/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: TBC\nSize: 2350(h) x 2470(w)\nMotor: No\n \nSupply & Install $880\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing\nUpgrade to Elite Motor additional $100\n\nExtras Available at time of install\nKeyPad $165\nBatter Back Up $175 (with elite only)\nExtra Remotes $77\nMerlin MyQ App control with Beams $550\n\nSite measure & inspection date: insert date\nRemove & dispose of existing door",
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Woodland Grey\nSize: 2400(h) x 2290(w)\nMotor: No\n \nSupply & Install $880\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n\nSite measure & inspection date: insert date\nRemove & dispose of existing door",
       "t": "b",
-      "installer": "Peewee, Eddie, Brian"
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "10/08/2026"
     },
     {
       "id": 125052,
@@ -613,7 +612,7 @@
       "s": "On file",
       "d": "17/06/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"B\" Series Roller Door\nBrand: Gliderol\nModel: Series \"B\"\nColour: Gully (Closest Match - existing not available anymore)\nSize: 3640(h) x 5080(w)\nMotor: Optional - details below\nChain Drive: Left side (ISLO)\n \nIncludes Lifting equipment to site by DDGDG\n \nSupply & Install $1450 Additional\nPremium Roller Door Motor\nBrand: Grifco\nModel: LD Drive\n2 x remotes & 1x wall button\n3 Yrs warranty\nPowerpoint: By Others\n\nSite measure & inspection date: 12/06/2026\nRemove & dispose of existing door",
+      "door": "Supply & Install\nColorbond \"B\" Series Roller Door\nBrand: Gliderol\nModel: Series \"B\"\nColour: Gully (Closest Match - existing not available anymore)\nSize: 3640(h) x 5080(w)\nMotor: Optional - details below\nChain Drive: Left side (ISLO)\n \nIncludes Lifting equipment to site by DDGDG\n \nSite measure & inspection date: 12/06/2026\nRemove & dispose of existing door",
       "t": "b",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
@@ -728,13 +727,12 @@
       "s": "On file",
       "d": "11/06/2026",
       "step": 6,
-      "door": "Supply & Install\n2 x Steel Sectional Doors\nBrand: Gliderol\nStyle: Madison\nColour: Woodland Grey\nDoor 1 Size: 2250(h) x 3540(w)\nDoor 2 Size: 2060(h) x 1760(w)\nMotor: Yes - with MyQ Package\n\nSupply & Install\n2 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: Existing\n2 x Includes Beams Installed \n1 x MyQ App Control\n\nNote the smallest Panel Door width available is 1751mm - so opening size would need to be 1680mm\nNoggin Details attached for builder preparing the openings.",
+      "door": "Supply & Install\n2 x Steel Sectional Doors\nBrand: Gliderol\nStyle: Madison\nColour: Woodland Grey\nDoor 1 Size: 2250(h) x 3540(w)\nDoor 2 Size: 2060(h) x 1760(w)\nMotor: Yes - with MyQ Package\n\nSupply & Install\n2 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: Existing\n2 x Includes Beams Installed \n1 x MyQ App Control",
       "t": "r",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "24/06/2026",
-      "paidDate": "15/06/2026",
-      "dep": 100
+      "invoiceDate": "10/08/2026",
+      "dep": 50
     },
     {
       "id": 124965,
@@ -875,7 +873,8 @@
       "t": "b",
       "eta": "20/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "27/07/2026"
+      "invoiceDate": "27/07/2026",
+      "paidDate": "10/08/2026"
     },
     {
       "id": 124858,
@@ -1013,19 +1012,6 @@
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "14/07/2026",
       "paidDate": "27/07/2026"
-    },
-    {
-      "id": 124547,
-      "c": "Zhang, Darren",
-      "s": "On file",
-      "d": "13/05/2026",
-      "step": 6,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Classic Cream\nSize:  2100h x 4870w\nMotor: Yes\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 20/05/2026",
-      "t": "r",
-      "eta": "27/08/2026",
-      "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "06/08/2026",
-      "dep": 50
     },
     {
       "id": 124518,
@@ -1238,7 +1224,8 @@
       "t": "b",
       "eta": "18/06/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "07/07/2026"
+      "invoiceDate": "07/07/2026",
+      "paidDate": "07/08/2026"
     },
     {
       "id": 124023,
