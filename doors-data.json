@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-21T05:27:15.678Z",
+  "lastUpdated": "2026-08-25T02:57:11.097Z",
   "totalJobs": 116,
   "jobs": [
     {
@@ -217,7 +217,7 @@
       "s": "On file",
       "d": "09/07/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install -Invoiced directly to owner\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 18/05/2026\nRemove & dispose of existing door",
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: \nModel: Series \"A\"\nColour: \nSize: (h) x (w)\nMotor: Yes/ No/ Use existing\n \nRemove & dispose of existing door\n\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing\nSupply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\nSize: 2100(h) x 2450(w)\nMotor: Yes\n \nSupply & Install -Invoiced directly to owner\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n \nSite measure & inspection date: 18/05/2026\nRemove & dispose of existing door",
       "t": "b",
       "eta": "27/07/2026",
       "installer": "Peewee, Eddie, Brian",
@@ -258,7 +258,8 @@
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "06/08/2026",
-      "dep": 50
+      "paidDate": "24/08/2026",
+      "dep": 100
     },
     {
       "id": 125374,
@@ -282,7 +283,9 @@
       "t": "r",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "dep": 0
+      "invoiceDate": "11/08/2026",
+      "paidDate": "11/08/2026",
+      "dep": 100
     },
     {
       "id": 125353,
@@ -477,7 +480,8 @@
       "t": "b",
       "eta": "27/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "28/07/2026"
+      "invoiceDate": "28/07/2026",
+      "paidDate": "24/08/2026"
     },
     {
       "id": 125163,
@@ -615,7 +619,8 @@
       "eta": "20/07/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "29/07/2026",
-      "dep": 50
+      "paidDate": "20/08/2026",
+      "dep": 100
     },
     {
       "id": 125012,
@@ -1408,7 +1413,7 @@
       "s": "On file",
       "d": "07/02/2026",
       "step": 6,
-      "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize 1: 2240 (h) x 5670 (w)\nSize 2: 3200 (h) x 5070 (w) \nMotor: Yes x 2\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n2 x Panel Door Motor\n1 x Motor to have extension rail\nBrand: Merlin\nModel: Elite (MS105MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nPrice is for standard install \nNoggin Detail Attached",
+      "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize 1: 2220 (h) x 5600 (w) - To Be installed 24/8/2026\nSize 2: 3200 (h) x 5070 (w) \nMotor: Yes x 2\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n2 x Panel Door Motor\n1 x Motor to have extension rail\nBrand: Merlin\nModel: Elite (MS105MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nPrice is for standard install \nNoggin Detail Attached",
       "t": "b",
       "eta": "23/07/2026",
       "installer": "Peewee, Eddie, Brian",
