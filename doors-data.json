@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-25T02:57:11.097Z",
-  "totalJobs": 116,
+  "lastUpdated": "2026-08-28T17:03:16.506Z",
+  "totalJobs": 115,
   "jobs": [
     {
       "id": 125449,
@@ -64,16 +64,6 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 125197,
-      "c": "Horton, Matthew",
-      "s": "1 Leslie Street, Rangeville, QLD, 4350",
-      "d": "26/06/2026",
-      "step": 1,
-      "door": "Supply & Install\nSteel Sectional Door - Curtain Kit \nBrand:\nStyle: \nColour: \nSize: (h) x (w)\nMotor: Yes - No - Use existing\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
-      "t": "r",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 125185,
       "c": "Ambrose Construct Group",
       "s": "6 Diana Parade, Clifton, QLD, 4361",
@@ -119,7 +109,7 @@
       "c": "Vincent, May",
       "s": "8/77 Lindsay Street, East Toowoomba, QLD, 4350",
       "d": "22/05/2026",
-      "step": 1,
+      "step": 5,
       "door": "Supply & Install\nCustom Fabricated Tilt Door\nCladding - Best Match neighbouring doors\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: B&D J Fittings\nColour: Classic Cream\nSize: 2195(h) x 3050(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
       "t": "r",
       "installer": "Peewee, Eddie, Brian"
@@ -135,33 +125,12 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 124351,
-      "c": "Stockman Sheds",
-      "s": "12 Timperley Drive, Highfields, QLD, 4352",
-      "d": "28/04/2026",
-      "step": 4,
-      "door": "Supply & Install \nGenuine Therma-Door \nDoor Size: 3300h x 6070w",
-      "t": "b",
-      "eta": "10/07/2026",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 124269,
       "c": "Ambrose Construct Group",
       "s": "8 Kates Street, Clifton, QLD, 4361",
       "d": "22/04/2026",
       "step": 1,
       "door": "Supply & Install\n3 x Colorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: \nSize: 2100(h) x 2450(w)\nMotor: Not approved but recommend replacement\n \nRemove & dispose of existing doors",
-      "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 124134,
-      "c": "Aizer Group",
-      "s": "39 Highland Street, Esk, QLD, 4312",
-      "d": "13/04/2026",
-      "step": 2,
-      "door": "Supply & Install\nSteel Sectional Door - Curtain Kit \nBrand:\nStyle: \nColour: \nSize: (h) x (w)\nMotor: Use existing\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
     },
@@ -195,7 +164,8 @@
       "door": "Supply & Install\nBarge Capping to Gable \n500mm Approx 6m wide \nIncludes Scissor lift to site + travel to measure and install at second trip",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "24/07/2026"
+      "invoiceDate": "24/07/2026",
+      "paidDate": "27/08/2026"
     },
     {
       "id": 125437,
@@ -734,13 +704,12 @@
       "s": "On file",
       "d": "10/06/2026",
       "step": 6,
-      "door": "Supply & Install\nSteel Sectional Door - Bottom Panel\nBrand: Steel-Line\nStyle: Photo attached ? 3 planks per section\nColour: Dune\nSize: 535 x 4880(w) - total door height 2115h\nMotor: Optional \n\nSite measure & inspection date: 29/05/2026\n \nRemove & dispose of existing panel\n\nSupply & Install - Additional $780\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\nUpgrades Available - please see attached",
+      "door": "Supply & Install\nSteel Sectional Door - Bottom Panel\nBrand: Steel-Line\nStyle: Photo attached  3 planks per section\nColour: Dune\nSize: 535 x 4880(w) - total door height 2115h\nMotor: Optional \n\nSite measure & inspection date: 29/05/2026\n \nRemove & dispose of existing panel\n\nMotor Invoiced Separately",
       "t": "r",
       "eta": "10/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "10/06/2026",
-      "paidDate": "09/06/2026",
-      "dep": 100
+      "invoiceDate": "28/08/2026",
+      "dep": 50
     },
     {
       "id": 124938,
@@ -775,9 +744,8 @@
       "t": "r",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "08/06/2026",
-      "paidDate": "11/06/2026",
-      "dep": 100
+      "invoiceDate": "28/08/2026",
+      "dep": 50
     },
     {
       "id": 124920,
@@ -1081,8 +1049,7 @@
       "door": "Supply & Install\nCustom Fabricated Tilt Door (cladded by others)\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: Hulk track fitting\nSize: 2400(h) x 5000(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \n****MAX DOOR CLADDING 200KG****\n \n(Quote includes 2 trips to site as the motor & adjustments need to be made once cladding installed)",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "18/06/2026",
-      "paidDate": "02/07/2026"
+      "invoiceDate": "28/08/2026"
     },
     {
       "id": 124406,
@@ -1098,12 +1065,24 @@
       "paidDate": "03/08/2026"
     },
     {
+      "id": 124351,
+      "c": "Stockman Sheds",
+      "s": "On file",
+      "d": "28/04/2026",
+      "step": 6,
+      "door": "Supply & Install \nGenuine Therma-Door \nDoor Size: 3300h x 6070w",
+      "t": "b",
+      "eta": "10/07/2026",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "26/08/2026"
+    },
+    {
       "id": 124262,
       "c": "Battaglene, Gary",
       "s": "On file",
       "d": "21/04/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond Panel Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Deep Ocean\nSize: 2160(h) x 5510(w)\nMotor: yes\nSteel Wrapped\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nWorks to Prepare Opening - as necessary\nRemove Existing Doors \nModify head\nRemove Centre Pillar\nProp, Prepare Install engineered head beam\nReframe sides, jack and prop studs\nFabricate Steel Brackets and attach to existing structure\nRemove & Replace eaves sheets as needed\nInstall timber noggins to support new track & motor setup\nInstall timber Jambs & Head\n\nSite measure & inspection date:\nRemove & dispose of existing doors",
+      "door": "Supply & Install\nColorbond Panel Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Deep Ocean\nSize: 2160(h) x 5510(w)\nMotor: Yes\nSteel Wrapped\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nWorks to Prepare Opening - as necessary\nRemove Existing Doors \nModify head\nRemove Centre Pillar\nProp, Prepare Install engineered head beam\nReframe sides, jack and prop studs\nFabricate Steel Brackets and attach to existing structure\nRemove & Replace eaves sheets as needed\nInstall timber noggins to support new track & motor setup\nInstall timber Jambs & Head\n\nSite measure & inspection date: \nRemove & dispose of existing doors",
       "t": "r",
       "eta": "13/08/2026",
       "installer": "Peewee, Eddie, Brian",
@@ -1156,6 +1135,17 @@
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "14/08/2026",
       "paidDate": "17/08/2026"
+    },
+    {
+      "id": 124134,
+      "c": "Aizer Group",
+      "s": "On file",
+      "d": "13/04/2026",
+      "step": 6,
+      "door": "",
+      "t": "b",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "28/08/2026"
     },
     {
       "id": 124088,
@@ -1217,9 +1207,8 @@
       "t": "r",
       "eta": "02/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "31/03/2026",
-      "paidDate": "02/04/2026",
-      "dep": 100
+      "invoiceDate": "28/08/2026",
+      "dep": 50
     },
     {
       "id": 123962,
