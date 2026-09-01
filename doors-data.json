@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-28T17:03:16.506Z",
+  "lastUpdated": "2026-09-01T07:10:40.525Z",
   "totalJobs": 115,
   "jobs": [
     {
@@ -8,7 +8,7 @@
       "s": "164 Palmer Road, Nobby, QLD, 4360",
       "d": "13/07/2026",
       "step": 1,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Std Colorbond\n4 x Size: (h) x (w)\n1 x Size: (h) x (w)\nMotor: Use existing if applicable\n \nSite measure & inspection date: insert date\nRemove & dispose of existing door",
+      "door": "",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
     },
@@ -20,17 +20,6 @@
       "step": 1,
       "door": "Supply & Install\nSteel Sectional Door - Curtain Kit \nBrand:\nStyle: \nColour: \nSize: (h) x (w)\nMotor: Yes - No - Use existing\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "r",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 125424,
-      "c": "Campbell Construction Co PTY LTD",
-      "s": "2 Rosella Gardens Drive, Meringandan West, QLD, 4352",
-      "d": "10/07/2026",
-      "step": 4,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI\nStyle: Seville\nColour: Timbagrain - Classic Cedar\nSize: 2105(h) x 4880(w)\nMotor: Yes\nBuilder: Campbell Construction\n2 Rosella\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes 1x wall button\n5 Yrs warranty\nPowerpoint: Existing",
-      "t": "b",
-      "eta": "11/08/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -129,7 +118,7 @@
       "c": "Ambrose Construct Group",
       "s": "8 Kates Street, Clifton, QLD, 4361",
       "d": "22/04/2026",
-      "step": 1,
+      "step": 2,
       "door": "Supply & Install\n3 x Colorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: \nSize: 2100(h) x 2450(w)\nMotor: Not approved but recommend replacement\n \nRemove & dispose of existing doors",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
@@ -139,7 +128,7 @@
       "c": "Ambrose Construct Group",
       "s": "77 Greenmount - Hirstvale Road, East Greenmount, QLD, 4359",
       "d": "08/04/2026",
-      "step": 2,
+      "step": 5,
       "door": "Supply & Install\nAluminium Frame Tilt Door\nCustom Made\nColour: Zinc Cladding - Closest Match\nSize: 2130(h) x 2595(w)\nMotor: No\n \nRemove & dispose of existing door",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
@@ -149,7 +138,7 @@
       "c": "Urbane Build",
       "s": "347 Rowbotham Street, Middle Ridge, QLD, 4350",
       "d": "31/03/2026",
-      "step": 1,
+      "step": 4,
       "door": "Supply & Install\n3 x Steel Sectional Door\nBrand: Gliderol\nStyle: Hampton\nWindows: Traditional Hampton\nColour: Monument\n\nDoor 1: 2720(h) x 2780(w) - No Windows\nDoor 2: 3020(h) x 2780(w) - Windows \nDoor 3: 3020(h) x 2780(w) - Windows\nMotor: Yes\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n3 x Panel Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\nBeams and MyQ - Added after initial QT)",
       "t": "b",
       "eta": "27/08/2026",
@@ -180,6 +169,17 @@
       "invoiceDate": "10/08/2026",
       "paidDate": "11/08/2026",
       "dep": 100
+    },
+    {
+      "id": 125424,
+      "c": "Campbell Construction Co PTY LTD",
+      "s": "On file",
+      "d": "10/07/2026",
+      "step": 6,
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI\nStyle: Seville\nColour: Timbagrain - Classic Cedar\nSize: 2105(h) x 4880(w)\nMotor: Yes\nBuilder: Campbell Construction\n2 Rosella",
+      "t": "b",
+      "eta": "11/08/2026",
+      "installer": "Peewee, Eddie, Brian"
     },
     {
       "id": 125415,
@@ -266,7 +266,8 @@
       "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2490(w)\nMotor: No\n \nSubject to site measure & inspection date: 06/07/2026\nRemove & dispose of existing door",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "05/08/2026"
+      "invoiceDate": "05/08/2026",
+      "paidDate": "28/08/2026"
     },
     {
       "id": 125343,
@@ -423,8 +424,8 @@
       "t": "b",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "29/06/2026",
-      "paidDate": "01/07/2026"
+      "invoiceDate": "31/08/2026",
+      "paidDate": "31/08/2026"
     },
     {
       "id": 125206,
@@ -709,7 +710,8 @@
       "eta": "10/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "28/08/2026",
-      "dep": 50
+      "paidDate": "31/08/2026",
+      "dep": 100
     },
     {
       "id": 124938,
@@ -745,7 +747,8 @@
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "28/08/2026",
-      "dep": 50
+      "paidDate": "28/08/2026",
+      "dep": 100
     },
     {
       "id": 124920,
@@ -1049,7 +1052,8 @@
       "door": "Supply & Install\nCustom Fabricated Tilt Door (cladded by others)\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: Hulk track fitting\nSize: 2400(h) x 5000(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \n****MAX DOOR CLADDING 200KG****\n \n(Quote includes 2 trips to site as the motor & adjustments need to be made once cladding installed)",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "28/08/2026"
+      "invoiceDate": "28/08/2026",
+      "paidDate": "31/08/2026"
     },
     {
       "id": 124406,
@@ -1381,7 +1385,8 @@
       "t": "b",
       "eta": "26/03/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "19/08/2026"
+      "invoiceDate": "19/08/2026",
+      "paidDate": "31/08/2026"
     },
     {
       "id": 123373,
@@ -1404,7 +1409,7 @@
       "step": 6,
       "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize 1: 2220 (h) x 5600 (w) - To Be installed 24/8/2026\nSize 2: 3200 (h) x 5070 (w) \nMotor: Yes x 2\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n2 x Panel Door Motor\n1 x Motor to have extension rail\nBrand: Merlin\nModel: Elite (MS105MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nPrice is for standard install \nNoggin Detail Attached",
       "t": "b",
-      "eta": "23/07/2026",
+      "eta": "17/09/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "25/06/2026",
       "paidDate": "23/07/2026"
