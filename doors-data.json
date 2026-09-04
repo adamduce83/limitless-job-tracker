@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-01T07:10:40.525Z",
-  "totalJobs": 115,
+  "lastUpdated": "2026-09-04T09:14:52.673Z",
+  "totalJobs": 114,
   "jobs": [
     {
       "id": 125449,
@@ -10,16 +10,6 @@
       "step": 1,
       "door": "",
       "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 125443,
-      "c": "Dorge, Shar",
-      "s": "2/116 Magpie Drive, Cambooya, QLD, 4358",
-      "d": "13/07/2026",
-      "step": 1,
-      "door": "Supply & Install\nSteel Sectional Door - Curtain Kit \nBrand:\nStyle: \nColour: \nSize: (h) x (w)\nMotor: Yes - No - Use existing\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
-      "t": "r",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -124,16 +114,6 @@
       "installer": "Peewee, Eddie, Brian"
     },
     {
-      "id": 124075,
-      "c": "Ambrose Construct Group",
-      "s": "77 Greenmount - Hirstvale Road, East Greenmount, QLD, 4359",
-      "d": "08/04/2026",
-      "step": 5,
-      "door": "Supply & Install\nAluminium Frame Tilt Door\nCustom Made\nColour: Zinc Cladding - Closest Match\nSize: 2130(h) x 2595(w)\nMotor: No\n \nRemove & dispose of existing door",
-      "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
       "id": 123991,
       "c": "Urbane Build",
       "s": "347 Rowbotham Street, Middle Ridge, QLD, 4350",
@@ -176,10 +156,11 @@
       "s": "On file",
       "d": "10/07/2026",
       "step": 6,
-      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI\nStyle: Seville\nColour: Timbagrain - Classic Cedar\nSize: 2105(h) x 4880(w)\nMotor: Yes\nBuilder: Campbell Construction\n2 Rosella",
+      "door": "Supply & Install\nSteel Sectional Door\nBrand: B&D CSI\nStyle: Seville\nColour: Timbagrain - Classic Cedar\nSize: 2105(h) x 4880(w)\nMotor: Yes",
       "t": "b",
       "eta": "11/08/2026",
-      "installer": "Peewee, Eddie, Brian"
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "04/09/2026"
     },
     {
       "id": 125415,
@@ -384,9 +365,8 @@
       "t": "r",
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "30/06/2026",
-      "paidDate": "07/07/2026",
-      "dep": 100
+      "invoiceDate": "02/09/2026",
+      "dep": 50
     },
     {
       "id": 125236,
@@ -886,7 +866,6 @@
       "step": 6,
       "door": "Supply & Install\nColorbond \"AA\" Series Roller Door\nBrand: Gliderol\nModel: Series \"AA\"\nColour: Night Sky\nDoor Size: 3000(h) x 5100(w)\nMotor: Yes\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Grifco\nModel: LR Drive\n2x remotes & 1x wall button\nPowerpoint: By Others\nBattery Back Up Default\n\nExtras Available at time of install\nKeyPad $165\nExtra Remotes $77\nMerlin MyQ App control with Beams $550\n\nSite measure & inspection date: 28/04/2026\nAll works to opening by others\nLifting Equipment by DDGDG",
       "t": "b",
-      "eta": "02/07/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "24/05/2026"
     },
@@ -1078,7 +1057,8 @@
       "t": "b",
       "eta": "10/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "26/08/2026"
+      "invoiceDate": "26/08/2026",
+      "paidDate": "02/09/2026"
     },
     {
       "id": 124262,
@@ -1125,7 +1105,8 @@
       "t": "b",
       "eta": "21/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "24/07/2026"
+      "invoiceDate": "24/07/2026",
+      "paidDate": "28/08/2026"
     },
     {
       "id": 124156,
@@ -1163,6 +1144,17 @@
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "20/07/2026",
       "paidDate": "23/07/2026"
+    },
+    {
+      "id": 124075,
+      "c": "Ambrose Construct Group",
+      "s": "On file",
+      "d": "08/04/2026",
+      "step": 6,
+      "door": "Supply & Install\nAluminium Frame Tilt Door\nCustom Made\nColour: Zinc Cladding - Closest Match\nSize: 2130(h) x 2595(w)\nMotor: No",
+      "t": "b",
+      "installer": "Peewee, Eddie, Brian",
+      "invoiceDate": "03/09/2026"
     },
     {
       "id": 124049,
@@ -1212,7 +1204,8 @@
       "eta": "02/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "28/08/2026",
-      "dep": 50
+      "paidDate": "02/09/2026",
+      "dep": 100
     },
     {
       "id": 123962,
@@ -1407,7 +1400,7 @@
       "s": "On file",
       "d": "07/02/2026",
       "step": 6,
-      "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize 1: 2220 (h) x 5600 (w) - To Be installed 24/8/2026\nSize 2: 3200 (h) x 5070 (w) \nMotor: Yes x 2\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n2 x Panel Door Motor\n1 x Motor to have extension rail\nBrand: Merlin\nModel: Elite (MS105MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nPrice is for standard install \nNoggin Detail Attached",
+      "door": "Supply & Install\n2 x Steel Sectional Door\nBrand: Gliderol\nStyle: Tuscan\nColour: Surfmist\nSize 1: 2220 (h) x 5600 (w) ordered\nSize 2: 3200 (h) x 5070 (w) has been installed\nMotor: Yes x 2\n\nSubject to site measure & inspection date: TBC\n\nSupply & Install\n2 x Panel Door Motor\n1 x Motor to have extension rail\nBrand: Merlin\nModel: Elite (MS105MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \nPrice is for standard install \nNoggin Detail Attached",
       "t": "b",
       "eta": "17/09/2026",
       "installer": "Peewee, Eddie, Brian",
