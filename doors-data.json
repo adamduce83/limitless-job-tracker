@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-08T06:53:46.686Z",
+  "lastUpdated": "2026-09-11T09:19:13.868Z",
   "totalJobs": 110,
   "jobs": [
     {
@@ -8,7 +8,7 @@
       "s": "164 Palmer Road, Nobby, QLD, 4360",
       "d": "13/07/2026",
       "step": 1,
-      "door": "",
+      "door": "Supply & Install\n5 x Colorbond Roller Doors\n4 x Size: 2100(h) x 2750(w) \nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\n1 x Size: 4260(h) x 3700(w)\nBrand: Steel-Line\nModel: Series \"B\"\nColour: Paper bark \nMotor: Re-fit existing\n \nRemove & dispose of existing door\n\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
     },
@@ -326,7 +326,8 @@
       "eta": "06/08/2026",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "02/09/2026",
-      "dep": 50
+      "paidDate": "07/09/2026",
+      "dep": 100
     },
     {
       "id": 125236,
@@ -475,12 +476,11 @@
       "s": "On file",
       "d": "17/06/2026",
       "step": 6,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Woodland Grey\nSize: 2400(h) x 2290(w)\nMotor: No\n \nSupply & Install $880\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: Existing\n\nSite measure & inspection date: insert date\nRemove & dispose of existing door",
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Woodland Grey\nSize: 2400(h) x 2290(w)\nMotor: No\n \nRemove & dispose of existing door",
       "t": "b",
       "eta": "24/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "10/08/2026",
-      "paidDate": "17/08/2026"
+      "invoiceDate": "09/09/2026"
     },
     {
       "id": 125052,
@@ -659,7 +659,7 @@
       "s": "On file",
       "d": "09/06/2026",
       "step": 6,
-      "door": "Supply & Install \n2x Premium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others",
+      "door": "Supply & Install\n2x Premium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others",
       "t": "r",
       "installer": "Peewee, Eddie, Brian",
       "dep": 0
