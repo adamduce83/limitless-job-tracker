@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-11T09:19:13.868Z",
-  "totalJobs": 110,
+  "lastUpdated": "2026-09-15T07:08:18.518Z",
+  "totalJobs": 109,
   "jobs": [
     {
       "id": 125449,
@@ -10,27 +10,7 @@
       "step": 1,
       "door": "Supply & Install\n5 x Colorbond Roller Doors\n4 x Size: 2100(h) x 2750(w) \nBrand: Steel-Line\nModel: Series \"A\"\nColour: Jasper\n1 x Size: 4260(h) x 3700(w)\nBrand: Steel-Line\nModel: Series \"B\"\nColour: Paper bark \nMotor: Re-fit existing\n \nRemove & dispose of existing door\n\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Essential (MR655MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
       "t": "b",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 125242,
-      "c": "Langton, Kyla ",
-      "s": "32 Alpine Court, Cranley, QLD, 4350",
-      "d": "29/06/2026",
-      "step": 1,
-      "door": "Supply & Install\nSteel Sectional Door - Curtain Kit \nBrand:\nStyle: \nColour: \nSize: (h) x (w)\nMotor: Yes - No - Use existing\n \nRemove & dispose of existing panel/s\n\nSupply & Install\nPanel Door Motor\nBrand: Merlin\nModel: Essential (MS65MYQ)\n2x remotes & 1x wall button\n5 Yrs warranty\nPowerpoint: By Others / Existing",
-      "t": "r",
-      "installer": "Peewee, Eddie, Brian"
-    },
-    {
-      "id": 125185,
-      "c": "Ambrose Construct Group",
-      "s": "6 Diana Parade, Clifton, QLD, 4361",
-      "d": "25/06/2026",
-      "step": 4,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2745(w)\nMotor: Manual\n\nSite measure & inspection date: 01/07/2026\nRemove & dispose of existing door",
-      "t": "b",
-      "eta": "17/08/2026",
+      "eta": "21/09/2026",
       "installer": "Peewee, Eddie, Brian"
     },
     {
@@ -58,8 +38,8 @@
       "c": "Ambrose Construct Group",
       "s": "39 Budgee Road, Ascot, QLD, 4359",
       "d": "30/04/2026",
-      "step": 2,
-      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line \nModel: Series \"A\"\nColour: Dune\nDoor 1: 2100 x 2695 + OL\nDoor 2: 2900 x 2985 + OL\nDoor 3: 2100 x 2700 + OL\nDoor 4: 3020 x 3305 + OL\nDoor 5: 3620 x 3305 + OL\nDoor 6: 3020 x 3300 + OL",
+      "step": 1,
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line \nModel: Series \"A\"\nColour: Dune\nDoor B: 2900h x 3040w\nDoor C: 2100h x 2750w\nDoor D: 3020h x 3400w\nDoor E: 3620h x 3400w\nDoor F: 3020h x 3400w",
       "t": "b",
       "installer": "Peewee, Eddie, Brian"
     },
@@ -381,6 +361,17 @@
       "invoiceDate": "19/08/2026",
       "paidDate": "19/08/2026",
       "dep": 100
+    },
+    {
+      "id": 125185,
+      "c": "Ambrose Construct Group",
+      "s": "On file",
+      "d": "25/06/2026",
+      "step": 6,
+      "door": "Supply & Install\nColorbond \"A\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"A\"\nColour: Dune\nSize: 2100(h) x 2745(w)\nMotor: Manual\n\nSite measure & inspection date: 01/07/2026\nRemove & dispose of existing door",
+      "t": "b",
+      "eta": "17/08/2026",
+      "installer": "Peewee, Eddie, Brian"
     },
     {
       "id": 125165,
@@ -790,7 +781,8 @@
       "t": "b",
       "eta": "06/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "13/07/2026"
+      "invoiceDate": "13/07/2026",
+      "paidDate": "14/09/2026"
     },
     {
       "id": 124828,
@@ -1296,7 +1288,7 @@
       "s": "On file",
       "d": "05/03/2026",
       "step": 6,
-      "door": "Supply & Install\nCustom Fabricated Tilt Door (cladded by others)\nFrame: 100 x 50 x 3mm - welded with cross brace \nPowder Coated Protexture Black \nType: Hulk track fitting\nSize: 2400(h) x 6000(w)\nBased on cladding 25mm thick\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n****MAX DOOR CLADDING 100KG****\n \nPART 2: Roller Door (D17)\nSupply & Install\nColorbond \"AA\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"AA\"\nColour: Dover White\nSize: 2100(h) x 4950(w)\nMotor: Yes\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
+      "door": "Supply & Install\nCustom Fabricated Tilt Door (cladding by other)\nFrame: 100 x 50 x 3mm - welded with cross brace \nPowder Coated Protexture Black \nType: Hulk track fitting\nSize: 2400(h) x 6000(w)\n\nBased on cladding 25mm thick\nMax cladding weight 100kg\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others\n \n \nPART 2: Roller Door (D17)\nSupply & Install\nColorbond \"AA\" Series Roller Door\nBrand: Steel-Line\nModel: Series \"AA\"\nColour: Dover White\nSize: 2100(h) x 4950(w)\nMotor: Yes\nSupply & Install\nPremium Roller Door Motor\nBrand: Merlin\nModel: Elite\n2 x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
       "t": "b",
       "eta": "25/05/2026",
       "installer": "Peewee, Eddie, Brian",
