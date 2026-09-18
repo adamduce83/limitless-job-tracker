@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-15T07:08:18.518Z",
-  "totalJobs": 109,
+  "lastUpdated": "2026-09-18T09:21:09.994Z",
+  "totalJobs": 108,
   "jobs": [
     {
       "id": 125449,
@@ -124,7 +124,8 @@
       "t": "b",
       "eta": "28/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "03/08/2026"
+      "invoiceDate": "03/08/2026",
+      "paidDate": "17/09/2026"
     },
     {
       "id": 125395,
@@ -471,7 +472,8 @@
       "t": "b",
       "eta": "24/08/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "09/09/2026"
+      "invoiceDate": "09/09/2026",
+      "paidDate": "15/09/2026"
     },
     {
       "id": 125052,
@@ -752,7 +754,7 @@
       "s": "On file",
       "d": "03/06/2026",
       "step": 6,
-      "door": "Supply & Install\nCustom Fabricated Tilt Door\nCladding - Best Match neighbouring doors\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: B&D J Fittings\nColour: Classic Cream\nSize: 2000(h) x 3065(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Extreme (MS125MYQ)\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
+      "door": "Supply & Install\nCustom Fabricated Tilt Door\nCladding - Best Match neighbouring doors\nFrame: 100 x 50 x 3mm - welded with cross brace\nType: B&D J Fittings\nColour: Classic Cream\nSize: 2000(h) x 3065(w)\nBased on cladding 25mm thick\n\nSupply & Install\nPremium Panel Door Motor\nBrand: Merlin \nModel: Elite\n2x remotes & 1x wall button\n7 Yrs warranty\nPowerpoint: By Others",
       "t": "r",
       "installer": "Peewee, Eddie, Brian",
       "invoiceDate": "03/06/2026",
@@ -794,8 +796,7 @@
       "t": "r",
       "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "22/07/2026",
-      "dep": 50
+      "dep": 0
     },
     {
       "id": 124827,
@@ -807,19 +808,7 @@
       "t": "r",
       "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "22/07/2026",
-      "dep": 50
-    },
-    {
-      "id": 124681,
-      "c": "Kyle Fien Builders",
-      "s": "On file",
-      "d": "24/05/2026",
-      "step": 6,
-      "door": "Supply & Install\nColorbond \"AA\" Series Roller Door\nBrand: Gliderol\nModel: Series \"AA\"\nColour: Night Sky\nDoor Size: 3000(h) x 5100(w)\nMotor: Yes\n \nSupply & Install\nPremium Roller Door Motor\nBrand: Grifco\nModel: LR Drive\n2x remotes & 1x wall button\nPowerpoint: By Others\nBattery Back Up Default\n\nExtras Available at time of install\nKeyPad $165\nExtra Remotes $77\nMerlin MyQ App control with Beams $550\n\nSite measure & inspection date: 28/04/2026\nAll works to opening by others\nLifting Equipment by DDGDG",
-      "t": "b",
-      "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "24/05/2026"
+      "dep": 0
     },
     {
       "id": 124657,
@@ -1106,7 +1095,8 @@
       "door": "Supply & Install\nAluminium Frame Tilt Door\nCustom Made\nColour: Zinc Cladding - Closest Match\nSize: 2130(h) x 2595(w)\nMotor: No",
       "t": "b",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "03/09/2026"
+      "invoiceDate": "03/09/2026",
+      "paidDate": "15/09/2026"
     },
     {
       "id": 124049,
@@ -1244,7 +1234,8 @@
       "t": "b",
       "eta": "16/07/2026",
       "installer": "Peewee, Eddie, Brian",
-      "invoiceDate": "21/07/2026"
+      "invoiceDate": "21/07/2026",
+      "paidDate": "16/09/2026"
     },
     {
       "id": 123814,
